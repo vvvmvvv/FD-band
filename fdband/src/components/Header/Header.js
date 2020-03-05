@@ -1,10 +1,11 @@
 import React from 'react';
 import './Header.scss';
+import Nav from '../Nav/Nav'
 
 const Header = () => {
     return (
         <React.Fragment>
-            <span>test</span>
+            <Nav/>
         </React.Fragment>
     );
 }
