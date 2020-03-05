@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 
-function App() {
+import Routes from './routes'
+
+const App = () => {
   return (
     <div className="App">
-      
+          <Routes/>
     </div>
   );
 }
