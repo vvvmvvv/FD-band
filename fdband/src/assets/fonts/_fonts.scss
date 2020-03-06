@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "icomoons";
+  src: url("../../assets/fonts/icomoon/fonts/icomoon.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "icomoons" !important;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-search:before {
+  content: "\e900";
+}
+
+.icon-tripadvisor:before {
+  content: "\e901";
+}
+
+.icon-cart:before {
+  content: "\e93a";
+}
+
+.icon-twitter:before {
+  content: "\ea96";
+}
+
+.icon-facebook:before {
+  content: "\ea90";
+}
+
+.icon-instagram:before {
+  content: "\ea92";
+}
+
+.icon-keyboard_arrow_down:before {
+  content: "\e902";
+}
+
+.icon-circle-right:before {
+  content: "\ea42";
+}
+
+.icon-circle-left:before {
+  content: "\ea44";
+}
+
+.icon-calendar:before {
+  content: "\e953";
+}
+
+.icon-clock:before {
+  content: "\e94e";
+}
+
+.icon-keyboard_arrow_up:before {
+  content: "\e901";
+}
+
+@font-face {
+  font-family: "Lato";
+  //   src: url("../../assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
+  src: local("Lato"), url(../../assets/fonts/Lato/Lato-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato-Black";
+  src: local("Lato-Black"), url(../../assets/fonts/Lato/Lato-Black.ttf) format("truetype"),
+    url(../../assets/fonts/Lato/Lato-Black.woff2) format("woff2"),
+    url(../../assets/fonts/Lato/Lato-Black.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Old Standard TT";
+  src: local("Old Standard TT"), url(../../assets/fonts/Old_Standard_TT/OldStandard-Regular.ttf) format("truetype"),
+    url(../../assets/fonts/Old_Standard_TT/OldStandard-Regular.woff2) format("woff2"),
+    url(../../assets/fonts/Old_Standard_TT/OldStandard-Regular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Old Standard TT Black";
+  src: local("Old Standard TT Black"), url(../../assets/fonts/Old_Standard_TT/OldStandard-Bold.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Silhouetto-Script";
+  src: local("Silhouetto-Script"), url(../../assets/fonts/Silhouetto-Script/Silhouetto-Regular.ttf) format("truetype"),
+    url(../../assets/fonts/Silhouetto-Script/Silhouetto-Regular.otf) format("opentype"),
+    url(../../assets/fonts/Silhouetto-Script/Silhouetto-Regular.woff2) format("woff2"),
+    url(../../assets/fonts/Silhouetto-Script/Silhouetto-Regular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/////
+@font-face {
+  font-family: "OpenSans";
+  src: local("OpenSans"), url(../../assets/fonts/OpenSans/OpenSans-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: local("OpenSans-Bold"), url(../../assets/fonts/OpenSans/OpenSans-Bold.ttf);
+  font-weight: normal;
+  font-style: normal;
+}

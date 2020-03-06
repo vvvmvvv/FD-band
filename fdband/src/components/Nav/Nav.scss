@@ -1,0 +1,58 @@
+@import "../../stylesSettings/_variables";
+@import "../../stylesSettings/_keyframes";
+@import "../../assets/fonts/_fonts";
+
+.nav {
+  &__list {
+    @include dis-flex(center, center);
+  }
+
+  &__item:last-child {
+    .nav__link {
+      padding-right: 0;
+    }
+  }
+
+  &__link {
+    padding-right: 5rem;
+    color: $light-black;
+    cursor: pointer;
+    font-family: $ltb;
+    font-size: $f14;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
+.header {
+  padding: 1rem;
+
+  .block__wrapper {
+    @include dis-flex(space-between, center);
+  }
+
+  &__logo {
+    @include basic($f60, $f60);
+  }
+
+  .logo__image {
+    @include basic($f60, $f60);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__misc {
+    @include dis-flex(space-between, center);
+  }
+
+  &__icon {
+    font-size: $f18;
+  }
+}

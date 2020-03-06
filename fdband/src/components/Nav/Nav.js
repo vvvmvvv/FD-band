@@ -1,15 +1,15 @@
 import React from 'react';
 import './Nav.scss';
-import {Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import logo from '../../assets/images/logo.png'
 
 const Nav = () => {
     return (
         <React.Fragment>
-            <div className="header block">
+            <header className="header block">
                 <div className="block__wrapper">
                     <div className="header__logo logo">
-                        <img src={logo} alt="" />
+                        <img className="logo__image" src={logo} alt="" />
                     </div>
 
                     <nav className="header__nav nav">
@@ -22,11 +22,10 @@ const Nav = () => {
                     </nav>
 
                     <div className="header__misc misc">
-                        <div className="header__icon icon icon-global"></div>
                         <div className="header__icon icon icon-search"></div>
                     </div>
                 </div>
-            </div>
+            </header>
         </React.Fragment>
     );
 }
