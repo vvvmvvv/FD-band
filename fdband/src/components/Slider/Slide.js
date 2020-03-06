@@ -1,5 +1,6 @@
 import React from 'react';
 import './Slider.scss';
+// import album from '../../assets/data/albums.json'
 
 const Slide = (props) => {
     return (
