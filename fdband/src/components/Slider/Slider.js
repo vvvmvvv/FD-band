@@ -32,9 +32,8 @@ export default class Slider extends React.Component {
         slides[slideCenterId].classList.remove('slide--centered');
         slides[isNext ? slideCenterId + 1 : slideCenterId - 1].classList.add('slide--centered');
 
-        [].forEach.call(slides, ((slide) => {
-                slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`);
-            }
+        [].forEach.call(slides, (slide => 
+                slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`)
         ));
         
         await delay(1000);
@@ -42,8 +41,8 @@ export default class Slider extends React.Component {
         
         const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
-        console.log(slide);
-        [].forEach.call(slider.getElementsByClassName('slide'), (slide => 
+        
+        [].forEach.call(slides, (slide => 
             slide.classList.remove(`slide${isNext ? '--move-left' : '--move-right'}`)
         ));
     }
