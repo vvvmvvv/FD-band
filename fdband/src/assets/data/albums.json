@@ -1,21 +1,19 @@
-{
-    "albums": {
-        "album1": {
-            "id": 0,
-            "name": "AMERICANO WITH MILK",
-            "cover": "../images/slide-1.jpg",
-            "date": "20.10.2019",
-            "songs": [
-                "song-1",
-                "song-2",
-                "song-3"
-            ]
-        }
+[
+    {
+        "id": 0,
+        "name": "AMERICANO WITH MILK",
+        "image": "slide-1.jpg",
+        "date": "20.10.2019",
+        "songs": [
+            "song-1",
+            "song-2",
+            "song-3"
+        ]
     },
-    "album2": {
+    {
         "id": 1,
         "name": "WHITE GOOD",
-        "cover": "../images/slide-2.jpg",
+        "image": "slide-2.jpg",
         "date": "03.05.2017",
         "songs": [
             "song-1",
@@ -23,10 +21,10 @@
             "song-3"
         ]
     },
-    "album3": {
+    {
         "id": 2,
         "name": "VIOLET ULTRAFIOLET",
-        "cover": "../images/slide-3.jpg",
+        "image": "slide-3.jpg",
         "date": "26.07.2019",
         "songs": [
             "song-4",
@@ -34,10 +32,10 @@
             "song-6"
         ]
     },
-    "album4": {
+    {
         "id": 3,
         "name": "THINK AND DREAM",
-        "cover": "../images/slide-4.jpg",
+        "image": "slide-4.jpg",
         "date": "30.02.2018",
         "songs": [
             "song-7",
@@ -45,10 +43,10 @@
             "song-9"
         ]
     },
-    "album5": {
+    {
         "id": 4,
         "name": "BECAUSE I BURGER",
-        "cover": "../images/slide-5.jpg",
+        "image": "slide-5.jpg",
         "date": "21.12.2019",
         "songs": [
             "song-10",
@@ -56,4 +54,4 @@
             "song-12"
         ]
     }
-}
+]

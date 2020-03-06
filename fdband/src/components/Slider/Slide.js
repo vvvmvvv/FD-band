@@ -1,12 +1,13 @@
 import React from 'react';
 import './Slider.scss';
-// import album from '../../assets/data/albums.json'
 
 const Slide = (props) => {
     return (
-        <li className={`slide ${props.classCentered}`}>
+        <li className={`slide ${props.classCentered ? props.classCentered : ''}`}>
             <div className="slide__front">
                 <img className='slide__image' src={props.src} alt={props.alt} />
+                <h2 className='slide__title'>{props.title ? props.title : 'sample text'}</h2>
+
             </div>
             <div className="slide__back">
                 <ul className="slide__details">

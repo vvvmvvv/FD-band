@@ -2,12 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Slide from './Slide';
 import './Slider.scss';
-
-import slideImg1 from '../../assets/images/slide-1.jpg';
-import slideImg2 from '../../assets/images/slide-2.jpg';
-import slideImg3 from '../../assets/images/slide-3.jpg';
-import slideImg4 from '../../assets/images/slide-4.jpg';
-import slideImg5 from '../../assets/images/slide-5.jpg';
+import albums from '../../assets/data/albums.json'
 
 function delay(ms) {
     return new Promise((resolve, reject) => setTimeout(resolve, ms))
@@ -55,11 +50,14 @@ export default class Slider extends React.Component {
         return <React.Fragment>
             <div className="slider ">
                 <div className="slider__body">
-                    <Slide src={slideImg1} alt="slideImg1"/>
-                    <Slide src={slideImg2} alt="slideImg2"/>
-                    <Slide src={slideImg3} alt="slideImg3" classCentered="slide--centered"/>
-                    <Slide src={slideImg4} alt="slideImg4"/>
-                    <Slide src={slideImg5} alt="slideImg5"/>
+                    {albums.map(album => {
+                        return(
+                            <Slide 
+                                key={album.id}
+                                src={require(`../../assets/images/${album.image}`)}
+                            />
+                        )
+                    })}
                 </div>
                 <div className="slider__panel">
                     <button className="slider__button" onClick={this.btnPrev}>PREV</button>
