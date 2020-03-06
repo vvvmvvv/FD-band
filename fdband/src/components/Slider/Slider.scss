@@ -1,4 +1,4 @@
-$slide-size: 200px;
+$slide-size: 400px;
 
 .slider {
     display: flex;
@@ -15,9 +15,8 @@ $slide-size: 200px;
     align-items: center;
 
     width: calc(200% + #{$slide-size});
-    height: 400px;
+    height: 800px;
     padding: 0;
-    background-color: red;
     transition: 1s;
 }
 
@@ -35,6 +34,9 @@ $slide-size: 200px;
     &--move-right {
         transition: 1s;
         transform: translateX(50vw);
+    }
+    &--centered {
+        margin-bottom: $slide-size;
     }
 }
 

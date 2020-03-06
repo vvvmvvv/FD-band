@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
+import Slide from './Slide';
 import './Slider.scss';
 
 import slideImg1 from '../../assets/images/slide-1.jpg';
@@ -7,14 +8,6 @@ import slideImg2 from '../../assets/images/slide-2.jpg';
 import slideImg3 from '../../assets/images/slide-3.jpg';
 import slideImg4 from '../../assets/images/slide-4.jpg';
 import slideImg5 from '../../assets/images/slide-5.jpg';
-
-function Slide(props) {
-    return (
-        <li className="slide">
-            <img className="slide__image" src={props.src} alt={props.alt} />
-        </li>
-    )
-}
 
 function delay(ms) {
     return new Promise((resolve, reject) => setTimeout(resolve, ms))
@@ -32,8 +25,16 @@ export default class Slider extends React.Component {
         this.btnSwitchState();
 
         const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
-        [].forEach.call(slider.getElementsByClassName('slide'), (slide => 
-            slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`)
+        const slides = slider.getElementsByClassName('slide');
+
+        const slideCenterId = Math.floor(slides.length / 2);
+
+        slides[slideCenterId].classList.remove('slide--centered');
+        slides[isNext ? slideCenterId + 1 : slideCenterId - 1].classList.add('slide--centered');
+
+        [].forEach.call(slides, ((slide) => {
+                slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`);
+            }
         ));
         
         await delay(1000);
@@ -41,7 +42,7 @@ export default class Slider extends React.Component {
         
         const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
-        [].forEach.call(slider.getElementsByClassName('slide'), (slide => 
+        [].forEach.call(slides, (slide => 
             slide.classList.remove(`slide${isNext ? '--move-left' : '--move-right'}`)
         ));
     }
@@ -56,7 +57,7 @@ export default class Slider extends React.Component {
                 <div className="slider__body">
                     <Slide src={slideImg1} alt="slideImg1"/>
                     <Slide src={slideImg2} alt="slideImg2"/>
-                    <Slide src={slideImg3} alt="slideImg3"/>
+                    <Slide src={slideImg3} alt="slideImg3" classCentered="slide--centered"/>
                     <Slide src={slideImg4} alt="slideImg4"/>
                     <Slide src={slideImg5} alt="slideImg5"/>
                 </div>
