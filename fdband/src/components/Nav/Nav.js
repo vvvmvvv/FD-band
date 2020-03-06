@@ -7,7 +7,7 @@ const Nav = () => {
     return (
         <React.Fragment>
             <div className="header block">
-                <div class="block__wrapper">
+                <div className="block__wrapper">
                     <div className="header__logo logo">
                         <img src={logo} alt="" />
                     </div>
