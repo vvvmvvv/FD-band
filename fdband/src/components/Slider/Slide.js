@@ -4,7 +4,17 @@ import './Slider.scss';
 const Slide = (props) => {
     return (
         <li className={`slide ${props.classCentered}`}>
-            <img className='slide__image' src={props.src} alt={props.alt} />
+            <div className="slide__front">
+                <img className='slide__image' src={props.src} alt={props.alt} />
+            </div>
+            <div className="slide__back">
+                <ul className="slide__details">
+                    <li className="slide__detail">jsdlkfj</li>
+                    <li className="slide__detail">jsdlkfj</li>
+                    <li className="slide__detail">jsdlkfj</li>
+                    <li className="slide__detail">jsdlkfj</li>
+                </ul>
+            </div>
         </li>
     )
 }
