@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slide from './Slide';
+import Slide from './Slide/Slide';
 import './Slider.scss';
 import albums from '../../assets/data/albums.json'
 
@@ -54,7 +54,13 @@ export default class Slider extends React.Component {
                         return(
                             <Slide 
                                 key={album.id}
+                                classCentered={
+                                    Math.floor(albums.length / 2) === album.id ? 'slide--centered' : ''
+                                }
                                 src={require(`../../assets/images/${album.image}`)}
+                                alt={`album ${album.name}`}
+                                name={album.name}
+                                songs={album.songs}
                             />
                         )
                     })}
