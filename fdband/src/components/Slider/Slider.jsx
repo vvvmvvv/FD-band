@@ -41,6 +41,7 @@ export default class Slider extends React.Component {
         
         const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
+        console.log(slide);
         [].forEach.call(slider.getElementsByClassName('slide'), (slide => 
             slide.classList.remove(`slide${isNext ? '--move-left' : '--move-right'}`)
         ));
@@ -52,9 +53,9 @@ export default class Slider extends React.Component {
 
     render() {
         return <React.Fragment>
-            <div className="slider">
+            <div className="slider ">
                 <div className="slider__body">
-                    <Slide src={slideImg1} alt="slideImg1"/>
+                    <Slide className="slide-fwd-tr" src={slideImg1} alt="slideImg1"/>
                     <Slide src={slideImg2} alt="slideImg2"/>
                     <Slide src={slideImg3} alt="slideImg3"/>
                     <Slide src={slideImg4} alt="slideImg4"/>
