@@ -34,7 +34,7 @@ $slide-size: 400px;
     // overflow: hidden;
     position: relative;
     backface-visibility: hidden;
-    transition: transform .5s ease;
+    // transition: transform .5s ease;
 
     &:hover {
         .slide__front {
