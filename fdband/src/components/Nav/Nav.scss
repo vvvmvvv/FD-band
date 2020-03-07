@@ -32,20 +32,30 @@
 }
 
 .header {
-  padding: 1rem;
+  padding: 2rem 0;
+  position: absolute;
+  background-color: transparent;
+  z-index: 10;
 
   .block__wrapper {
     @include dis-flex(space-between, center);
   }
 
-  &__logo {
-    @include basic($f60, $f60);
-  }
+  .logo {
+    @include basic($f80, $f80);
+    background-color: $light-black;
 
-  .logo__image {
-    @include basic($f60, $f60);
-    background-size: cover;
-    background-position: center;
+    &__letter {
+      fill: $white;
+      transition: all 0.3s ease-in-out;
+      height: 5rem;
+    }
+
+    &:hover {
+      .logo__hide {
+        opacity: 0;
+      }
+    }
   }
 
   &__misc {
