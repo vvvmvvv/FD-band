@@ -15,7 +15,7 @@ export default class Slider extends React.Component {
         [].forEach.call(buttons, (btn) => btn.disabled = !btn.disabled);
     }
 
-    btnAction = async(direction) => {
+    btnAction = async (direction) => {
         const isNext = direction === 'next' ? true : false;
         this.btnSwitchState();
 
@@ -27,17 +27,17 @@ export default class Slider extends React.Component {
         slides[slideCenterId].classList.remove('slide--centered');
         slides[isNext ? slideCenterId + 1 : slideCenterId - 1].classList.add('slide--centered');
 
-        [].forEach.call(slides, (slide => 
-                slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`)
+        [].forEach.call(slides, (slide =>
+            slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`)
         ));
-        
+
         await delay(1000);
         this.btnSwitchState();
-        
+
         const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
-        
-        [].forEach.call(slides, (slide => 
+
+        [].forEach.call(slides, (slide =>
             slide.classList.remove(`slide${isNext ? '--move-left' : '--move-right'}`)
         ));
     }
@@ -49,16 +49,22 @@ export default class Slider extends React.Component {
     render() {
         return <React.Fragment>
             <div className="slider ">
+                <figure className="absolute-bg"></figure>
+                <div className="fog__container">
+                    <div className="fog__img fog__img--first"></div>
+                    <div className="fog__img fog__img--second"></div>
+                </div>
                 <div className="slider__body">
                     {albums.map(album => {
-                        return(
-                            <Slide 
+                        return (
+                            <Slide
                                 key={album.id}
                                 classCentered={
                                     Math.floor(albums.length / 2) === album.id ? 'slide--centered' : ''
                                 }
                                 src={require(`../../assets/images/${album.image}`)}
                                 alt={`album ${album.name}`}
+                                date={album.date}
                                 name={album.name}
                                 songs={album.songs}
                             />

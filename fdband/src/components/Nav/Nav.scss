@@ -43,7 +43,7 @@
 
   .logo {
     @include basic($f80, $f80);
-    background-color: $light-black;
+    // background-color: $light-black;
 
     &__letter {
       fill: $white;

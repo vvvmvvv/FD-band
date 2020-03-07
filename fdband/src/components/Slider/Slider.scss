@@ -3,13 +3,9 @@
 @import "../../assets/fonts/_fonts";
 
 .slider {
-  padding-top: 18rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url("../../assets/images/hero.jpg") no-repeat;
-  background-position: center center;
-  background-size: cover;
 
   width: 100%;
   overflow: hidden;
@@ -27,7 +23,63 @@
   }
 }
 
+.absolute-bg {
+  background-color: $light-black;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+// Fog
+.fog {
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: #000;
+
+  &__container {
+    position: absolute;
+
+    height: 100%;
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  &__img {
+    position: absolute;
+
+    height: 100%;
+    width: 300vw;
+
+    &--first {
+      background: url("https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-1.png") repeat-x;
+      background-size: contain;
+      background-position: center;
+      animation: marquee 80s linear infinite;
+    }
+
+    &--second {
+      background: url("https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-2.png") repeat-x;
+      background-size: contain;
+      background-position: center;
+      animation: marquee 60s linear infinite;
+    }
+  }
+}
+
 .slider__body {
+  margin-top: 19rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

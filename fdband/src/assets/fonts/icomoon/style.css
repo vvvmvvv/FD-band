@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?zasc29');
-  src:  url('fonts/icomoon.eot?zasc29#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?zasc29') format('truetype'),
-    url('fonts/icomoon.woff?zasc29') format('woff'),
-    url('fonts/icomoon.svg?zasc29#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?dwkimo');
+  src:  url('fonts/icomoon.eot?dwkimo#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?dwkimo') format('truetype'),
+    url('fonts/icomoon.woff?dwkimo') format('woff'),
+    url('fonts/icomoon.svg?dwkimo#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,21 +25,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-tripadvisor:before {
-  content: "\e901";
-  color: #00af87;
+.icon-media-play:before {
+  content: "\e904";
+}
+.icon-media-pause:before {
+  content: "\e903";
 }
 .icon-keyboard_arrow_down:before {
   content: "\e902";
 }
 .icon-search:before {
   content: "\e900";
-}
-.icon-cart:before {
-  content: "\e93a";
-}
-.icon-clock:before {
-  content: "\e94e";
 }
 .icon-calendar:before {
   content: "\e953";

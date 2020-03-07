@@ -3,16 +3,23 @@
 @import "../../../assets/fonts/_fonts";
 
 .slide {
-  width: $slide-size;
-  height: $slide-size;
+  @include basic($slide-size, $slide-size);
+  @include flex-center;
   border-radius: 50%;
   list-style: none;
-
   //flip
-  // overflow: hidden;
   position: relative;
   backface-visibility: hidden;
-  // transition: transform .5s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    @include basic(100%, 100%);
+    border-radius: 50%;
+    border: 30px solid transparent;
+    box-shadow: inset 30px 30px 400px 400px $light-black;
+    filter: blur(10px);
+  }
 
   &:hover {
     .slide__front {
@@ -26,30 +33,14 @@
 
   &__front,
   &__back {
-    display: flex;
+    @include dis-flex(space-around, center);
+    @include basic(90%, 90%);
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-
-    width: $slide-size;
-    height: $slide-size;
     border-radius: 50%;
     position: absolute;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
     transition: transform 0.5s ease;
     backface-visibility: hidden;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 90%;
-      height: 90%;
-      border-radius: 50%;
-      border: 30px solid transparent;
-      filter: blur(10px);
-    }
   }
 
   &__front {
@@ -57,8 +48,7 @@
   }
 
   &__image {
-    width: 100%;
-    height: 100%;
+    @include basic(100%, 100%);
     position: absolute;
     top: 0;
     left: 0;
@@ -66,20 +56,56 @@
     object-fit: cover;
   }
 
+  &__play-btn {
+    @include basic(3rem, 3rem);
+    @include flex-center;
+    background-color: $white;
+    border-radius: 50%;
+
+    &--icon {
+      font-size: $f18;
+    }
+  }
+
+  &__date {
+    color: $white;
+    font-size: $f14;
+    font-family: $lt;
+  }
+
   &__title {
-    font-size: 50px;
+    font-family: $ostb;
+    font-size: $f50;
+    color: $white;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &__show-songs {
+    @include basic(4rem, 12rem);
+    @include flex-center;
+    background-color: $white;
+    font-family: $ost;
+    color: $dark-grey;
+    border-radius: 5rem;
+    transition: all 0.3s ease-in-out;
+
+    &--title {
+      font-size: $f14;
+    }
+
+    &:hover {
+      background-color: $blue;
+      color: $white;
+    }
   }
 
   &__back {
     transform: perspective(600px) rotateY(180deg);
-    background-color: red;
+    background-color: $light-black;
   }
 
   &__songs {
-    font-size: 40px;
-
+    font-size: $f40;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
