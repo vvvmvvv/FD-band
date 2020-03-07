@@ -3,6 +3,9 @@
 @import "../../assets/fonts/_fonts";
 
 .nav {
+  border-bottom: 5px solid $secondary-color;
+  background-color: $tertiary-color;
+
   &__list {
     @include dis-flex(center, center);
   }
@@ -15,7 +18,8 @@
 
   &__link {
     padding-right: 5rem;
-    color: $black;
+    // color: $black;
+    color: $main-color;
     cursor: pointer;
     font-family: $ltb;
     font-size: $f14;
