@@ -153,9 +153,9 @@ export default class AudioPlayer extends React.Component {
             <div className='player__status'>
                 {
                     `Status:
-                    ${(this.state.seek !== undefined) ? this.state.seek.toFixed(2) : '0.00'}
+                    ${(this.state.seek !== undefined) ? Number(this.state.seek).toFixed(2) : '0.00'}
                     /
-                    ${(this.state.duration) ? this.state.duration.toFixed(2) : 'NaN'}`
+                    ${(this.state.duration) ? Number(this.state.duration).toFixed(2) : 'NaN'}`
                 }
             </div>
 
