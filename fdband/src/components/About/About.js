@@ -4,7 +4,7 @@ import './About.scss';
 const About = () => {
     return (
         <React.Fragment>
-            <section className="two-cols-section">
+            {/* <section className="two-cols-section">
                 <div className="first-col-wrapper scrollPage">
                     <div className="wrap-title">
                         <h6>INTRODUCTION</h6>
@@ -25,7 +25,7 @@ const About = () => {
                 </div>
 
                 <div className="second-col-wrapper"></div>
-            </section>
+            </section> */}
         </React.Fragment>
     );
 }

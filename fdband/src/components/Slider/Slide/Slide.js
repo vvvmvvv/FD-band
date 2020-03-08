@@ -9,7 +9,7 @@ const Slide = (props) => {
             <div className="slide__front">
                 <img className='slide__image' src={props.src} alt={props.alt} />
                 <div className="slide__play-btn">
-                    <span class="slide__play-btn--icon icon-media-pause"></span>
+                    <span className="slide__play-btn--icon icon-media-pause"></span>
                 </div>
                 <div className="slide__date">{props.date}</div>
                 <h2 className='slide__title'>{props.name}</h2>

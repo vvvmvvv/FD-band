@@ -111,7 +111,7 @@ const Nav = () => {
                     </nav>
 
                     <div className="header__misc misc">
-                        <div className="header__icon icon icon-search"></div>
+                        <div className="header__icon"></div>
                     </div>
                 </div>
             </header>

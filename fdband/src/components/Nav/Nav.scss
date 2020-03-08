@@ -9,7 +9,7 @@
 
   &__item:last-child {
     .nav__link {
-      padding-right: 0;
+      padding-right: 1rem;
     }
   }
 
@@ -60,6 +60,14 @@
 
   &__misc {
     @include dis-flex(space-between, center);
+    background-image: url(../../assets/fonts/icomoon/icons8-menu.svg);
+    fill: $white;
+    @include basic(5rem, 5rem);
+    background-size: cover;
+
+    &:hover{
+      animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
   }
 
   &__icon {

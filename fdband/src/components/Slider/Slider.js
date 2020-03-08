@@ -72,8 +72,14 @@ export default class Slider extends React.Component {
                     })}
                 </div>
                 <div className="slider__panel">
-                    <button className="slider__button" onClick={this.btnPrev}>PREV</button>
-                    <button className="slider__button" onClick={this.btnNext}>NEXT</button>
+                    <div className="slider__button" onClick={this.btnPrev}>
+                        <i className="slider__button--icon icon-arrow_left_alt"></i>
+                        <div className="slider__button--title">prev</div>
+                    </div>
+                    <div className="slider__button" onClick={this.btnNext}>
+                        <div className="slider__button--title">next</div>
+                        <i className="slider__button--icon icon-arrow_right_alt"></i>
+                    </div>
                 </div>
             </div>
         </React.Fragment>
