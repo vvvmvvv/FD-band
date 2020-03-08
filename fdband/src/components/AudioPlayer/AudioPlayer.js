@@ -1,54 +1,19 @@
 import React from 'react';
 import ReactHowler from 'react-howler';
 
-import './AudioPlayer.scss';
-
-// import song from '../../assets/songs/Phantom.mp3';
-
-//  const AudioPlayer = (props) => {
-//     // getHowler () {
-//     //     this.player.howler
-//     // }
- 
-//     // getDuration () {
-//     //     this.player.duration()
-//     // }
-    
-//     // getSeek () {
-//     //     this.player.seek()
-//     // }
-    
-//     // setSeek () {
-//     //     this.player.seek(0.5)
-//     // }
-
-//     return <React.Fragment>
-//             <div className='player'>
-//                 <div className='songs'>
-//                     {props.songs}
-//                 </div>
-//                 <ReactHowler
-//                     src={props.songs}
-//                     controls
-//                     playing={false}
-//                     volume={0.5}
-//                 />
-//             </div>
-//         </React.Fragment>
-// }
-
-// import ReactHowler from 'ReactHowler'
 import raf from 'raf' // requestAnimationFrame polyfill
 import classnames from 'classnames'
 
-const Button = (props) => {
-  const { children, className, ...otherProps } = props
+import './AudioPlayer.scss';
 
-  return (
-    <button className={classnames('button', className)} {...otherProps}>
-      {children}
-    </button>
-  )
+const Button = (props) => {
+    const { className, ...otherProps } = props
+
+    return (
+        <button className={classnames('button', className)} {...otherProps}>
+        
+        </button>
+    )
 }
 
 export default class AudioPlayer extends React.Component {
@@ -56,13 +21,15 @@ export default class AudioPlayer extends React.Component {
         super(props)
 
         this.state = {
-            songId: 0,
+            id: props.songs[0].id,
+            song: props.songs[0].name,
             playing: false,
             loaded: false,
             loop: false,
             mute: false,
             volume: 1.0
         }
+        
         this.handleToggle = this.handleToggle.bind(this)
         this.handleOnLoad = this.handleOnLoad.bind(this)
         this.handleOnEnd = this.handleOnEnd.bind(this)
@@ -108,7 +75,7 @@ export default class AudioPlayer extends React.Component {
     handleStop () {
         this.player.stop()
         this.setState({
-            playing: false // Need to update our local state so we don't immediately invoke autoplay
+            playing: false
         })
         this.renderSeekPos()
     }
@@ -139,8 +106,11 @@ export default class AudioPlayer extends React.Component {
     }
 
     handleSongChange (e) {
+        const id = e.target.value === 'next' ? this.state.id + 1 : this.state.id - 1;
         this.setState({
-            songId: e.target.value === 'next' ? this.state.songId + 1 : this.state.songId - 1
+            id: id,
+            song: this.props.songs[id].name,
+            loaded: false
         })
     }
 
@@ -148,12 +118,7 @@ export default class AudioPlayer extends React.Component {
         return (
         <div className='player'>
             <ReactHowler
-                src={this.props.songs.map((song) => {
-                    if (song.id === this.state.songId) {
-                        return require(`../../assets/songs/${song.name}.mp3`)
-                    }
-                    return null
-                })}
+                src={require(`../../assets/songs/${this.state.song}.mp3`)}
                 playing={this.state.playing}
                 onLoad={this.handleOnLoad}
                 onPlay={this.handleOnPlay}

@@ -20,7 +20,7 @@ export default class Slider extends React.Component {
                     return {ref: React.createRef()}
                 })
             ]
-        };
+        }
     }
 
     handleChangeSlideCenter (sl) {
@@ -43,9 +43,11 @@ export default class Slider extends React.Component {
         isNext ? this.state.slides.push(slideRef) : this.state.slides.unshift(slideRef);
     }
 
-    handleBtnDisable () {
+    handleBtnDisable (status) {
         const buttons = ReactDOM.findDOMNode(this).getElementsByClassName('slider__button');
-        [].forEach.call(buttons, (btn) => btn.disabled = !btn.disabled);
+        [].forEach.call(buttons, (btn) => {
+            status ? btn.classList.add('slider__button--disabled') : btn.classList.remove('slider__button--disabled')
+        });
     }
 
     btnNext = () => this.btnAction('next')
@@ -54,29 +56,31 @@ export default class Slider extends React.Component {
 
     btnAction = async(direction) => {
         const isNext = direction === 'next' ? true : false;
-        this.handleBtnDisable();
 
         const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
 
         const slides = slider.getElementsByClassName('slide');
         this.handleChangeSlideCenter({
-            slides: slides,
             id: Math.floor(slides.length / 2), //central slide id
             isNext: isNext
         });
 
         this.handleMoveSlides(isNext);
         
-        await delay(1000);
+        const disable = true;
+        this.handleBtnDisable(disable);
 
-        this.handleBtnDisable();
+        await delay(1000);
+        
+        this.handleBtnDisable(!disable);
+
         this.handleLoopSlides(slider, isNext);
         this.handleMoveSlides();
     }
 
     render() {
-        return <React.Fragment>
-            <div className="slider ">
+        return (
+            <div className="slider">
                 <figure className="absolute-bg"></figure>
                 <div className="fog__container">
                     <div className="fog__img fog__img--first"></div>
@@ -102,17 +106,21 @@ export default class Slider extends React.Component {
                     })}
                 </div>
                 <div className="slider__panel">
-                    <div className="slider__button" onClick={this.btnPrev}>
+                    <div 
+                        className='slider__button'
+                        onClick={this.btnPrev}>
                         <i className="slider__button--icon icon-arrow_left_alt"></i>
                         <div className="slider__button--title">prev</div>
                     </div>
-                    <div className="slider__button" onClick={this.btnNext}>
+                    <div
+                        className='slider__button'
+                        onClick={this.btnNext}>
                         <div className="slider__button--title">next</div>
                         <i className="slider__button--icon icon-arrow_right_alt"></i>
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        )
     }
 
 }

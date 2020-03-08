@@ -27,6 +27,10 @@
   &__button {
     @include flex-center;
 
+    &--disabled {
+      pointer-events: none;
+    }
+
     &:first-child {
       padding-right: 40rem;
     }
