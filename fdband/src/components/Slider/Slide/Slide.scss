@@ -85,6 +85,16 @@
         transform: translateX(50vw);
     }
     &--centered {
+        // transition: 1s;
         margin-bottom: $slide-size;
+        & .slide__player {
+            display: block;
+        }
     }
+}
+
+.slide__player {
+    display: none;
+    width: 20px;
+    height: 20px;
 }

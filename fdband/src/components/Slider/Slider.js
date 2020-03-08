@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Slide from './Slide/Slide';
+
 import './Slider.scss';
+
 import albums from '../../assets/data/albums.json'
 
 function delay(ms) {
@@ -9,11 +11,39 @@ function delay(ms) {
 }
 
 export default class Slider extends React.Component {
+    constructor (props) {
+        super(props)
 
-    btnSwitchState = () => {
+        this.state = {
+            slides: [
+                ...albums.map(() => {
+                    return {ref: React.createRef()}
+                })
+            ]
+        };
+    }
+
+    handleStateCenter (sl) {
+        const slides = this.state.slides;
+        const id = sl.id;
+        const id2 = sl.isNext ? sl.id + 1 : sl.id - 1;
+        
+        slides[id].ref.current.changeCenteredStatus()
+        slides[id2].ref.current.changeCenteredStatus()
+    }
+
+    moveSlides (isNext = true) {
+        this.state.slides.forEach(s => s.ref.current.handleMove(isNext));
+    }
+
+    btnSwitchState () {
         const buttons = ReactDOM.findDOMNode(this).getElementsByClassName('slider__button');
         [].forEach.call(buttons, (btn) => btn.disabled = !btn.disabled);
     }
+
+    btnNext = () => this.btnAction('next')
+
+    btnPrev = () => this.btnAction('prev')
 
     btnAction = async(direction) => {
         const isNext = direction === 'next' ? true : false;
@@ -22,41 +52,38 @@ export default class Slider extends React.Component {
         const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
         const slides = slider.getElementsByClassName('slide');
 
-        const slideCenterId = Math.floor(slides.length / 2);
+        this.handleStateCenter({
+            slides: slides,
+            id: Math.floor(slides.length / 2), //central slide id
+            isNext: isNext
+        });
 
-        slides[slideCenterId].classList.remove('slide--centered');
-        slides[isNext ? slideCenterId + 1 : slideCenterId - 1].classList.add('slide--centered');
-
-        [].forEach.call(slides, (slide => 
-                slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`)
-        ));
+        this.moveSlides(isNext);
         
         await delay(1000);
         this.btnSwitchState();
         
         const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
-        
-        [].forEach.call(slides, (slide => 
-            slide.classList.remove(`slide${isNext ? '--move-left' : '--move-right'}`)
-        ));
+        const slideRef = isNext ? this.state.slides.shift() : this.state.slides.pop();
+        isNext ? this.state.slides.push(slideRef) : this.state.slides.unshift(slideRef);
+
+        this.moveSlides();
     }
-
-    btnNext = () => this.btnAction('next')
-
-    btnPrev = () => this.btnAction('prev')
 
     render() {
         return <React.Fragment>
             <div className="slider ">
-                <div className="slider__body">
+                <div className="slider__body" ref={this.sliderElement}>
                     {albums.map(album => {
+
+                        const isCentered = Math.floor(albums.length / 2) === album.id ? true : false;
+
                         return(
                             <Slide 
                                 key={album.id}
-                                classCentered={
-                                    Math.floor(albums.length / 2) === album.id ? 'slide--centered' : ''
-                                }
+                                ref={this.state.slides[album.id].ref}
+                                isCentered={isCentered}
                                 src={require(`../../assets/images/${album.image}`)}
                                 alt={`album ${album.name}`}
                                 name={album.name}

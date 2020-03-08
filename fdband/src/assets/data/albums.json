@@ -7,15 +7,15 @@
         "songs": [
             {
                 "id": 0,
-                "name": "song-0"
+                "name": "Breakfast Alone"
             },
             {
                 "id": 1,
-                "name": "song-1"
+                "name": "Cloud Control"
             },
             {
                 "id": 2,
-                "name": "song-2"
+                "name": "Dusk"
             }
         ]
     },
@@ -27,15 +27,15 @@
         "songs": [
             {
                 "id": 0,
-                "name": "song-3"
+                "name": "Incoming Transition"
             },
             {
                 "id": 1,
-                "name": "song-4"
+                "name": "Light Years Away"
             },
             {
                 "id": 2,
-                "name": "song-5"
+                "name": "Marianas"
             }
         ]
     },
@@ -47,15 +47,15 @@
         "songs": [
             {
                 "id": 0,
-                "name": "song-6"
+                "name": "Materialize"
             },
             {
                 "id": 1,
-                "name": "song-7"
+                "name": "No Good Right"
             },
             {
                 "id": 2,
-                "name": "song-8"
+                "name": "Rain Cloud Music"
             }
         ]
     },
@@ -67,15 +67,15 @@
         "songs": [
             {
                 "id": 0,
-                "name": "song-9"
+                "name": "Sea Space"
             },
             {
                 "id": 1,
-                "name": "song-10"
+                "name": "Spirit of the Dead"
             },
             {
                 "id": 2,
-                "name": "song-11"
+                "name": "Stuck In The Air"
             }
         ]
     },
@@ -87,15 +87,15 @@
         "songs": [
             {
                 "id": 0,
-                "name": "song-12"
+                "name": "Surviving The Asteroid Belt"
             },
             {
                 "id": 1,
-                "name": "song-13"
+                "name": "Ticker"
             },
             {
                 "id": 2,
-                "name": "song-14"
+                "name": "Under The Rug"
             }
         ]
     }
