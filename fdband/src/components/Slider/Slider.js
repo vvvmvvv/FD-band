@@ -23,7 +23,7 @@ export default class Slider extends React.Component {
         };
     }
 
-    handleChangeSlideCenter (sl) {
+    handleStateCenter (sl) {
         const slides = this.state.slides;
         const id = sl.id;
         const id2 = sl.isNext ? sl.id + 1 : sl.id - 1;
@@ -32,18 +32,11 @@ export default class Slider extends React.Component {
         slides[id2].ref.current.changeCenteredStatus()
     }
 
-    handleMoveSlides (isNext = true) {
+    moveSlides (isNext = true) {
         this.state.slides.forEach(s => s.ref.current.handleMove(isNext));
     }
 
-    handleLoopSlides (slider, isNext) {
-        const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
-        isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
-        const slideRef = isNext ? this.state.slides.shift() : this.state.slides.pop();
-        isNext ? this.state.slides.push(slideRef) : this.state.slides.unshift(slideRef);
-    }
-
-    handleBtnDisable () {
+    btnSwitchState () {
         const buttons = ReactDOM.findDOMNode(this).getElementsByClassName('slider__button');
         [].forEach.call(buttons, (btn) => btn.disabled = !btn.disabled);
     }
@@ -54,30 +47,34 @@ export default class Slider extends React.Component {
 
     btnAction = async(direction) => {
         const isNext = direction === 'next' ? true : false;
-        this.handleBtnDisable();
+        this.btnSwitchState();
 
         const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
-
         const slides = slider.getElementsByClassName('slide');
-        this.handleChangeSlideCenter({
+
+        this.handleStateCenter({
             slides: slides,
             id: Math.floor(slides.length / 2), //central slide id
             isNext: isNext
         });
 
-        this.handleMoveSlides(isNext);
+        this.moveSlides(isNext);
         
         await delay(1000);
+        this.btnSwitchState();
+        
+        const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
+        isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
+        const slideRef = isNext ? this.state.slides.shift() : this.state.slides.pop();
+        isNext ? this.state.slides.push(slideRef) : this.state.slides.unshift(slideRef);
 
-        this.handleBtnDisable();
-        this.handleLoopSlides(slider, isNext);
-        this.handleMoveSlides();
+        this.moveSlides();
     }
 
     render() {
         return <React.Fragment>
             <div className="slider ">
-                <div className="slider__body">
+                <div className="slider__body" ref={this.sliderElement}>
                     {albums.map(album => {
 
                         const isCentered = Math.floor(albums.length / 2) === album.id ? true : false;
