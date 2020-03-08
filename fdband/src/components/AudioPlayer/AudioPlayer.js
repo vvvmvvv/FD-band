@@ -27,7 +27,8 @@ export default class AudioPlayer extends React.Component {
             loaded: false,
             loop: false,
             mute: false,
-            volume: 1.0
+            volume: 1.0,
+            duration: 0
         }
         
         this.handleToggle = this.handleToggle.bind(this)
