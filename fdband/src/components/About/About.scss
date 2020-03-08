@@ -1,0 +1,38 @@
+@import "../../stylesSettings/_variables";
+@import "../../stylesSettings/_keyframes";
+@import "../../assets/fonts/_fonts";
+
+.two-cols-section {
+  width: 100%;
+  padding: 10rem 0 5rem 0;
+  @include dis-flex(space-around, center);
+
+  .first-col-wrapper,
+  .second-col-wrapper {
+    width: 45%;
+  }
+
+  .first-col-wrapper {
+    @include dis-flex(center, flex-start);
+    flex-direction: column;
+
+    .wrap-title {
+      @include dis-flex(center, flex-start);
+      flex-direction: column;
+      padding-top: 0;
+    }
+
+    .wrap-footer__column {
+      margin: 3rem 0 0 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
+}
+
+.second-col-wrapper {
+  width: 100%;
+  @include dis-flex(flex-start, flex-start);
+  flex-direction: column;
+}
+

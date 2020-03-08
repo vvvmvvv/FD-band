@@ -1,69 +1,115 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slide from './Slide';
+import Slide from './Slide/Slide';
+
 import './Slider.scss';
 
-import slideImg1 from '../../assets/images/slide-1.jpg';
-import slideImg2 from '../../assets/images/slide-2.jpg';
-import slideImg3 from '../../assets/images/slide-3.jpg';
-import slideImg4 from '../../assets/images/slide-4.jpg';
-import slideImg5 from '../../assets/images/slide-5.jpg';
+import albums from '../../assets/data/albums.json'
 
 function delay(ms) {
     return new Promise((resolve, reject) => setTimeout(resolve, ms))
 }
 
 export default class Slider extends React.Component {
+    constructor (props) {
+        super(props)
 
-    btnSwitchState = () => {
-        const buttons = ReactDOM.findDOMNode(this).getElementsByClassName('slider__button');
-        [].forEach.call(buttons, (btn) => btn.disabled = !btn.disabled);
+        this.state = {
+            slides: [
+                ...albums.map(() => {
+                    return {ref: React.createRef()}
+                })
+            ]
+        };
     }
 
-    btnAction = async(direction) => {
-        const isNext = direction === 'next' ? true : false;
-        this.btnSwitchState();
-
-        const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
-        const slides = slider.getElementsByClassName('slide');
-
-        const slideCenterId = Math.floor(slides.length / 2);
-
-        slides[slideCenterId].classList.remove('slide--centered');
-        slides[isNext ? slideCenterId + 1 : slideCenterId - 1].classList.add('slide--centered');
-
-        [].forEach.call(slides, (slide => 
-                slide.classList.add(`slide${isNext ? '--move-left' : '--move-right'}`)
-        ));
+    handleChangeSlideCenter (sl) {
+        const slides = this.state.slides;
+        const id = sl.id;
+        const id2 = sl.isNext ? sl.id + 1 : sl.id - 1;
         
-        await delay(1000);
-        this.btnSwitchState();
-        
+        slides[id].ref.current.changeCenteredStatus()
+        slides[id2].ref.current.changeCenteredStatus()
+    }
+
+    handleMoveSlides (isNext = true) {
+        this.state.slides.forEach(s => s.ref.current.handleMove(isNext));
+    }
+
+    handleLoopSlides (slider, isNext) {
         const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
-        
-        [].forEach.call(slides, (slide => 
-            slide.classList.remove(`slide${isNext ? '--move-left' : '--move-right'}`)
-        ));
+        const slideRef = isNext ? this.state.slides.shift() : this.state.slides.pop();
+        isNext ? this.state.slides.push(slideRef) : this.state.slides.unshift(slideRef);
+    }
+
+    handleBtnDisable () {
+        const buttons = ReactDOM.findDOMNode(this).getElementsByClassName('slider__button');
+        [].forEach.call(buttons, (btn) => btn.disabled = !btn.disabled);
     }
 
     btnNext = () => this.btnAction('next')
 
     btnPrev = () => this.btnAction('prev')
 
+    btnAction = async(direction) => {
+        const isNext = direction === 'next' ? true : false;
+        this.handleBtnDisable();
+
+        const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
+
+        const slides = slider.getElementsByClassName('slide');
+        this.handleChangeSlideCenter({
+            slides: slides,
+            id: Math.floor(slides.length / 2), //central slide id
+            isNext: isNext
+        });
+
+        this.handleMoveSlides(isNext);
+        
+        await delay(1000);
+
+        this.handleBtnDisable();
+        this.handleLoopSlides(slider, isNext);
+        this.handleMoveSlides();
+    }
+
     render() {
         return <React.Fragment>
             <div className="slider ">
+                <figure className="absolute-bg"></figure>
+                <div className="fog__container">
+                    <div className="fog__img fog__img--first"></div>
+                    <div className="fog__img fog__img--second"></div>
+                </div>
                 <div className="slider__body">
-                    <Slide src={slideImg1} alt="slideImg1"/>
-                    <Slide src={slideImg2} alt="slideImg2"/>
-                    <Slide src={slideImg3} alt="slideImg3" classCentered="slide--centered"/>
-                    <Slide src={slideImg4} alt="slideImg4"/>
-                    <Slide src={slideImg5} alt="slideImg5"/>
+                    {albums.map(album => {
+
+                        const isCentered = Math.floor(albums.length / 2) === album.id ? true : false;
+
+                        return(
+                            <Slide 
+                                key={album.id}
+                                ref={this.state.slides[album.id].ref}
+                                isCentered={isCentered}
+                                src={require(`../../assets/images/${album.image}`)}
+                                alt={`album ${album.name}`}
+                                date={album.date}
+                                name={album.name}
+                                songs={album.songs}
+                            />
+                        )
+                    })}
                 </div>
                 <div className="slider__panel">
-                    <button className="slider__button" onClick={this.btnPrev}>PREV</button>
-                    <button className="slider__button" onClick={this.btnNext}>NEXT</button>
+                    <div className="slider__button" onClick={this.btnPrev}>
+                        <i className="slider__button--icon icon-arrow_left_alt"></i>
+                        <div className="slider__button--title">prev</div>
+                    </div>
+                    <div className="slider__button" onClick={this.btnNext}>
+                        <div className="slider__button--title">next</div>
+                        <i className="slider__button--icon icon-arrow_right_alt"></i>
+                    </div>
                 </div>
             </div>
         </React.Fragment>
