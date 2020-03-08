@@ -1,11 +1,12 @@
 //colors
 $white: #ffffff;
 $black: #000000;
-$light-black: #222222;
+$light-black: #231e1f;
 $dark-grey: #333333;
 $light-grey: #808080;
 $light: #ededed;
 $red: #e74c3c;
+$orange: #E49975;
 $peach: #ddc3ac;
 $green: #79c45f;
 $blue: #5f9ea0;
@@ -13,15 +14,16 @@ $yellow: #cebd7e;
 
 //fonts
 $lt: "Lato";
-$ltb: 'Lato-Black';
-$ost: 'Old Standard TT';
-$ostb: 'Old Standard TT Black';
-$ss: 'Silhouetto-Script';
+$ltb: "Lato-Black";
+$ost: "Old Standard TT";
+$ostb: "Old Standard TT Black";
+$ss: "Silhouetto-Script";
 
-$os: 'OpenSans-Bold';
+$os: "OpenSans-Bold";
 
 //font-size
-$f60: 6rem; 
+$f80: 8rem;
+$f60: 6rem;
 $f50: 5rem;
 $f45: 4.5rem;
 $f40: 4rem;
@@ -32,4 +34,4 @@ $f14: 1.4rem;
 $f12: 1.2rem;
 
 //component-size
-$slide-size: 400px;
+$slide-size: 50rem;

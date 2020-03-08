@@ -39,7 +39,14 @@ export default class Slide extends React.Component {
             <li className={`slide ${center} ${moving}`}>
                 <div className="slide__front">
                     <img className='slide__image' src={this.props.src} alt={this.props.alt} />
+                    <div className="slide__play-btn">
+                        <span className="slide__play-btn--icon icon-media-pause"></span>
+                    </div>
+                    <div className="slide__date">{this.props.date}</div>
                     <h2 className='slide__title'>{this.props.name}</h2>
+                    <div className="slide__show-songs">
+                        <div className="slide__show-songs--title">Show more</div>
+                    </div>
                 </div>
                 <div className="slide__back">
                     <ul className="slide__songs songs">

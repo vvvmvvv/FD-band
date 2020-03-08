@@ -3,25 +3,89 @@
 @import "../../assets/fonts/_fonts";
 
 .slider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  @include flex-center;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
 
-    width: 100%;
-    overflow: hidden;
-}
-
-.slider__body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  &__body {
+    margin-top: 25rem;
+    position: relative;
+    @include dis-flex(space-between, center);
     width: calc(200% + #{$slide-size});
-    height: 800px;
     padding: 0;
     transition: 1s;
+  }
+
+  &__panel {
+    display: flex;
+    bottom: 3rem;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  &__button {
+    @include flex-center;
+
+    &:first-child {
+      padding-right: 40rem;
+    }
+
+    &--title {
+      color: $white;
+      font-size: $f14;
+      text-transform: uppercase;
+      font-family: $lt;
+    }
+
+    &--icon {
+      color: $orange;
+      font-size: $f40;
+      margin: 0 3rem;
+      transform: scale(3, 1);
+    }
+  }
 }
 
-.slider__button {
-    padding: 10px 20px;
+.absolute-bg {
+  @include basic(100%, 100%);
+  background-color: $light-black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.fog {
+  position: relative;
+  @include basic(100%, 100%);
+  background-color: $black;
+
+  &__container {
+    position: absolute;
+    @include basic(100%, 100%);
+    overflow: hidden;
+  }
+
+  &__img {
+    position: absolute;
+    @include basic(100%, 300vw);
+
+    &--first {
+      background: url("https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-1.png") repeat-x;
+      background-size: contain;
+      background-position: center;
+      animation: marquee 80s linear infinite;
+    }
+
+    &--second {
+      background: url("https://res.cloudinary.com/dkr52htco/image/upload/v1536173269/fog-2.png") repeat-x;
+      background-size: contain;
+      background-position: center;
+      animation: marquee 60s linear infinite;
+    }
+  }
 }
