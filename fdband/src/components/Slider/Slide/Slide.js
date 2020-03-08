@@ -1,8 +1,6 @@
 import React from 'react';
 import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 
-import classnames from 'classnames'
-
 import './Slide.scss';
 
 const Song = (props) => <li className="songs__item">{props.name}</li>
@@ -38,7 +36,7 @@ export default class Slide extends React.Component {
         const center = this.state.isCentered ? 'slide--centered' : '';
         const moving = this.state.isMoving ? `slide${(this.state.isNext ? '--move-left' : '--move-right')}` : '';
         return (
-            <li className={classnames('slide', center, moving)}>
+            <li className={`slide ${center} ${moving}`}>
                 <div className="slide__front">
                     <img className='slide__image' src={this.props.src} alt={this.props.alt} />
                     <h2 className='slide__title'>{this.props.name}</h2>
