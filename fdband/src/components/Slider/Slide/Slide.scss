@@ -11,6 +11,7 @@
   position: relative;
   backface-visibility: hidden;
 
+  pointer-events: none;
   &::before {
     content: "";
     position: absolute;
@@ -139,6 +140,7 @@
   }
   &--centered {
     padding-bottom: 38rem;
+    pointer-events: all;
   }
 }
 

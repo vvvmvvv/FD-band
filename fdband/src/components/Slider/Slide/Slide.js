@@ -38,7 +38,8 @@ export default class Slide extends React.Component {
     handleMove (isNext) {
         this.setState({
             isMoving: !this.state.isMoving,
-            isNext: isNext
+            isNext: isNext,
+            isFlipped: false
         })
     }
 
