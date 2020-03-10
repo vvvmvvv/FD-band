@@ -6,6 +6,8 @@ import classnames from 'classnames'
 
 import './AudioPlayer.scss';
 
+import albums from '../../assets/data/albums.json'
+
 const Button = (props) => {
     const { className, ...otherProps } = props
 
@@ -20,9 +22,12 @@ export default class AudioPlayer extends React.Component {
     constructor (props) {
         super(props)
 
+        console.log(props);
+
         this.state = {
-            id: props.songs[0].id,
-            song: props.songs[0].name,
+            album: albums[props.albumId],
+            songId: albums[props.albumId].songs[0].id,
+            song: albums[props.albumId].songs[0].name,
             playing: false,
             loaded: false,
             loop: false,
@@ -40,6 +45,7 @@ export default class AudioPlayer extends React.Component {
         this.handleLoopToggle = this.handleLoopToggle.bind(this)
         this.handleMuteToggle = this.handleMuteToggle.bind(this)
         this.handleSongChange = this.handleSongChange.bind(this)
+        this.handleAlbumChange = this.handleAlbumChange.bind(this)
     }
 
     componentWillUnmount () {
@@ -107,11 +113,22 @@ export default class AudioPlayer extends React.Component {
     }
 
     handleSongChange (e) {
-        const id = e.target.value === 'next' ? this.state.id + 1 : this.state.id - 1;
+        const id = e.target.value === 'next' ? 
+            (this.state.songId + 1 === this.state.album.songs.length ? 0 : this.state.songId + 1) : 
+            (this.state.songId - 1 < 0 ? this.state.album.songs.length - 1 : this.state.songId - 1);
+
         this.setState({
-            id: id,
-            song: this.props.songs[id].name,
+            songId: id,
+            song: this.state.album.songs[id].name,
             loaded: false
+        })
+    }
+
+    handleAlbumChange (id) {
+        this.setState({
+            album: albums[id],
+            songId: albums[id].songs[0].id,
+            song: albums[id].songs[0].name,
         })
     }
 

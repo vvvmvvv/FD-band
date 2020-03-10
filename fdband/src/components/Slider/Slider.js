@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// import classnames from 'classnames';
+
 import Slide from './Slide/Slide';
+import AudioPlayer from '../AudioPlayer/AudioPlayer';
 
 import './Slider.scss';
 
@@ -14,22 +18,42 @@ export default class Slider extends React.Component {
     constructor (props) {
         super(props)
 
+        this.audioPlayerRef = React.createRef();
+
         this.state = {
+            idCentered: Math.floor(albums.length / 2),
             slides: [
-                ...albums.map(() => {
-                    return {ref: React.createRef()}
+                ...albums.map((album, index) => {
+                    return {
+                        id: index,
+                        album: album,
+                        ref: React.createRef()
+                    }
                 })
             ]
         }
+
+        this.handleChangeAlbum = this.handleChangeAlbum.bind(this)  
     }
 
-    handleChangeSlideCenter (sl) {
+    handleChangeAlbum (id) {
+        this.setState({
+            idCentered: id
+        })
+        this.audioPlayerRef.current.handleAlbumChange(id)
+    }
+
+    handleChangeCenteredSlide (sl) {
         const slides = this.state.slides;
-        const id = sl.id;
-        const id2 = sl.isNext ? sl.id + 1 : sl.id - 1;
+        const id = this.state.idCentered;
+        const idNext = sl.isNext ? 
+            (id + 1 === slides.length ? 0 : id + 1) :
+            (id - 1 < 0 ? slides.length - 1 : id - 1);
         
         slides[id].ref.current.changeCenteredStatus()
-        slides[id2].ref.current.changeCenteredStatus()
+        slides[idNext].ref.current.changeCenteredStatus()
+
+        this.handleChangeAlbum(idNext)
     }
 
     handleMoveSlides (isNext = true) {
@@ -39,8 +63,6 @@ export default class Slider extends React.Component {
     handleLoopSlides (slider, isNext) {
         const slide = slider.removeChild(isNext ? slider.firstChild : slider.lastChild);
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
-        const slideRef = isNext ? this.state.slides.shift() : this.state.slides.pop();
-        isNext ? this.state.slides.push(slideRef) : this.state.slides.unshift(slideRef);
     }
 
     handleBtnDisable (status) {
@@ -59,9 +81,7 @@ export default class Slider extends React.Component {
 
         const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
 
-        const slides = slider.getElementsByClassName('slide');
-        this.handleChangeSlideCenter({
-            id: Math.floor(slides.length / 2), //central slide id
+        this.handleChangeCenteredSlide({
             isNext: isNext
         });
 
@@ -76,6 +96,10 @@ export default class Slider extends React.Component {
 
         this.handleLoopSlides(slider, isNext);
         this.handleMoveSlides();
+    }
+
+    componentDidMount() {
+        this.render()
     }
 
     render() {
@@ -112,6 +136,9 @@ export default class Slider extends React.Component {
                         <i className="slider__button--icon icon-arrow_left_alt"></i>
                         <div className="slider__button--title">prev</div>
                     </div>
+
+                    <AudioPlayer ref={this.audioPlayerRef} albumId={this.state.idCentered} />
+
                     <div
                         className='slider__button'
                         onClick={this.btnNext}>
