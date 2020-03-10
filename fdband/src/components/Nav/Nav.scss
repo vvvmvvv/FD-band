@@ -15,7 +15,8 @@
 
   &__link {
     padding-right: 5rem;
-    color: $black;
+    // color: $black;
+    color: var(--secondary-color);
     cursor: pointer;
     font-family: $ltb;
     font-size: $f14;
@@ -43,7 +44,7 @@
 
   .logo {
     @include basic($f80, $f80);
-     background-color: $light-black;
+     background-color: var(--logo-bg);
 
     &__letter {
       fill: $white;

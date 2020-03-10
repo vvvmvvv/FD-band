@@ -1,6 +1,7 @@
 import React from 'react';
 import './Nav.scss';
 import { Link, withRouter } from 'react-router-dom';
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'; 
 // import logo from '../../assets/images/logo.png'
 
 const Nav = () => {
@@ -101,6 +102,7 @@ const Nav = () => {
                         {/* <img className="logo__image" src={logo} alt="" /> */}
                     </div>
 
+
                     <nav className="header__nav nav">
                         <ul className="nav__list">
                             <li className="nav__item"><Link to="/" className="nav__link">Home</Link></li>
@@ -110,8 +112,10 @@ const Nav = () => {
                         </ul>
                     </nav>
 
-                    <div className="header__misc misc">
-                        <div className="header__icon"></div>
+
+                    <div className="">
+                        
+                        <ThemeSwitcher/>
                     </div>
                 </div>
             </header>

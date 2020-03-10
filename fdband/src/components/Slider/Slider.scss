@@ -54,7 +54,8 @@
 
 .absolute-bg {
   @include basic(100%, 100%);
-  background-color: $light;
+  // background-color: $light;
+  background-color: var(--main-color);
   position: absolute;
   top: 0;
   left: 0;
