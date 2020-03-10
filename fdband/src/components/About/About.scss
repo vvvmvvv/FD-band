@@ -58,7 +58,7 @@
     flex-direction: column;
     padding: 7rem 0 0 0;
 
-    & div:not(.info--active) {
+    & div div:not(.info--active) {
       display: none;
     }
 
@@ -68,16 +68,18 @@
       font-size: $f55;
     }
 
-    h3 {
-      font-family: $ltb;
-      font-size: $f20;
-      padding: 2rem 0;
-    }
+    .info {
+      &__title {
+        font-family: $ltb;
+        font-size: $f20;
+        padding: 2rem 0;
+      }
 
-    p {
-      opacity: 0.6;
-      font-family: $lt;
-      font-size: $f18;
+      &__description {
+        opacity: 0.6;
+        font-family: $lt;
+        font-size: $f18;
+      }
     }
   }
 

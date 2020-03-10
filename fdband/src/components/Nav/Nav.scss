@@ -40,6 +40,7 @@
   position: absolute;
   background-color: transparent;
   z-index: 10;
+  
 
   .block__wrapper {
     @include dis-flex(space-between, center);
