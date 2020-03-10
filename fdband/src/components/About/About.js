@@ -1,9 +1,12 @@
 import React from 'react';
 import './About.scss';
+import Gallery from '../Gallery/Gallery'
 
 const About = () => {
     return (
         <React.Fragment>
+            <h1>Page about us</h1>
+            <Gallery/>
             {/* <section className="two-cols-section">
                 <div className="first-col-wrapper scrollPage">
                     <div className="wrap-title">

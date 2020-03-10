@@ -107,7 +107,7 @@ export default class AudioPlayer extends React.Component {
     }
 
     handleSongChange (e) {
-        const id = e.target.value === 'next' ? this.state.id + 1 : this.state.id - 1;
+        let id = e.target.value === 'next' ? this.state.id + 1 : this.state.id - 1;
         this.setState({
             id: id,
             song: this.props.songs[id].name,
