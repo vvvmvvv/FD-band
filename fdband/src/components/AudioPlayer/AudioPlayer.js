@@ -150,7 +150,7 @@ export default class AudioPlayer extends React.Component {
             <div className='player__loading'>{(this.state.loaded) ? 'Loaded' : 'Loading'}</div>
 
             <div className='player__toggles'>
-                <label>
+                <label className='player__loop'>
                     Loop:
                     <input
                     type='checkbox'
@@ -158,7 +158,7 @@ export default class AudioPlayer extends React.Component {
                     onChange={this.handleLoopToggle}
                     />
                 </label>
-                <label>
+                <label className='player__mute'>
                     Mute:
                     <input
                     type='checkbox'
@@ -177,8 +177,11 @@ export default class AudioPlayer extends React.Component {
                 }
             </div>
 
-            <div className='player__volume'>
-                <label className='volume'>
+            <div className={classnames(
+                'player__volume',
+                'volume'
+            )}>
+                <label className='volume__label'>
                     Volume:
                     <span className='volume__slider'>
                         <input
@@ -191,20 +194,28 @@ export default class AudioPlayer extends React.Component {
                             style={{verticalAlign: 'bottom'}}
                         />
                     </span>
-                    {this.state.volume.toFixed(2)}
+                    {Number(this.state.volume).toFixed(2)}
                 </label>
             </div>
 
-            <Button onClick={this.handleSongChange} value='prev'>
+            <Button  
+                className='player__button'
+                onClick={this.handleSongChange} value='prev'>
             Prev
             </Button>
-            <Button onClick={this.handleToggle}>
+            <Button 
+                className='player__button'
+                onClick={this.handleToggle}>
             {(this.state.playing) ? 'Pause' : 'Play'}
             </Button>
-            <Button onClick={this.handleStop}>
+            <Button  
+                className='player__button'
+                onClick={this.handleStop}>
             Stop
             </Button>
-            <Button onClick={this.handleSongChange} value='next'>
+            <Button  
+                className='player__button'
+                onClick={this.handleSongChange} value='next'>
             Next
             </Button>
         </div>
