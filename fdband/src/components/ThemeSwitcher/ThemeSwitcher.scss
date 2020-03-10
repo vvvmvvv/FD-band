@@ -1,0 +1,13 @@
+@import "../../stylesSettings/_variables";
+@import "../../stylesSettings/_keyframes";
+@import "../../assets/fonts/_fonts";
+
+
+.themeSwitcher {
+    display: block;
+    width: 60px;
+    height: 25px;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    
+}

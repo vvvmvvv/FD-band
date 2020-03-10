@@ -1,10 +1,9 @@
 import React from 'react';
-
-import classnames from 'classnames'
+import ReactDOM from 'react-dom';
 
 import './Slide.scss';
 
-const Song = (props) => <li className="songs__item">{props.name}</li>
+import Song from '../Song/Song'; 
 
 export default class Slide extends React.Component {
     constructor (props) {
@@ -13,11 +12,21 @@ export default class Slide extends React.Component {
         this.state = {
             isCentered: this.props.isCentered,
             isMoving: false,
-            isNext: true
+            isNext: true,
+            isFlipped: false,
+            songs: [
+                ...props.songs.map(() => {
+                    return {
+                        ref: React.createRef()
+                    }
+                })
+            ]
         }
 
         this.changeCenteredStatus = this.changeCenteredStatus.bind(this)
         this.handleMove = this.handleMove.bind(this)
+        this.flipSlide = this.flipSlide.bind(this)
+        this.changeSong = this.changeSong.bind(this)
     }
 
     changeCenteredStatus () {
@@ -33,13 +42,27 @@ export default class Slide extends React.Component {
         })
     }
 
+    flipSlide () {
+        this.setState({
+            isFlipped: !this.state.isFlipped
+        })
+    }
+
+    changeSong (e) {
+        const id = e.target.id;
+        console.log(id);
+        this.state.songs.forEach(song => {
+            song.ref.current.playSong(false)
+        });
+        this.state.songs[id].ref.current.playSong()
+    }
+
     render () {
+        const center = this.state.isCentered ? 'slide--centered' : '';
+        const moving = this.state.isMoving ? `slide${(this.state.isNext ? '--move-left' : '--move-right')}` : '';
+        const flipped = this.state.isFlipped ? 'flipped' : '';
         return (
-            <li className={classnames(
-                'slide',
-                this.state.isCentered ? 'slide--centered' : '',
-                this.state.isMoving ? `slide${(this.state.isNext ? '--move-left' : '--move-right')}` : ''
-            )}>
+            <li className={`slide ${center} ${moving} ${flipped}`}>
                 <div className="slide__front">
                     <img className='slide__image' src={this.props.src} alt={this.props.alt} />
                     <div className="slide__play-btn">
@@ -47,21 +70,29 @@ export default class Slide extends React.Component {
                     </div>
                     <div className="slide__date">{this.props.date}</div>
                     <h2 className='slide__title'>{this.props.name}</h2>
-                    <div className="slide__show-songs">
-                        <div className="slide__show-songs--title">Show more</div>
+                    <div className="slide__show-songs" onClick={this.flipSlide}>
+                        <div className="slide__show-songs--title" >Show more</div>
                     </div>
                 </div>
                 <div className="slide__back">
-                    <ul className="slide__songs songs">
-                        {this.props.songs.map(song => {
-                            return(
-                                <Song 
-                                    key={song.id}
-                                    name={song.name}
-                                />
-                            )
-                        })}
-                    </ul>
+                    <div className="slide__details">
+                        <ul className="slide__songs">
+                            {this.props.songs.map(song => {
+                                return(
+                                    <Song
+                                        onClick={this.changeSong}
+                                        ref={this.state.songs[song.id].ref}
+                                        key={song.id}
+                                        id={song.id}
+                                        name={song.name}
+                                    />
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <div className="slide__show-songs slide__hide-btn" onClick={this.flipSlide}>
+                        <div className="slide__show-songs--title">Hide</div>
+                    </div>
                 </div>
             </li>
         )
