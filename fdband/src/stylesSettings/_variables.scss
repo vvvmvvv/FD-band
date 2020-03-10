@@ -37,6 +37,14 @@ $f14: 1.4rem;
 $f12: 1.2rem;
 $f10: 1rem;
 
+//dynamic vars
+$color-degre: 190;
+
+$main-color: hsl($color-degre, 100%, 50%);
+
+$secondary-color: hsl($color-degre + 80, 100%, 50%);
+
+$tertiary-color: hsl($color-degre + 190, 100%, 50%);
 //component-size
 $slide-size: 50rem;
 

@@ -17,7 +17,7 @@
     @include basic(100%, 100%);
     border-radius: 50%;
     border: 30px solid transparent;
-    box-shadow: inset 30px 30px 400px 400px rgba($light-black, .5);
+    box-shadow: inset 30px 30px 400px 400px rgba($color: $light-black, $alpha: .5);
     filter: blur(20px);
   }
 
