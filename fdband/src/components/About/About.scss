@@ -56,7 +56,7 @@
     @include dis-flex(center, flex-start);
     width: 50%;
     flex-direction: column;
-    padding: 7rem 0 0 0;
+    padding: 15rem 0 0 0;
 
     & div div:not(.info--active) {
       display: none;
