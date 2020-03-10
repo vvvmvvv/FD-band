@@ -80,7 +80,9 @@ const About = () => {
                         </div>
                         <div id="history" ref={history} className="info">
                             <h3 className="info__title">History</h3>
-                            <p className="info__description">Accusamus, cum! Impedit quia facilis quam deleniti ab non sunt nemo, ipsa voluptatibus? Ad sequi fuga libero corporis nostrum officiis perspiciatis eaque!</p>
+                            <p className="info__description">FD band is an Ukrainian music band. The group was formed in 2020 in Kyiv by 5 member`s - Volodymyr Mikulin, Taras Moskalenko, Alexander Lesiuk, Ann Androsiuk, Lena Vu. The band's fast tempos, instrumentals and aggressive musicianship made them one of the founding "big five" bands of rock.
+
+FD band earned a growing fan base in the underground music community and won critical acclaim with its first five albums.The band's third album, Because I Burger (2020), was described as one of the heaviest and most influential rock albums. Its eponymous fifth album, White Good(2020), the band's first to root predominantly in indie rock, appealed to a more mainstream audience, achieving substantial commercial success and selling over 16 million copies in the Ukraine  to date, making it the best-selling album - Americano with milk. After experimenting with different genres and directions in subsequent releases, the band returned to its indie rock roots with the release of its album, Violet Ultrafiolet (2020), which drew similar praise to that of the band's earlier albums.</p>
                         </div>
                         <div id="news" ref={news} className="info">
                             <h3 className="info__title">Latest news</h3>

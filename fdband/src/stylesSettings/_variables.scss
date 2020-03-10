@@ -46,7 +46,8 @@ $secondary-color: hsl($color-degre + 80, 100%, 50%);
 
 $tertiary-color: hsl($color-degre + 190, 100%, 50%);
 //component-size
-$slide-size: 50rem;
+$slide-size: 62rem;
+$slide-size-laptop: 50rem;
 
 :root {
     --main-color: red;
