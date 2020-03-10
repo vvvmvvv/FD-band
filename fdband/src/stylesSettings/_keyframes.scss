@@ -27,6 +27,29 @@
   }
 }
 
+@keyframes slide-bottom {
+  0% {
+    transform: translateY(-200rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes captionText {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0rem);
+  }
+}
+
 @keyframes shake {
   10%,
   90% {
@@ -99,4 +122,12 @@
 
 .opacityAn {
   animation: opacityAn 0.3s both;
+}
+
+.slide-bottom {
+  animation: slide-bottom 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.captionText {
+  animation: captionText 2s both;
 }

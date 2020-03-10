@@ -53,7 +53,7 @@
 
 .absolute-bg {
   @include basic(100%, 100%);
-  background-color: $light-black;
+  background-color: $light;
   position: absolute;
   top: 0;
   left: 0;
