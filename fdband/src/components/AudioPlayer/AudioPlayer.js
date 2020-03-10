@@ -46,6 +46,7 @@ export default class AudioPlayer extends React.Component {
         this.handleMuteToggle = this.handleMuteToggle.bind(this)
         this.handleSongChange = this.handleSongChange.bind(this)
         this.handleAlbumChange = this.handleAlbumChange.bind(this)
+        this.chooseExactSong = this.chooseExactSong.bind(this)
     }
 
     componentWillUnmount () {
@@ -129,6 +130,13 @@ export default class AudioPlayer extends React.Component {
             album: albums[id],
             songId: albums[id].songs[0].id,
             song: albums[id].songs[0].name,
+        })
+    }
+
+    chooseExactSong (id) {
+        this.setState({
+            song: this.state.album.songs[id].name,
+            playing: true
         })
     }
 

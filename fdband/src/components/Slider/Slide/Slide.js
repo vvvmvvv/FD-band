@@ -56,6 +56,14 @@ export default class Slide extends React.Component {
             song.ref.current.playSong(false)
         });
         this.state.songs[id].ref.current.playSong()
+        
+        this.props.audioPlayerRef.current.chooseExactSong(id)
+
+        // this.props.audioPlayerRef.current.setPlayStatus(this.state.isPlaying)
+    }
+
+    getSong () {
+        return this.state.song
     }
 
     render () {
@@ -86,6 +94,7 @@ export default class Slide extends React.Component {
                                         key={song.id}
                                         id={song.id}
                                         name={song.name}
+                                        audioPlayerRef={this.props.audioPlayerRef}
                                     />
                                 )
                             })}

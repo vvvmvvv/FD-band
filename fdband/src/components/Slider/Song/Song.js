@@ -6,7 +6,7 @@ export default class Song extends React.Component {
 
         this.state = {
             name: this.props.name,
-            isPlaying: this.props.isPlaying,
+            isPlaying: false,
         }
         this.playSong = this.playSong.bind(this)
     }
@@ -14,10 +14,12 @@ export default class Song extends React.Component {
     playSong (status = true) {
         this.setState({
             isPlaying: status ? !this.state.isPlaying : false
+        }, () => {
+            if (status) {
+                this.props.audioPlayerRef.current.handleToggle()
+            }
         })
     }
-
-    
 
     render () {
         const play = this.state.isPlaying ? 'pause' : 'play';

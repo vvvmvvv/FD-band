@@ -98,10 +98,6 @@ export default class Slider extends React.Component {
         this.handleMoveSlides();
     }
 
-    componentDidMount() {
-        this.render()
-    }
-
     render() {
         return (
             <div className="slider">
@@ -125,6 +121,7 @@ export default class Slider extends React.Component {
                                 date={album.date}
                                 name={album.name}
                                 songs={album.songs}
+                                audioPlayerRef={this.audioPlayerRef}
                             />
                         )
                     })}
