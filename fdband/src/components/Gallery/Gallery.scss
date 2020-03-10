@@ -1,7 +1,21 @@
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+@import "../../stylesSettings/_variables";
+@import "../../stylesSettings/_keyframes";
+@import "../../assets/fonts/_fonts";
 
-.test{
-    display: none;
-    height: 400px;
-    width:  500px;
+// .test{
+//     display: none;
+//     height: 400px;
+//     width:  500px;
+// }
+
+.gallery{
+    width: 100%;
+    background-color: $light;
+    @include flex-center;
+
+}
+
+.image-gallery{
+    width: 100%;
 }

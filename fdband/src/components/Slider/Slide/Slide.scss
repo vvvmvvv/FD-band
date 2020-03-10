@@ -14,9 +14,9 @@
   &::before {
     content: "";
     position: absolute;
-    @include basic(100%, 100%);
+    @include basic(95%, 95%);
     border-radius: 50%;
-    border: 30px solid transparent;
+    border: 2rem solid transparent;
     box-shadow: inset 30px 30px 400px 400px rgba($color: $light-black, $alpha: .5);
     filter: blur(20px);
   }
@@ -139,5 +139,11 @@
   }
   &--centered {
     padding-bottom: 38rem;
+  }
+}
+
+@media only screen and (max-width: 1280px){
+  .slide {
+    @include basic($slide-size-laptop, $slide-size-laptop);
   }
 }

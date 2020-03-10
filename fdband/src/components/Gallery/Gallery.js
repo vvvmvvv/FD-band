@@ -22,6 +22,12 @@ const images = [
 
 export default class Gallery extends React.Component {
   render() {
-    return <ImageGallery items={images} />;
+    return (
+        <>
+        <div className="gallery">
+            <ImageGallery items={images} />
+        </div>
+        </>
+    )
   }
 }

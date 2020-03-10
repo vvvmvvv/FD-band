@@ -5,6 +5,7 @@
 .footer {
   background-color: $light-black;
   padding: 1rem 0;
+  height: 5rem;
 
   .block__wrapper {
     @include flex-center;
