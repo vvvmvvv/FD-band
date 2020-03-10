@@ -2,37 +2,152 @@
 @import "../../stylesSettings/_keyframes";
 @import "../../assets/fonts/_fonts";
 
-.two-cols-section {
+.exploration {
+  @include dis-flex(space-between, flex-start);
+  flex-direction: row;
   width: 100%;
-  padding: 10rem 0 5rem 0;
-  @include dis-flex(space-around, center);
+  overflow: hidden;
+  padding: 0 0 5rem 0;
 
-  .first-col-wrapper,
-  .second-col-wrapper {
-    width: 45%;
+  .menu {
+    width: 35rem;
+    order: -1;
+    @include flex-center;
+    align-self: center;
+
+    &__item {
+      margin: 1rem;
+      font-weight: normal;
+    }
+
+    &__link {
+      opacity: 0.2;
+      position: relative;
+      font-size: $f24;
+      color: $light-black;
+
+      &:before {
+        content: "";
+        @include basic(0.3rem, 0.1rem);
+        background-color: $black;
+        position: absolute;
+        right: 120%;
+        top: 0.4rem;
+        transform: translate(-100vw, 6px);
+        transition-duration: 0.3s;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &.active {
+        opacity: 1;
+
+        &:before {
+          width: 100vw;
+          transform: translate(0, 6px);
+        }
+      }
+    }
   }
 
-  .first-col-wrapper {
+  .content {
     @include dis-flex(center, flex-start);
+    width: 50%;
     flex-direction: column;
+    padding: 7rem 0 0 0;
 
-    .wrap-title {
-      @include dis-flex(center, flex-start);
-      flex-direction: column;
-      padding-top: 0;
+    & div:not(.info--active) {
+      display: none;
     }
 
-    .wrap-footer__column {
-      margin: 3rem 0 0 0;
-      padding: 0;
+    &__title {
+      transition-duration: 0.5s;
+      font-family: $osb;
+      font-size: $f55;
+    }
+
+    h3 {
+      font-family: $ltb;
+      font-size: $f20;
+      padding: 2rem 0;
+    }
+
+    p {
+      opacity: 0.6;
+      font-family: $lt;
+      font-size: $f18;
+    }
+  }
+
+  .glide {
+    width: 40rem;
+    @include dis-flex(flex-end, center);
+    flex-direction: column;
+    position: relative;
+
+    &__rectangle {
+      background-color: $light;
+      @include basic(55rem, 20rem);
+      vertical-align: text-bottom;
+      position: relative;
+    }
+    &__title {
+      position: absolute;
       width: 100%;
+      left: -0.5rem;
+      text-align: center;
+      bottom: 1rem;
+      font-family: $osb;
+      font-size: $f55;
+      text-transform: uppercase;
+
+      &:after {
+        content: "Band";
+        text-transform: uppercase;
+        color: $light;
+        position: absolute;
+        width: 100%;
+        top: 4.8rem;
+        left: 1rem;
+        text-align: center;
+      }
+    }
+
+    &__description {
+      width: 20rem;
+      font-size: $f10;
+      font-family: $lt;
+      margin: 4rem 0 0 0;
     }
   }
 }
+// @media screen and (max-width: 850px)
+//     display: grid
+//     grid-template-rows: auto auto
+//     grid-template-columns: 100%
 
-.second-col-wrapper {
-  width: 100%;
-  @include dis-flex(flex-start, flex-start);
-  flex-direction: column;
-}
+//     nav
+//         width: 100%
+//         height: 150px
+//         padding: 1em
+//         justify-content: flex-end
+//         grid-row: 1 / span 1
+//         grid-column: 1 / span 1
+//         padding-right: 2em
+//     .content
+//         width: 100%
+//         padding: 3em
+//         grid-row: 2 / span 1
+//         grid-column: 1 / span 1
+//     aside
+//         width: 100%
+//         grid-row: 1 / span 1
+//         grid-column: 1 / span 1
+//         z-index: -1
+//         align-items: flex-start
+//         padding-left: 2em
 
+//         .rectangle
+//             height: 250px

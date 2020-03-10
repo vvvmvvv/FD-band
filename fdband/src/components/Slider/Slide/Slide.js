@@ -1,5 +1,6 @@
 import React from 'react';
-import AudioPlayer from '../../AudioPlayer/AudioPlayer';
+
+import classnames from 'classnames'
 
 import './Slide.scss';
 
@@ -33,10 +34,12 @@ export default class Slide extends React.Component {
     }
 
     render () {
-        const center = this.state.isCentered ? 'slide--centered' : '';
-        const moving = this.state.isMoving ? `slide${(this.state.isNext ? '--move-left' : '--move-right')}` : '';
         return (
-            <li className={`slide ${center} ${moving}`}>
+            <li className={classnames(
+                'slide',
+                this.state.isCentered ? 'slide--centered' : '',
+                this.state.isMoving ? `slide${(this.state.isNext ? '--move-left' : '--move-right')}` : ''
+            )}>
                 <div className="slide__front">
                     <img className='slide__image' src={this.props.src} alt={this.props.alt} />
                     <div className="slide__play-btn">
@@ -59,11 +62,6 @@ export default class Slide extends React.Component {
                             )
                         })}
                     </ul>
-                    {this.state.isCentered === true ? 
-                        (<div className='slide__player'>
-                            <AudioPlayer songs={this.props.songs} />
-                        </div>) : ''
-                    }
                 </div>
             </li>
         )
