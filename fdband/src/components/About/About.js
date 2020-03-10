@@ -18,7 +18,6 @@ const About = () => {
     return (
         <React.Fragment>
             <section className="exploration" ref={exploration}>
-                <button onClick={action}>Click</button>
                 <div className="content captionText">
                     <h2 className="content__title">Exploration Content</h2>
                     <div id="about" ref={about} className="info info--active ">
