@@ -58,8 +58,8 @@
     flex-direction: column;
     padding: 15rem 0 0 0;
 
-    & div div:not(.info--active) {
-      display: none;
+    .wrapper{
+      width: 100%;
     }
 
     &__title {
@@ -69,6 +69,9 @@
     }
 
     .info {
+      display: none;
+      //width: 100%;
+
       &__title {
         font-family: $ltb;
         font-size: $f20;
@@ -79,6 +82,10 @@
         opacity: 0.6;
         font-family: $lt;
         font-size: $f18;
+      }
+
+      &--active {
+        display: block;
       }
     }
   }
@@ -125,6 +132,8 @@
     }
   }
 }
+
+
 // @media screen and (max-width: 850px)
 //     display: grid
 //     grid-template-rows: auto auto
@@ -153,3 +162,22 @@
 
 //         .rectangle
 //             height: 250px
+
+
+.team-cards{
+  width: 100%;
+  @include dis-flex(center, center);
+  //overflow-x: hidden;
+  flex-wrap: wrap;
+
+  .card{
+    min-width: 29%;
+    margin:   1rem;
+    height: 20rem;
+    border: 1px solid black;
+
+    :first-child{
+
+    }
+  }
+}

@@ -15,8 +15,7 @@
 
   &__link {
     padding-right: 5rem;
-    // color: $black;
-    color: var(--secondary-color);
+    color: $black;
     cursor: pointer;
     font-family: $ltb;
     font-size: $f14;
@@ -36,7 +35,8 @@
   padding: 2rem 0;
   position: absolute;
   background-color: transparent;
-  z-index: 10;  
+  z-index: 10;
+  
 
   .block__wrapper {
     @include dis-flex(space-between, center);
@@ -44,7 +44,7 @@
 
   .logo {
     @include basic($f80, $f80);
-     background-color: var(--logo-bg);
+    background-color: $light-black;
 
     &__letter {
       fill: $white;
