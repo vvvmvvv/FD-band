@@ -148,7 +148,7 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
-    handleAlbumChange = (id, refs) => {
+    handleAlbumChange = (id, refs, slideBtnRef) => {
         this.setState({
             songsRefs: refs,
             album: albums[id],
