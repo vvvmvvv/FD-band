@@ -61,7 +61,7 @@
 
   &__misc {
     @include dis-flex(space-between, center);
-    background-image: url(../../assets/fonts/icomoon/icons8-menu.svg);
+    //background-image: url(../../assets/fonts/icomoon/icons8-menu.svg);
     fill: $white;
     @include basic(5rem, 5rem);
     background-size: cover;

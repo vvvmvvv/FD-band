@@ -72,6 +72,7 @@ export default class Slide extends React.Component {
                     <h2 className='slide__title'>{this.props.name}</h2>
                     <div className="slide__show-songs" onClick={this.flipSlide}>
                         <div className="slide__show-songs--title" >Show more</div>
+                        <span class="icon-play2"></span>
                     </div>
                 </div>
                 <div className="slide__back">

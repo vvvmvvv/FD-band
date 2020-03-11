@@ -33,7 +33,8 @@ export default class AudioPlayer extends React.Component {
             loop: false,
             mute: false,
             volume: 1.0,
-            duration: 0
+            duration: 0,
+            currentPosition: 0,
         }
         
         this.handleToggle = this.handleToggle.bind(this)
@@ -46,6 +47,7 @@ export default class AudioPlayer extends React.Component {
         this.handleMuteToggle = this.handleMuteToggle.bind(this)
         this.handleSongChange = this.handleSongChange.bind(this)
         this.handleAlbumChange = this.handleAlbumChange.bind(this)
+        this.setPositionRange = this.setPositionRange.bind(this)
     }
 
     componentWillUnmount () {
@@ -132,82 +134,107 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
+    // styling player
+    setPositionRange () {
+        let range = document.querySelector('.music-player__range')
+        let currentValue = document.querySelector('.music-player__current-value')
+        currentValue.textContent = range.value
+        range.style.background = "-webkit-linear-gradient(left, var(--secondary-color) 0%, var(--secondary-color) "+range.value+"%, var(--main-color) "+range.value+"%, var(--main-color) 100%)";
+    }
+
+
     render () {
         return (
-        <div className='player'>
-            <ReactHowler
-                src={require(`../../assets/songs/${this.state.song}.mp3`)}
-                playing={this.state.playing}
-                onLoad={this.handleOnLoad}
-                onPlay={this.handleOnPlay}
-                onEnd={this.handleOnEnd}
-                loop={this.state.loop}
-                mute={this.state.mute}
-                volume={this.state.volume}
-                ref={(ref) => (this.player = ref)}
-            />
+        // <div className='player'>
+        //     <ReactHowler
+        //         src={require(`../../assets/songs/${this.state.song}.mp3`)}
+        //         playing={this.state.playing}
+        //         onLoad={this.handleOnLoad}
+        //         onPlay={this.handleOnPlay}
+        //         onEnd={this.handleOnEnd}
+        //         loop={this.state.loop}
+        //         mute={this.state.mute}
+        //         volume={this.state.volume}
+        //         ref={(ref) => (this.player = ref)}
+        //     />
 
-            <div className='player__loading'>{(this.state.loaded) ? 'Loaded' : 'Loading'}</div>
+        //     <div className='player__loading'>{(this.state.loaded) ? 'Loaded' : 'Loading'}</div>
 
-            <div className='player__toggles'>
-                <label>
-                    Loop:
-                    <input
-                    type='checkbox'
-                    checked={this.state.loop}
-                    onChange={this.handleLoopToggle}
-                    />
-                </label>
-                <label>
-                    Mute:
-                    <input
-                    type='checkbox'
-                    checked={this.state.mute}
-                    onChange={this.handleMuteToggle}
-                    />
-                </label>
+        //     <div className='player__toggles'>
+        //         <label>
+        //             Loop:
+        //             <input
+        //             type='checkbox'
+        //             checked={this.state.loop}
+        //             onChange={this.handleLoopToggle}
+        //             />
+        //         </label>
+        //         <label>
+        //             Mute:
+        //             <input
+        //             type='checkbox'
+        //             checked={this.state.mute}
+        //             onChange={this.handleMuteToggle}
+        //             />
+        //         </label>
+        //     </div>
+
+        //     <div className='player__status'>
+        //         {
+        //             `Status:
+        //             ${(this.state.seek !== undefined) ? Number(this.state.seek).toFixed(2) : '0.00'}
+        //             /
+        //             ${(this.state.duration) ? Number(this.state.duration).toFixed(2) : 'NaN'}`
+        //         }
+        //     </div>
+
+        //     <div className='player__volume'>
+        //         <label className='volume'>
+        //             Volume:
+        //             <span className='volume__slider'>
+        //                 <input
+        //                     type='range'
+        //                     min='0'
+        //                     max='1'
+        //                     step='.05'
+        //                     value={this.state.volume}
+        //                     onChange={e => this.setState({volume: parseFloat(e.target.value)})}
+        //                     style={{verticalAlign: 'bottom'}}
+        //                 />
+        //             </span>
+        //             {this.state.volume.toFixed(2)}
+        //         </label>
+        //     </div>
+
+        //     <Button onClick={this.handleSongChange} value='prev'>
+        //     Prev
+        //     </Button>
+        //     <Button onClick={this.handleToggle}>
+        //     {(this.state.playing) ? 'Pause' : 'Play'}
+        //     </Button>
+        //     <Button onClick={this.handleStop}>
+        //     Stop
+        //     </Button>
+        //     <Button onClick={this.handleSongChange} value='next'>
+        //     Next
+        //     </Button>
+        // </div>
+
+        <div className="music-player">
+            <div className="music-player__panel">
+                <span className="music-player__button icon-previous"></span>
+                <span className="music-player__button music-player__button--play icon-play2"></span>
+                <span className="music-player__button icon-next"></span>
             </div>
-
-            <div className='player__status'>
-                {
-                    `Status:
-                    ${(this.state.seek !== undefined) ? Number(this.state.seek).toFixed(2) : '0.00'}
-                    /
-                    ${(this.state.duration) ? Number(this.state.duration).toFixed(2) : 'NaN'}`
-                }
+            <div className="music-player__range-container">
+                <input onInput={this.setPositionRange} name="range" type="range" min="1" max="100"  id="music-range" className="music-player__range"></input>
+                <p className="music-player__values">
+        <span className="music-player__current-value">0</span>
+                    <span className="music-player__final-value">0.00</span>
+                </p>
             </div>
-
-            <div className='player__volume'>
-                <label className='volume'>
-                    Volume:
-                    <span className='volume__slider'>
-                        <input
-                            type='range'
-                            min='0'
-                            max='1'
-                            step='.05'
-                            value={this.state.volume}
-                            onChange={e => this.setState({volume: parseFloat(e.target.value)})}
-                            style={{verticalAlign: 'bottom'}}
-                        />
-                    </span>
-                    {this.state.volume.toFixed(2)}
-                </label>
-            </div>
-
-            <Button onClick={this.handleSongChange} value='prev'>
-            Prev
-            </Button>
-            <Button onClick={this.handleToggle}>
-            {(this.state.playing) ? 'Pause' : 'Play'}
-            </Button>
-            <Button onClick={this.handleStop}>
-            Stop
-            </Button>
-            <Button onClick={this.handleSongChange} value='next'>
-            Next
-            </Button>
         </div>
+        
         )
     }
 }

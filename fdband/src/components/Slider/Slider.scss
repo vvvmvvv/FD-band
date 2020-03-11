@@ -20,6 +20,7 @@
 
   &__panel {
     display: flex;
+    align-items: flex-end;
     bottom: 3rem;
     position: absolute;
     cursor: pointer;
@@ -33,7 +34,7 @@
     }
 
     &:first-child {
-      padding-right: 40rem;
+      // padding-right: 40rem;
     }
 
     &--title {
@@ -47,7 +48,7 @@
       color: $orange;
       font-size: $f40;
       margin: 0 3rem;
-      transform: scale(3, 1);
+      // transform: scale(3, 1);
     }
   }
 }
