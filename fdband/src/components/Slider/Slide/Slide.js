@@ -41,7 +41,7 @@ export default class Slide extends React.Component {
     }
 
     changeSong = (e) => {
-        const id = e.target.id;
+        const id = e.target.getAttribute('data-id')
         
         this.state.songsRefs.forEach(song => {
             song.ref.current.playSong(false)
