@@ -16,15 +16,16 @@ const About = () => {
     const glideRef = useRef();
 
     const blocks = [
-        about,
+        ourBand,
         tourDates,
-        ourBand
+        about
     ]
 
     const links = [
-        aboutLink,
+        ourBandLink,
         tourDatesLink,
-        ourBandLink
+        aboutLink
+
     ]
 
 
@@ -39,14 +40,13 @@ const About = () => {
         discardClasses();
         e.target.classList.add('active')
         switch (val) {
-            case 'about':
+            case 'ourBand':
                 blocks[0].current.classList.add('info--active')
                 break;
             case 'tourDates':
                 blocks[1].current.classList.add('info--active')
                 break;
-            case 'ourBand':
-                console.log('ourBand')
+            case 'about':
                 blocks[2].current.classList.add('info--active')
                 break;
             default:
@@ -59,27 +59,7 @@ const About = () => {
                 <div className="content captionText" ref={contentRef}>
                     <h2 className="content__title">Exploration Content</h2>
                     <div className="wrapper">
-                        <div id="about" ref={about} className="info info--active ">
-                            <h3 className="info__title">About</h3>
-                            <p className="info__description">
-                                FD band is an Ukrainian music band. The group was formed in 2020 in Kyiv by 5 member`s
-                                - Volodymyr Mikulin, Taras Moskalenko, Alexander Lesiuk, Ann Androsiuk, Lena Vu. The band's fast tempos,
-                                instrumentals and aggressive musicianship made them one of the founding "big five" bands of rock.
-                                FD band earned a growing fan base in the underground music community and won critical acclaim with
-                                its first five albums.The band's third album, Because I Burger (2020), was described as one of the
-                                heaviest and most influential rock albums. Its eponymous fifth album, White Good(2020), the band's
-                                first to root predominantly in indie rock, appealed to a more mainstream audience, achieving substantial
-                                commercial success and selling over 16 million copies in the Ukraine  to date, making it the best-selling album -
-                                Americano with milk. After experimenting with different genres and directions in subsequent releases,
-                                the band returned to its indie rock roots with the release of its album, Violet Ultrafiolet (2020),
-                                which drew similar praise to that of the band's earlier albums.
-                            </p>
-                        </div>
-                        <div id="tourDates" ref={tourDates} className="info">
-                            <h3 className="info__title">Tour dates</h3>
-                            <p className="info__description">Ipsum adipisicing elit. Accusamus, cum! Impedit quia facilis quam deleniti ab non sunt nemo, ipsa voluptatibus? Ad sequi fuga libero corporis nostrum officiis perspiciatis eaque!</p>
-                        </div>
-                        <div id="ourBand" ref={ourBand} className="info">
+                    <div id="ourBand" ref={ourBand} className="info info--active">
                             <h3 className="info__title">Who we are</h3>
                             <div className="team-cards">
                                 <div className="team-cards__card card">
@@ -135,6 +115,26 @@ const About = () => {
                                 </div>
                             </div>
                         </div>
+                        <div id="tourDates" ref={tourDates} className="info">
+                            <h3 className="info__title">Tour dates</h3>
+                            <p className="info__description">Ipsum adipisicing elit. Accusamus, cum! Impedit quia facilis quam deleniti ab non sunt nemo, ipsa voluptatibus? Ad sequi fuga libero corporis nostrum officiis perspiciatis eaque!</p>
+                        </div>
+                        <div id="about" ref={about} className="info">
+                            <h3 className="info__title">About</h3>
+                            <p className="info__description">
+                                FD band is an Ukrainian music band. The group was formed in 2020 in Kyiv by 5 member`s
+                                - Volodymyr Mikulin, Taras Moskalenko, Alexander Lesiuk, Ann Androsiuk, Lena Vu. The band's fast tempos,
+                                instrumentals and aggressive musicianship made them one of the founding "big five" bands of rock.
+                                FD band earned a growing fan base in the underground music community and won critical acclaim with
+                                its first five albums.The band's third album, Because I Burger (2020), was described as one of the
+                                heaviest and most influential rock albums. Its eponymous fifth album, White Good(2020), the band's
+                                first to root predominantly in indie rock, appealed to a more mainstream audience, achieving substantial
+                                commercial success and selling over 16 million copies in the Ukraine  to date, making it the best-selling album -
+                                Americano with milk. After experimenting with different genres and directions in subsequent releases,
+                                the band returned to its indie rock roots with the release of its album, Violet Ultrafiolet (2020),
+                                which drew similar praise to that of the band's earlier albums.
+                            </p>
+                        </div>
                     </div>
 
                 </div>
@@ -142,11 +142,11 @@ const About = () => {
                     <ul className="menu__list">
                         <li className="menu__item">
                             <Link
-                                onClick={(e) => changeSection(e, 'about')}
-                                ref={aboutLink}
+                                onClick={(e) => changeSection(e, 'ourBand')}
+                                ref={ourBandLink}
                                 className="menu__link active"
-                                to="#about"
-                            >about</Link>
+                                to="#ourBand"
+                            >our band</Link>
                         </li>
                         <li className="menu__item">
                             <Link
@@ -158,11 +158,11 @@ const About = () => {
                         </li>
                         <li className="menu__item">
                             <Link
-                                onClick={(e) => changeSection(e, 'ourBand')}
-                                ref={ourBandLink}
+                                onClick={(e) => changeSection(e, 'about')}
+                                ref={aboutLink}
                                 className="menu__link"
-                                to="#ourBand"
-                            >our band</Link>
+                                to="#about"
+                            >about</Link>
                         </li>
                     </ul>
                 </div>

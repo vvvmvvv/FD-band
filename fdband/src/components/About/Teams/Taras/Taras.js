@@ -5,8 +5,10 @@ import './Taras.scss';
 const Taras = () => {
     return (
         <React.Fragment>
-            <button><Link to="/aboutUs#ourBand">Back to team</Link></button>
+            <div className="padding-top">
+            <Link to="/aboutUs#ourBand">Back to team</Link>
             <h1>Page by Taras</h1>
+            </div>
         </React.Fragment>
     );
 }
