@@ -57,10 +57,11 @@ const About = () => {
                 console.log('history')
                 blocks[2].current.classList.add('info--active')
                 break;
-            case 'news':
-                console.log('news')
+            case 'ourBand':
+                console.log('ourBand')
                 blocks[3].current.classList.add('info--active')
                 break;
+            default:
         }
     }
 
@@ -85,7 +86,12 @@ const About = () => {
 FD band earned a growing fan base in the underground music community and won critical acclaim with its first five albums.The band's third album, Because I Burger (2020), was described as one of the heaviest and most influential rock albums. Its eponymous fifth album, White Good(2020), the band's first to root predominantly in indie rock, appealed to a more mainstream audience, achieving substantial commercial success and selling over 16 million copies in the Ukraine  to date, making it the best-selling album - Americano with milk. After experimenting with different genres and directions in subsequent releases, the band returned to its indie rock roots with the release of its album, Violet Ultrafiolet (2020), which drew similar praise to that of the band's earlier albums.</p>
                         </div>
                         <div id="news" ref={news} className="info">
-                            <h3 className="info__title">Latest news</h3>
+                            <h3 className="info__title">Our Band</h3>
+                            <Link to="/aboutUs/vladimir">Vladimir</Link>
+                            <Link to="/aboutUs/taras">Taras</Link>
+                            <Link to="/aboutUs/aleksandr">Aleksandr</Link>
+                            <Link to="aboutUs/anna">Anna</Link>
+                            <Link to="/lena">Lena</Link>
                             <p className="info__description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit quia facilis quam deleniti ab non sunt nemo, ipsa voluptatibus? Ad sequi fuga libero corporis nostrum officiis perspiciatis eaque!</p>
                         </div>
                     </div>
@@ -119,11 +125,11 @@ FD band earned a growing fan base in the underground music community and won cri
                         </li>
                         <li className="menu__item">
                             <Link
-                                onClick={(e) => changeSection(e, 'news')}
+                                onClick={(e) => changeSection(e, 'ourBand')}
                                 ref={newsLink}
                                 className="menu__link"
-                                to="#news"
-                            >latest news</Link>
+                                to="#ourBand"
+                            >our band</Link>
                         </li>
                     </ul>
                 </div>
