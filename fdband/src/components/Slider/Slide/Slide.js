@@ -10,28 +10,25 @@ export default class Slide extends React.Component {
         super(props)
 
         this.state = {
+            isPlaying: false,
             isCentered: props.isCentered,
             isMoving: false,
             isNext: true,
             isFlipped: false,
             songsRefs: props.songsRefs
         }
-
-        this.changeCenteredStatus = this.changeCenteredStatus.bind(this)
-        this.handleMove = this.handleMove.bind(this)
-        this.flipSlide = this.flipSlide.bind(this)
-        this.changeSong = this.changeSong.bind(this)
     }
 
-    changeCenteredStatus () {
+    changeCenteredStatus = () => {
         this.setState({
+            isPlaying: false,
             isCentered: !this.state.isCentered
         }, () => {
             this.props.audioPlayerRef.current.setSongsRefs(this.state.songs)
         })
     }
 
-    handleMove (isNext) {
+    handleMove = (isNext) => {
         this.setState({
             isMoving: !this.state.isMoving,
             isNext: isNext,
@@ -39,13 +36,13 @@ export default class Slide extends React.Component {
         })
     }
 
-    flipSlide () {
+    flipSlide = () => {
         this.setState({
             isFlipped: !this.state.isFlipped
         })
     }
 
-    changeSong (e) {
+    changeSong = (e) => {
         const id = e.target.id;
         
         this.state.songsRefs.forEach(song => {
@@ -54,6 +51,14 @@ export default class Slide extends React.Component {
         this.state.songsRefs[id].ref.current.playSong()
         
         this.props.audioPlayerRef.current.chooseExactSong(id)
+    }
+
+    handlePlay = () => {
+        this.setState({
+            isPlaying: !this.state.isPlaying
+        }, () => {
+            this.props.audioPlayerRef.current.setPlayStatus(this.state.isPlaying)
+        })
     }
 
     render () {
@@ -65,7 +70,11 @@ export default class Slide extends React.Component {
                 <div className="slide__front">
                     <img className='slide__image' src={this.props.src} alt={this.props.alt} />
                     <div className="slide__play-btn">
-                        <span className="slide__play-btn--icon icon-media-pause"></span>
+                        <span 
+                            onClick={this.handlePlay}
+                            className={`slide__play-btn--icon icon-media-${this.state.isPlaying ? 'pause' : 'play'}`}
+                            >
+                        </span>
                     </div>
                     <div className="slide__date">{this.props.date}</div>
                     <h2 className='slide__title'>{this.props.name}</h2>

@@ -36,19 +36,6 @@ export default class AudioPlayer extends React.Component {
             volume: 1.0,
             duration: 0
         }
-        
-        this.handleToggle = this.handleToggle.bind(this)
-        this.handleOnLoad = this.handleOnLoad.bind(this)
-        this.handleOnEnd = this.handleOnEnd.bind(this)
-        this.handleOnPlay = this.handleOnPlay.bind(this)
-        this.handlePause = this.handlePause.bind(this)
-        this.handleStop = this.handleStop.bind(this)
-        this.renderSeekPos = this.renderSeekPos.bind(this)
-        this.handleLoopToggle = this.handleLoopToggle.bind(this)
-        this.handleMuteToggle = this.handleMuteToggle.bind(this)
-        this.handleSongChange = this.handleSongChange.bind(this)
-        this.handleAlbumChange = this.handleAlbumChange.bind(this)
-        this.chooseExactSong = this.chooseExactSong.bind(this)
     }
 
     componentWillUnmount = () => {
@@ -64,6 +51,8 @@ export default class AudioPlayer extends React.Component {
             }
         })
     }
+
+    getPlayStatus = () => this.state.playing
 
     setPlayStatus = (status) => {
         this.setState({
@@ -113,32 +102,34 @@ export default class AudioPlayer extends React.Component {
         this.renderSeekPos()
     }
 
-    handleLoopToggle () {
+    handleLoopToggle = () => {
         this.setState({
             loop: !this.state.loop
         })
     }
 
-    handleMuteToggle () {
+    handleMuteToggle = () => {
         this.setState({
             mute: !this.state.mute
         })
     }
 
-    renderSeekPos () {
+    renderSeekPos = () => {
         this.setState({
             seek: this.player ? this.player.seek() : 0
+        }, () => {
+            console.log(this.state.seek);
         })
         if (this.state.playing) {
             this._raf = raf(this.renderSeekPos)
         }
     }
 
-    clearRAF () {
+    clearRAF = () => {
         raf.cancel(this._raf)
     }
 
-    handleSongChange (e) {
+    handleSongChange = (e) => {
         const id = e.target.value === 'next' ? 
             (this.state.songId + 1 === this.state.songsRefs.length ? 0 : this.state.songId + 1) : 
             (this.state.songId - 1 < 0 ? this.state.songsRefs.length - 1 : this.state.songId - 1);
@@ -157,7 +148,7 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
-    handleAlbumChange (id, refs) {
+    handleAlbumChange = (id, refs) => {
         this.setState({
             songsRefs: refs,
             album: albums[id],
@@ -170,7 +161,7 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
-    chooseExactSong (id) {
+    chooseExactSong = (id) => {
         this.setState({
             songId: id,
             song: this.state.album.songs[id].name,
