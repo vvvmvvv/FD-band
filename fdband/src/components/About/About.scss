@@ -13,7 +13,7 @@
     width: 35rem;
     order: -1;
     @include flex-center;
-    align-self: center;
+    padding-top: 20rem;
 
     &__item {
       margin: 1rem;
@@ -58,8 +58,8 @@
     flex-direction: column;
     padding: 15rem 0 0 0;
 
-    & div div:not(.info--active) {
-      display: none;
+    .wrapper {
+      width: 100%;
     }
 
     &__title {
@@ -69,6 +69,8 @@
     }
 
     .info {
+      display: none;
+
       &__title {
         font-family: $ltb;
         font-size: $f20;
@@ -79,6 +81,10 @@
         opacity: 0.6;
         font-family: $lt;
         font-size: $f18;
+      }
+
+      &--active {
+        display: block;
       }
     }
   }
@@ -153,3 +159,89 @@
 
 //         .rectangle
 //             height: 250px
+
+.team-cards {
+  width: 100%;
+  @include dis-flex(center, center);
+  flex-wrap: wrap;
+
+  .card {
+    min-width: 100%;
+    margin: 1rem 0;
+    @include flex-center;
+    // height: 20rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $light;
+
+    &:first-child {
+      margin: 0 0 1rem 0;
+    }
+
+    &__image-wrapper {
+      @include basic(20rem, 40%);
+    }
+
+    &__image {
+      @include basic(20rem, 100%);
+      background-position: center;
+      background-size: cover;
+      border-radius: 3rem;
+      opacity: 0.7;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &--Vova {
+        background-image: url("../../assets/images/slide-1.jpg");
+      }
+
+      &--Taras {
+        background-image: url("../../assets/images/slide-2.jpg");
+      }
+
+      &--Alex {
+        background-image: url("../../assets/images/slide-3.jpg");
+      }
+
+      &--Ann {
+        background-image: url("../../assets/images/Ann.png");
+      }
+
+      &--Lena {
+        background-image: url("../../assets/images/slide-5.jpg");
+      }
+    }
+
+    &__info {
+      @include basic(20rem, 60%);
+      @include flex-center;
+      flex-direction: column;
+    }
+
+    &__title {
+      font-family: $ltb;
+      font-size: $f20;
+      color: var(--secondary-color);
+    }
+
+    &__position {
+      font-family: $lt;
+      font-size: $f14;
+      color: var(--secondary-color);
+      opacity: 0.6;
+      padding: 0.5rem 0;
+    }
+
+    &__button {
+      padding: 1rem 3rem;
+      background-color: var(--secondary-color);
+      border-radius: 3rem;
+      @include flex-center;
+      color: var(--main-color);
+      font-size: $f14;
+      margin: 1rem 0 0 0;
+    }
+  }
+}
