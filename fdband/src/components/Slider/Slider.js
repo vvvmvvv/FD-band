@@ -143,7 +143,7 @@ export default class Slider extends React.Component {
                     </div>
 
                     <AudioPlayer 
-                        ref={this.audioPlayerRef} 
+                        ref={this.audioPlayerRef}
                         albumId={this.state.idCentered}
                         songsRefs={this.state.slides[this.state.idCentered].songsRefs}
                     />

@@ -23,7 +23,8 @@ export default class Song extends React.Component {
         const play = this.state.isPlaying ? 'pause' : 'play';
 
         return (
-            <li className="songs__item" id={this.props.id} onClick={this.props.onClick} className="songs__item"><span className={`icon-media-${play}`}></span>{this.state.name}</li>
+            <li data-id={this.props.id} onClick={this.props.onClick} className="songs__item">
+                <span data-id={this.props.id} className={`icon-media-${play}`}></span>{this.props.name}</li>
         )
     }
 }

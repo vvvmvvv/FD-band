@@ -67,6 +67,8 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
+    getPlayStatus = () => this.state.playing
+
     setPlayStatus = (status) => {
         this.setState({
             playing: status
@@ -115,32 +117,34 @@ export default class AudioPlayer extends React.Component {
         this.renderSeekPos()
     }
 
-    handleLoopToggle () {
+    handleLoopToggle = () => {
         this.setState({
             loop: !this.state.loop
         })
     }
 
-    handleMuteToggle () {
+    handleMuteToggle = () => {
         this.setState({
             mute: !this.state.mute
         })
     }
 
-    renderSeekPos () {
+    renderSeekPos = () => {
         this.setState({
             seek: this.player ? this.player.seek() : 0
+        }, () => {
+            console.log(this.state.seek);
         })
         if (this.state.playing) {
             this._raf = raf(this.renderSeekPos)
         }
     }
 
-    clearRAF () {
+    clearRAF = () => {
         raf.cancel(this._raf)
     }
 
-    handleSongChange (e) {
+    handleSongChange = (e) => {
         const id = e.target.value === 'next' ? 
             (this.state.songId + 1 === this.state.songsRefs.length ? 0 : this.state.songId + 1) : 
             (this.state.songId - 1 < 0 ? this.state.songsRefs.length - 1 : this.state.songId - 1);
@@ -159,7 +163,7 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
-    handleAlbumChange (id, refs) {
+    handleAlbumChange = (id, refs, slideBtnRef) => {
         this.setState({
             songsRefs: refs,
             album: albums[id],
@@ -172,7 +176,7 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
-    chooseExactSong (id) {
+    chooseExactSong = (id) => {
         this.setState({
             songId: id,
             song: this.state.album.songs[id].name,

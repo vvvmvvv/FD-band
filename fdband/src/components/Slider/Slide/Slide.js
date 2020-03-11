@@ -15,14 +15,9 @@ export default class Slide extends React.Component {
             isFlipped: false,
             songsRefs: props.songsRefs
         }
-
-        this.changeCenteredStatus = this.changeCenteredStatus.bind(this)
-        this.handleMove = this.handleMove.bind(this)
-        this.flipSlide = this.flipSlide.bind(this)
-        this.changeSong = this.changeSong.bind(this)
     }
 
-    changeCenteredStatus () {
+    changeCenteredStatus = () => {
         this.setState({
             isCentered: !this.state.isCentered
         }, () => {
@@ -30,7 +25,7 @@ export default class Slide extends React.Component {
         })
     }
 
-    handleMove (isNext) {
+    handleMove = (isNext) => {
         this.setState({
             isMoving: !this.state.isMoving,
             isNext: isNext,
@@ -38,14 +33,14 @@ export default class Slide extends React.Component {
         })
     }
 
-    flipSlide () {
+    flipSlide = () => {
         this.setState({
             isFlipped: !this.state.isFlipped
         })
     }
 
-    changeSong (e) {
-        const id = e.target.id;
+    changeSong = (e) => {
+        const id = e.target.getAttribute('data-id')
         
         this.state.songsRefs.forEach(song => {
             song.ref.current.playSong(false)
@@ -63,9 +58,6 @@ export default class Slide extends React.Component {
             <li className={`slide ${center} ${moving} ${flipped}`}>
                 <div className="slide__front">
                     <img className='slide__image' src={this.props.src} alt={this.props.alt} />
-                    <div className="slide__play-btn">
-                        <span className="slide__play-btn--icon icon-media-pause"></span>
-                    </div>
                     <div className="slide__date">{this.props.date}</div>
                     <h2 className='slide__title'>{this.props.name}</h2>
                     <div className="slide__show-songs" onClick={this.flipSlide}>
