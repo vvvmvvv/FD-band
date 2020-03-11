@@ -11,8 +11,8 @@ const About = () => {
     const tourDatesLink = useRef();
     const history = useRef();
     const historyLink = useRef();
-    const news = useRef();
-    const newsLink = useRef();
+    const ourBand = useRef();
+    const ourBandLink = useRef();
 
     const contentRef = useRef();
     const glideRef = useRef();
@@ -21,14 +21,14 @@ const About = () => {
         about,
         tourDates,
         history,
-        news
+        ourBand
     ]
 
     const links = [
         aboutLink,
         tourDatesLink,
         historyLink,
-        newsLink
+        ourBandLink
     ]
 
 
@@ -88,7 +88,7 @@ const About = () => {
                             the band returned to its indie rock roots with the release of its album, Violet Ultrafiolet (2020),
                             which drew similar praise to that of the band's earlier albums.</p>
                         </div>
-                        <div id="ourBand" ref={news} className="info">
+                        <div id="ourBand" ref={ourBand} className="info">
                             <h3 className="info__title">Who we are</h3>
                             <div className="team-cards">
                                 <div className="team-cards__card card">
@@ -176,7 +176,7 @@ const About = () => {
                         <li className="menu__item">
                             <Link
                                 onClick={(e) => changeSection(e, 'ourBand')}
-                                ref={newsLink}
+                                ref={ourBandLink}
                                 className="menu__link"
                                 to="#ourBand"
                             >our band</Link>
