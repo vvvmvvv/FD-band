@@ -1,0 +1,35 @@
+@import "../../stylesSettings/_variables";
+@import "../../stylesSettings/_keyframes";
+@import "../../assets/fonts/_fonts";
+
+
+.themeSwitcher {
+    display: block;
+    width: 60px;
+    height: 25px;
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    position: relative;
+    transition: all .5s;
+
+    &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--main-color);
+        z-index: 2;
+        top: 2px;
+        left: 2px;
+    }
+
+    &.active {
+        background-color: var(--secondary-color);
+    }
+
+    &.active::after {
+        left: 37px;
+    }
+}

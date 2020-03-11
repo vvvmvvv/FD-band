@@ -1,0 +1,102 @@
+[
+    {
+        "id": 0,
+        "name": "AMERICANO WITH MILK",
+        "image": "slide-1.jpg",
+        "date": "20.10.2019",
+        "songs": [
+            {
+                "id": 0,
+                "name": "Breakfast Alone"
+            },
+            {
+                "id": 1,
+                "name": "Cloud Control"
+            },
+            {
+                "id": 2,
+                "name": "Dusk"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "name": "WHITE GOOD",
+        "image": "slide-2.jpg",
+        "date": "03.05.2017",
+        "songs": [
+            {
+                "id": 0,
+                "name": "Incoming Transition"
+            },
+            {
+                "id": 1,
+                "name": "Light Years Away"
+            },
+            {
+                "id": 2,
+                "name": "Marianas"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "VIOLET ULTRAFIOLET",
+        "image": "slide-3.jpg",
+        "date": "26.07.2019",
+        "songs": [
+            {
+                "id": 0,
+                "name": "Materialize"
+            },
+            {
+                "id": 1,
+                "name": "No Good Right"
+            },
+            {
+                "id": 2,
+                "name": "Rain Cloud Music"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "THINK AND DREAM",
+        "image": "slide-4.jpg",
+        "date": "30.02.2018",
+        "songs": [
+            {
+                "id": 0,
+                "name": "Sea Space"
+            },
+            {
+                "id": 1,
+                "name": "Spirit of the Dead"
+            },
+            {
+                "id": 2,
+                "name": "Stuck In The Air"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "BECAUSE I BURGER",
+        "image": "slide-5.jpg",
+        "date": "21.12.2019",
+        "songs": [
+            {
+                "id": 0,
+                "name": "Surviving The Asteroid Belt"
+            },
+            {
+                "id": 1,
+                "name": "Ticker"
+            },
+            {
+                "id": 2,
+                "name": "Under The Rug"
+            }
+        ]
+    }
+]

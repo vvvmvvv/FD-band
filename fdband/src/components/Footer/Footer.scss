@@ -1,0 +1,35 @@
+@import "../../stylesSettings/_variables";
+@import "../../stylesSettings/_keyframes";
+@import "../../assets/fonts/_fonts";
+
+.footer {
+  background-color: $light-black;
+  padding: 1rem 0;
+  height: 5rem;
+
+  .block__wrapper {
+    @include flex-center;
+    @include dis-flex(space-between, center);
+  }
+
+  &__rights {
+    font-family: $lt;
+    color: $light;
+    font-size: $f14;
+  }
+
+  &__misc {
+    @include dis-flex(space-between, center);
+    @include basic(3rem, 3rem);
+
+    .icon {
+      @include basic(3rem, 3rem);
+      background-size: cover;
+      background-image: url(../../assets/fonts/icomoon/icons8-github.svg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
