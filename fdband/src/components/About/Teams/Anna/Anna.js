@@ -5,8 +5,11 @@ import './Anna.scss';
 const Anna = () => {
     return (
         <React.Fragment>
-            <Link to="/aboutUs#ourBand">Back to team</Link>
-            <h1>Page by Anna</h1>
+            <div className="padding-top">
+                <Link to="/aboutUs#ourBand">Back to team</Link>
+
+                <h2 className="title">Anna Androsiuk</h2>
+            </div>
         </React.Fragment>
     );
 }
