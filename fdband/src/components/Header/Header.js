@@ -106,7 +106,6 @@ const Header = () => {
                     <nav className="header__nav nav">
                         <ul className="nav__list">
                             <li className="nav__item"><Link to="/" className="nav__link">Home</Link></li>
-                            <li className="nav__item"><Link to="/calendar" className="nav__link">Calendar</Link></li>
                             <li className="nav__item"><Link to="/aboutUs" className="nav__link">About us</Link></li>
                             <li className="nav__item"><Link to="/contacts" className="nav__link">Contacts</Link></li>
                         </ul>
