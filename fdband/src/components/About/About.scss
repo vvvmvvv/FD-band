@@ -160,89 +160,77 @@
 //         .rectangle
 //             height: 250px
 
-.team-cards {
+.dates {
+  @include dis-flex(center, flex-start);
   width: 100%;
-  @include dis-flex(center, center);
-  flex-wrap: wrap;
+  flex-direction: column;
 
-  .card {
-    min-width: 100%;
-    margin: 1rem 0;
-    @include flex-center;
-    // height: 20rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid $light;
+  &__item {
+    @include dis-flex(flex-start, center);
+    margin: 0 0 1rem 0;
+    width: 100%;
+    padding: 1rem;
 
-    &:first-child {
-      margin: 0 0 1rem 0;
+    &:hover {
+      background-color: var(--main-color);
+    }
+  }
+
+  &__image-wrapper {
+    @include basic(7rem, 15%);
+    margin: 0 2rem 0 0;
+  }
+
+  &__image {
+    background-position: center;
+    @include basic(7rem, 7rem);
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--London {
+      background-image: url("../../assets/images/slide-1.jpg");
     }
 
-    &__image-wrapper {
-      @include basic(20rem, 40%);
+    &--Brovary {
+      background-image: url("../../assets/images/slide-2.jpg");
     }
 
-    &__image {
-      @include basic(20rem, 100%);
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      border-radius: 3rem;
-      opacity: 0.7;
-      transition: all .3s ease-in-out;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      &--Vova {
-        background-image: url("../../assets/images/Vova.png");
-      }
-
-      &--Taras {
-        background-image: url("../../assets/images/Taras.png");
-      }
-
-      &--Alex {
-        background-image: url("../../assets/images/Alex.png");
-      }
-
-      &--Ann {
-        background-image: url("../../assets/images/Ann.png");
-      }
-
-      &--Lena {
-        background-image: url("../../assets/images/Lena.png");
-      }
+    &--Lisabon {
+      background-image: url("../../assets/images/slide-3.jpg");
     }
 
-    &__info {
-      @include basic(20rem, 60%);
-      @include flex-center;
-      flex-direction: column;
+    &--Reykjavik {
+      background-image: url("../../assets/images/slide-4.jpg");
+    }
+    &--Tallin {
+      background-image: url("../../assets/images/slide-1.jpg");
     }
 
-    &__title {
-      font-family: $ltb;
-      font-size: $f20;
-      color: var(--secondary-color);
+    &--Riga {
+      background-image: url("../../assets/images/slide-2.jpg");
     }
+  }
 
-    &__position {
-      font-family: $lt;
-      font-size: $f14;
-      color: var(--secondary-color);
-      opacity: 0.6;
-      padding: 0.5rem 0;
-    }
+  &__description {
+    width: 85%;
+    @include dis-flex(space-evenly, center);
+  }
 
-    &__button {
-      padding: 1rem 3rem;
-      background-color: var(--secondary-color);
-      border-radius: 3rem;
-      @include flex-center;
-      color: var(--main-color);
-      font-size: $f14;
-      margin: 1rem 0 0 0;
-    }
+  &__place {
+    @include dis-flex(center, flex-start);
+    flex-direction: column;
+  }
+
+  &__location {
+    font-family: $ltb;
+    font-size: $f14;
+  }
+
+  &__info {
+    font-family: $lt;
+    font-size: $f12;
+    color: var(--second-color);
+    opacity: 0.6;
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactHowler from 'react-howler';
+// import ReactHowler from 'react-howler';
 
 import raf from 'raf' // requestAnimationFrame polyfill
 import classnames from 'classnames'
