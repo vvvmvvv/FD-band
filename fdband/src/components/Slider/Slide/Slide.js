@@ -10,17 +10,11 @@ export default class Slide extends React.Component {
         super(props)
 
         this.state = {
-            isCentered: this.props.isCentered,
+            isCentered: props.isCentered,
             isMoving: false,
             isNext: true,
             isFlipped: false,
-            songs: [
-                ...props.songs.map(() => {
-                    return {
-                        ref: React.createRef()
-                    }
-                })
-            ]
+            songsRefs: props.songsRefs
         }
 
         this.changeCenteredStatus = this.changeCenteredStatus.bind(this)
@@ -32,6 +26,8 @@ export default class Slide extends React.Component {
     changeCenteredStatus () {
         this.setState({
             isCentered: !this.state.isCentered
+        }, () => {
+            this.props.audioPlayerRef.current.setSongsRefs(this.state.songs)
         })
     }
 
@@ -51,19 +47,13 @@ export default class Slide extends React.Component {
 
     changeSong (e) {
         const id = e.target.id;
-        console.log(id);
-        this.state.songs.forEach(song => {
+        
+        this.state.songsRefs.forEach(song => {
             song.ref.current.playSong(false)
         });
-        this.state.songs[id].ref.current.playSong()
+        this.state.songsRefs[id].ref.current.playSong()
         
         this.props.audioPlayerRef.current.chooseExactSong(id)
-
-        // this.props.audioPlayerRef.current.setPlayStatus(this.state.isPlaying)
-    }
-
-    getSong () {
-        return this.state.song
     }
 
     render () {
@@ -90,7 +80,8 @@ export default class Slide extends React.Component {
                                 return(
                                     <Song
                                         onClick={this.changeSong}
-                                        ref={this.state.songs[song.id].ref}
+                                        ref={this.state.songsRefs[song.id].ref}
+                                        songRef={this.state.songsRefs[song.id].ref}
                                         key={song.id}
                                         id={song.id}
                                         name={song.name}
