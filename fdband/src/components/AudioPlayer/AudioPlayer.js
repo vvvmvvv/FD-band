@@ -26,6 +26,7 @@ export default class AudioPlayer extends React.Component {
 
         this.state = {
             album: albums[props.albumId],
+            songsRefs: props.songsRefs,
             songId: albums[props.albumId].songs[0].id,
             song: albums[props.albumId].songs[0].name,
             playing: false,
@@ -40,46 +41,71 @@ export default class AudioPlayer extends React.Component {
         this.handleOnLoad = this.handleOnLoad.bind(this)
         this.handleOnEnd = this.handleOnEnd.bind(this)
         this.handleOnPlay = this.handleOnPlay.bind(this)
+        this.handlePause = this.handlePause.bind(this)
         this.handleStop = this.handleStop.bind(this)
         this.renderSeekPos = this.renderSeekPos.bind(this)
         this.handleLoopToggle = this.handleLoopToggle.bind(this)
         this.handleMuteToggle = this.handleMuteToggle.bind(this)
         this.handleSongChange = this.handleSongChange.bind(this)
         this.handleAlbumChange = this.handleAlbumChange.bind(this)
+        this.chooseExactSong = this.chooseExactSong.bind(this)
     }
 
-    componentWillUnmount () {
+    componentWillUnmount = () => {
         this.clearRAF()
     }
 
-    handleToggle () {
+    handleToggle = () => {
         this.setState({
             playing: !this.state.playing
+        }, () => {
+            if (this.state.songsRefs) {
+                this.state.songsRefs[this.state.songId].ref.current.playSong(this.state.playing)
+            }
         })
     }
 
-    handleOnLoad () {
+    setPlayStatus = (status) => {
+        this.setState({
+            playing: status
+        })
+    }
+
+    setSongsRefs = (refs) => {
+        this.setState({
+            playing: false,
+            songsRefs: refs
+        })
+    }
+
+    handleOnLoad = () => {
         this.setState({
             loaded: true,
             duration: this.player.duration()
         })
     }
 
-    handleOnPlay () {
+    handleOnPlay = () => {
         this.setState({
             playing: true
         })
         this.renderSeekPos()
     }
 
-    handleOnEnd () {
+    handleOnEnd = () => {
         this.setState({
             playing: false
         })
         this.clearRAF()
     }
 
-    handleStop () {
+    handlePause = () => {
+        this.setState({
+            playing: false
+        })
+    }
+
+    handleStop = () => {
         this.player.stop()
         this.setState({
             playing: false
@@ -101,7 +127,7 @@ export default class AudioPlayer extends React.Component {
 
     renderSeekPos () {
         this.setState({
-            seek: this.player.seek()
+            seek: this.player ? this.player.seek() : 0
         })
         if (this.state.playing) {
             this._raf = raf(this.renderSeekPos)
@@ -114,21 +140,41 @@ export default class AudioPlayer extends React.Component {
 
     handleSongChange (e) {
         const id = e.target.value === 'next' ? 
-            (this.state.songId + 1 === this.state.album.songs.length ? 0 : this.state.songId + 1) : 
-            (this.state.songId - 1 < 0 ? this.state.album.songs.length - 1 : this.state.songId - 1);
+            (this.state.songId + 1 === this.state.songsRefs.length ? 0 : this.state.songId + 1) : 
+            (this.state.songId - 1 < 0 ? this.state.songsRefs.length - 1 : this.state.songId - 1);
+
+        console.log(id);
 
         this.setState({
             songId: id,
             song: this.state.album.songs[id].name,
             loaded: false
+        }, () => {
+            this.state.songsRefs.forEach(song => {
+                song.ref.current.playSong(false)
+            });
+            this.state.songsRefs[id].ref.current.playSong(this.state.playing)
         })
     }
 
-    handleAlbumChange (id) {
+    handleAlbumChange (id, refs) {
         this.setState({
+            songsRefs: refs,
             album: albums[id],
             songId: albums[id].songs[0].id,
             song: albums[id].songs[0].name,
+        }, () => {
+            this.state.songsRefs.forEach(song => {
+                song.ref.current.playSong(false)
+            })
+        })
+    }
+
+    chooseExactSong (id) {
+        this.setState({
+            songId: id,
+            song: this.state.album.songs[id].name,
+            playing: true
         })
     }
 
@@ -150,7 +196,7 @@ export default class AudioPlayer extends React.Component {
             <div className='player__loading'>{(this.state.loaded) ? 'Loaded' : 'Loading'}</div>
 
             <div className='player__toggles'>
-                <label>
+                <label className='player__loop'>
                     Loop:
                     <input
                     type='checkbox'
@@ -158,7 +204,7 @@ export default class AudioPlayer extends React.Component {
                     onChange={this.handleLoopToggle}
                     />
                 </label>
-                <label>
+                <label className='player__mute'>
                     Mute:
                     <input
                     type='checkbox'
@@ -177,8 +223,11 @@ export default class AudioPlayer extends React.Component {
                 }
             </div>
 
-            <div className='player__volume'>
-                <label className='volume'>
+            <div className={classnames(
+                'player__volume',
+                'volume'
+            )}>
+                <label className='volume__label'>
                     Volume:
                     <span className='volume__slider'>
                         <input
@@ -191,20 +240,28 @@ export default class AudioPlayer extends React.Component {
                             style={{verticalAlign: 'bottom'}}
                         />
                     </span>
-                    {this.state.volume.toFixed(2)}
+                    {Number(this.state.volume).toFixed(2)}
                 </label>
             </div>
 
-            <Button onClick={this.handleSongChange} value='prev'>
+            <Button  
+                className='player__button'
+                onClick={this.handleSongChange} value='prev'>
             Prev
             </Button>
-            <Button onClick={this.handleToggle}>
+            <Button 
+                className='player__button'
+                onClick={this.handleToggle}>
             {(this.state.playing) ? 'Pause' : 'Play'}
             </Button>
-            <Button onClick={this.handleStop}>
+            <Button  
+                className='player__button'
+                onClick={this.handleStop}>
             Stop
             </Button>
-            <Button onClick={this.handleSongChange} value='next'>
+            <Button  
+                className='player__button'
+                onClick={this.handleSongChange} value='next'>
             Next
             </Button>
         </div>

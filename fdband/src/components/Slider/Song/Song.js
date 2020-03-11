@@ -5,25 +5,23 @@ export default class Song extends React.Component {
         super(props)
 
         this.state = {
-            name: this.props.name,
-            isPlaying: this.props.isPlaying,
+            isPlaying: false,
         }
-        this.playSong = this.playSong.bind(this)
     }
 
-    playSong (status = true) {
+    playSong = (status = true) => {
         this.setState({
             isPlaying: status ? !this.state.isPlaying : false
+        }, () => {
+            this.props.audioPlayerRef.current.handlePause()
         })
     }
-
-    
 
     render () {
         const play = this.state.isPlaying ? 'pause' : 'play';
 
         return (
-            <li id={this.props.id} onClick={this.props.onClick} className="songs__item"><span className={`icon-media-${play}`}></span>{this.state.name}</li>
+            <li id={this.props.id} onClick={this.props.onClick} className="songs__item"><span className={`icon-media-${play}`}></span>{this.props.name}</li>
         )
     }
 }

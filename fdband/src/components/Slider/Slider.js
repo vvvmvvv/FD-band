@@ -26,8 +26,14 @@ export default class Slider extends React.Component {
                 ...albums.map((album, index) => {
                     return {
                         id: index,
-                        album: album,
-                        ref: React.createRef()
+                        ref: React.createRef(),
+                        songsRefs :[
+                            ...album.songs.map(() => {
+                                return {
+                                    ref: React.createRef()
+                                }
+                            })
+                        ]
                     }
                 })
             ]
@@ -39,8 +45,9 @@ export default class Slider extends React.Component {
     handleChangeAlbum (id) {
         this.setState({
             idCentered: id
+        }, () => {
+            this.audioPlayerRef.current.handleAlbumChange(id, this.state.slides[id].songsRefs)
         })
-        this.audioPlayerRef.current.handleAlbumChange(id)
     }
 
     handleChangeCenteredSlide (sl) {
@@ -98,10 +105,6 @@ export default class Slider extends React.Component {
         this.handleMoveSlides();
     }
 
-    componentDidMount() {
-        this.render()
-    }
-
     render() {
         return (
             <div className="slider">
@@ -125,6 +128,8 @@ export default class Slider extends React.Component {
                                 date={album.date}
                                 name={album.name}
                                 songs={album.songs}
+                                songsRefs={this.state.slides[album.id].songsRefs}
+                                audioPlayerRef={this.audioPlayerRef}
                             />
                         )
                     })}
@@ -137,7 +142,11 @@ export default class Slider extends React.Component {
                         <div className="slider__button--title">prev</div>
                     </div>
 
-                    <AudioPlayer ref={this.audioPlayerRef} albumId={this.state.idCentered} />
+                    <AudioPlayer 
+                        ref={this.audioPlayerRef} 
+                        albumId={this.state.idCentered}
+                        songsRefs={this.state.slides[this.state.idCentered].songsRefs}
+                    />
 
                     <div
                         className='slider__button'
