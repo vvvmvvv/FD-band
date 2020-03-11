@@ -1,0 +1,42 @@
+.about-me__container1{
+    padding: 0px 35% 0 0;
+}
+
+.about-me__container2{
+    padding: 0 0 0 22%;
+}
+
+.about-me{
+    margin: 10%;
+}
+
+
+.about-me__container2 .about-me__photo{
+    width: 300px;
+}
+.about-me__container1 .text{
+    padding: 0 7% 0 0;
+}
+.about-me__container2 .text{
+    padding: 22% 0 10px 9%;
+}
+
+
+.about-me__container1 .photo{
+    width: 400px;
+}
+
+.about-me__photo3{
+    width: 500px;
+  position: absolute;
+z-index: -1;
+right: 0%;
+top: -50%;
+}
+
+
+.about-me__container2{
+    margin-top: -10%;
+    padding: 0 0 0 8%;
+    
+}

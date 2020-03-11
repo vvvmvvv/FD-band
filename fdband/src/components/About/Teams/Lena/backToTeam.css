@@ -1,0 +1,74 @@
+.backToTeam p{
+    color: white;
+}
+   .backToTeam{
+    margin-top: 100px;
+    margin-left: 20px; 
+    width: 150px;
+    text-align:left;
+    padding-bottom: 5px;
+
+    border-bottom:3px solid orange; /* change color here */
+    
+    position:relative;
+    
+  }
+  
+  .backToTeam::before{
+    content:'';
+    position:absolute;
+    width: 20px;
+    border-bottom:3px solid orange; /* change color here */
+    bottom:2px;
+     transform: rotate(-29deg);
+    -webkit-transform: rotate(-29deg);
+  }
+  .backToTeam::after{
+    content:'';
+    position:absolute;
+    width: 20px;
+    border-bottom:3px solid orange;   /* change color here */
+    bottom:-9px;
+    left:0px;
+    transform: rotate(-145deg);
+    -webkit-transform: rotate(-145deg);
+  }
+  
+  
+  
+  .backToTeam:hover ,.rotate-right {
+      -webkit-animation: rotate-right 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+              animation: rotate-right 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  }
+  
+  
+  @-webkit-keyframes rotate-right {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+  }
+  @keyframes rotate-right {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+      -webkit-transform-origin: right;
+              transform-origin: right;
+    }
+  }
+  
+  
