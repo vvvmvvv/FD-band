@@ -17,8 +17,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-search:before {
-  content: "\e900";
+
+.icon-play2:before {
+  content: "\ea15";
 }
 
 .icon-arrow_left_alt:before {
@@ -37,36 +38,16 @@
   content: "\e903";
 }
 
-.icon-twitter:before {
-  content: "\ea96";
-}
-
-.icon-facebook:before {
-  content: "\ea90";
-}
-
-.icon-instagram:before {
-  content: "\ea92";
-}
-
-.icon-keyboard_arrow_down:before {
-  content: "\e902";
-}
-
-.icon-circle-right:before {
-  content: "\ea42";
-}
-
-.icon-circle-left:before {
-  content: "\ea44";
-}
-
-.icon-calendar:before {
-  content: "\e953";
-}
-
-.icon-keyboard_arrow_up:before {
+.icon-arrow_right_alt:before {
   content: "\e901";
+}
+
+.icon-previous:before {
+  content: "\ea18";
+}
+
+.icon-next:before {
+  content: "\ea19";
 }
 
 @font-face {

@@ -21,6 +21,7 @@
 
   &__panel {
     display: flex;
+    align-items: flex-end;
     bottom: 3rem;
     position: absolute;
     cursor: pointer;
@@ -34,7 +35,11 @@
     }
 
     &:first-child {
+<<<<<<< HEAD
       //padding-right: 40rem;
+=======
+      // padding-right: 40rem;
+>>>>>>> origin/Oleksandr_Lesiuk
     }
 
     &--title {
@@ -48,7 +53,7 @@
       color: $orange;
       font-size: $f40;
       margin: 0 3rem;
-      transform: scale(3, 1);
+      // transform: scale(3, 1);
     }
   }
 }

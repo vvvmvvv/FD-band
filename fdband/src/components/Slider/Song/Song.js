@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Song.scss';
+
 export default class Song extends React.Component {
     constructor (props) {
         super(props)
@@ -21,7 +23,11 @@ export default class Song extends React.Component {
         const play = this.state.isPlaying ? 'pause' : 'play';
 
         return (
+<<<<<<< HEAD
             <li id={this.props.id} onClick={this.props.onClick} className="songs__item"><span className={`icon-media-${play}`}></span>{this.props.name}</li>
+=======
+            <li className="songs__item" id={this.props.id} onClick={this.props.onClick} className="songs__item"><span className={`icon-media-${play}`}></span>{this.state.name}</li>
+>>>>>>> origin/Oleksandr_Lesiuk
         )
     }
 }
