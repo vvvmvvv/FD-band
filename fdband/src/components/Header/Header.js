@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 import { Link, withRouter } from 'react-router-dom';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'; 
-// import logo from '../../assets/images/logo.png'
+//import logo from '../../assets/images/logo.png'
 
 const Header = () => {
     return (

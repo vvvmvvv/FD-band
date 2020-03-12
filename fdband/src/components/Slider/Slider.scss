@@ -11,7 +11,7 @@
   overflow: hidden;
 
   &__body {
-    margin-top: 25rem;
+    margin-top: 35rem;
     position: relative;
     @include dis-flex(space-between, center);
     width: calc(200% + #{$slide-size});
