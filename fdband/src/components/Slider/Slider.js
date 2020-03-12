@@ -91,21 +91,22 @@ export default class Slider extends React.Component {
 
         const slider = ReactDOM.findDOMNode(this).querySelector('.slider__body');
 
+        this.handleMoveSlides(isNext);
+
         this.handleChangeCenteredSlide({
             isNext: isNext
         });
-
-        this.handleMoveSlides(isNext);
         
         const disable = true;
         this.handleBtnDisable(disable);
 
-        await delay(1000);
+        await delay(900);
         
         this.handleBtnDisable(!disable);
 
-        this.handleLoopSlides(slider, isNext);
         this.handleMoveSlides();
+
+        this.handleLoopSlides(slider, isNext);
     }
 
     render() {

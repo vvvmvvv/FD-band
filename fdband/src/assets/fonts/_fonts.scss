@@ -23,7 +23,7 @@
 }
 
 .icon-arrow_left_alt:before {
-  content: "\e905";
+  content: "\e906";
 }
 
 .icon-arrow_right_alt:before {
@@ -32,6 +32,14 @@
 
 .icon-media-play:before {
   content: "\e904";
+}
+
+.icon-media-fast-forward:before {
+  content: "\e905";
+}
+
+.icon-media-rewind:before {
+  content: "\e907";
 }
 
 .icon-media-pause:before {

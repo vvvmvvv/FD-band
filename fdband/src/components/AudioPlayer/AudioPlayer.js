@@ -358,9 +358,9 @@ export default class AudioPlayer extends React.Component {
 
         <div className="music-player">
             <div className="music-player__panel">
-                <span className="music-player__button icon-previous"></span>
-                <span className="music-player__button music-player__button--play icon-play2"></span>
-                <span className="music-player__button icon-next"></span>
+                <span className="music-player__button icon-media-rewind"></span>
+                <span className="music-player__button music-player__button--play icon-media-play"></span>
+                <span className="music-player__button icon-media-fast-forward"></span>
             </div>
             <div className="music-player__range-container">
                 <input onInput={this.setPositionRange} name="range" type="range" min="1" max="100"  id="music-range" className="music-player__range"></input>

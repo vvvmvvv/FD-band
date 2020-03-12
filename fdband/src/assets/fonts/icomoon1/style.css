@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?sxmpp3');
-  src:  url('fonts/icomoon.eot?sxmpp3#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?sxmpp3') format('truetype'),
-    url('fonts/icomoon.woff?sxmpp3') format('woff'),
-    url('fonts/icomoon.svg?sxmpp3#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?echell');
+  src:  url('fonts/icomoon.eot?echell#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?echell') format('truetype'),
+    url('fonts/icomoon.woff?echell') format('woff'),
+    url('fonts/icomoon.svg?echell#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -29,25 +29,13 @@
   content: "\e901";
 }
 .icon-arrow_left_alt:before {
-  content: "\e906";
+  content: "\e905";
 }
 .icon-media-play:before {
   content: "\e904";
 }
 .icon-media-pause:before {
   content: "\e903";
-}
-.icon-volume-up:before {
-  content: "\e900";
-}
-.icon-volume-mute1:before {
-  content: "\e902";
-}
-.icon-media-fast-forward:before {
-  content: "\e905";
-}
-.icon-media-rewind:before {
-  content: "\e907";
 }
 .icon-play2:before {
   content: "\ea15";
