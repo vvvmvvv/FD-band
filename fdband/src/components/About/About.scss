@@ -9,6 +9,8 @@
   overflow: hidden;
   padding: 0 0 5rem 0;
   // background-color: var(--main-color);
+  background-color: var(--about-bg-color);
+  // color: var(--main-color);
 
   .menu {
     width: 35rem;
@@ -25,12 +27,15 @@
       opacity: 0.2;
       position: relative;
       font-size: $f24;
-      color: $light-black;
+      // color: $light-black;
+      color: var(--secondary-color);
 
       &:before {
         content: "";
         @include basic(0.3rem, 0.1rem);
-        background-color: $black;
+        // background-color: $black;
+        // background-color: var(--secondary-color);
+        background-color: var(--main-color);
         position: absolute;
         right: 120%;
         top: 0.4rem;
@@ -98,6 +103,8 @@
 
     &__rectangle {
       background-color: $light;
+      // background-color: var(--main-color);
+      background-color: var(--secondary-color);
       @include basic(55rem, 20rem);
       vertical-align: text-bottom;
       position: relative;
@@ -115,7 +122,8 @@
       &:after {
         content: "Band";
         text-transform: uppercase;
-        color: $light;
+        // color: $light;
+        color: var(--secondary-color);
         position: absolute;
         width: 100%;
         top: 4.8rem;
@@ -231,7 +239,7 @@
   &__info {
     font-family: $lt;
     font-size: $f12;
-    color: var(--second-color);
+    color: var(--secondary-color);
     opacity: 0.6;
   }
 }
