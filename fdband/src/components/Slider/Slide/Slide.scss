@@ -10,7 +10,7 @@
   //flip
   position: relative;
   //-webkit-backface-visibility: hidden;
-  // backface-visibility: hidden;
+   backface-visibility: hidden;
 
   pointer-events: none;
   &::before {
@@ -138,7 +138,7 @@
     transform: translateX(-50vw);
 
     &.slide--centered {
-      transform: translate(-50vw, -18rem);
+      transform: translate(-50vw, -27rem);
       transition: transform 1s;
     }
   }
@@ -147,12 +147,12 @@
     transform: translateX(50vw);
 
     &.slide--centered {
-      transform: translate(50vw, -18rem);
+      transform: translate(50vw, -27rem);
       transition: transform 1s;
     }
   }
   &--centered {
-    transform: translateY(-18rem);
+    transform: translateY(-27rem);
     pointer-events: all;
   }
 }

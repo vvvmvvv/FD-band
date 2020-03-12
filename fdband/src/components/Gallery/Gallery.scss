@@ -3,19 +3,17 @@
 @import "../../stylesSettings/_keyframes";
 @import "../../assets/fonts/_fonts";
 
-// .test{
-//     display: none;
-//     height: 400px;
-//     width:  500px;
-// }
-
 .gallery{
     width: 100%;
     background-color: $light;
     @include flex-center;
-
+    transition: background-color 1.7s;
 }
 
 .image-gallery{
     width: 100%;
 }
+
+.gallery.opacityAn {
+    background-color: black;
+  }

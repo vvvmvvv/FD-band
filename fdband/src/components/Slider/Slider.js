@@ -73,10 +73,13 @@ export default class Slider extends React.Component {
     }
 
     handleBtnDisable (status) {
-        const buttons = ReactDOM.findDOMNode(this).getElementsByClassName('slider__button');
+        const buttons = document.querySelector('.slider__panel').getElementsByClassName('slider__button');
+        const header = document.querySelector('.nav__list');
+
         [].forEach.call(buttons, (btn) => {
             status ? btn.classList.add('slider__button--disabled') : btn.classList.remove('slider__button--disabled')
         });
+        status ? header.classList.add('slider__button--disabled') : header.classList.remove('slider__button--disabled')
     }
 
     btnNext = () => this.btnAction('next')
