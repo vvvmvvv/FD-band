@@ -1,0 +1,121 @@
+@import "../../stylesSettings/_variables";
+@import "../../stylesSettings/_keyframes";
+@import "../../assets/fonts/_fonts";
+
+.contacts {
+  background-color: var(--main-color);
+  height: calc(100vh - 5rem);
+  
+
+  .block__wrapper {
+    @include flex-center;
+    flex-direction: column;
+  }
+
+  .cards {
+    width: 100%;
+    @include dis-flex(space-between, flex-start);
+
+    &__card {
+      min-width: 18%;
+      @include flex-center;
+      position: relative;
+    }
+  }
+
+  &__description {
+    font-family: $lt;
+    font-size: $f14;
+    color: var(--secondary-color);
+    font-style: italic;
+  }
+
+  .menu {
+    @include basic(100%, 100%);
+    
+
+    &:not(:hover) > .menu__button:first-of-type,
+    &:hover > .menu__button:last-of-type {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    &:hover > .menu__item:nth-child(2) {
+      transform: rotate(-20deg) translateY(-13rem) rotate(20deg);
+      transition-delay: 0.2s;
+    }
+
+    &:hover > .menu__item:nth-child(3) {
+      transform: rotate(-60deg) translateY(-13rem) rotate(60deg);
+      transition-delay: 0.3s;
+    }
+
+    &:hover > .menu__item:nth-child(4) {
+      transform: rotate(20deg) translateY(-12.5rem) rotate(-20deg);
+      transition-delay: 0.1s;
+    }
+  }
+
+  .menu {
+    &--top {
+      margin-bottom: 12rem;
+    }
+
+    &--bottom {
+      margin-top: 14.5rem;
+    }
+
+    &__button {
+      @include basic(22rem, 22rem);
+      position: relative;
+      border-radius: 50%;
+      @include flex-center;
+    }
+
+    &__image {
+      background-position: center;
+      @include basic(22rem, 22rem);
+      border-radius: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      &--Taras {
+        background-image: url("../../assets/images/g2.jpeg");
+      }
+      &--Ann {
+        background-image: url("../../assets/images/ann_contact.jpg");
+      }
+      &--Vova {
+        background-image: url("../../assets/images/vova_contacts.jpg");
+      }
+      &--Lena {
+        background-image: url("../../assets/images/lena_contacts.jpg");
+      }
+    }
+
+    &__item {
+      @include basic(7rem, 7rem);
+      position: absolute;
+      left: 35%;
+      top: 35%;
+      border-radius: 50%;
+      background: var(--secondary-color);
+      transform: translate(0px, 0px);
+      transition: transform 500ms;
+      transition: 0.5s;
+
+      &:hover {
+        opacity: 0.5;
+        box-shadow: 0 5px 10px var(--secondary-color);
+      }
+
+      a {
+        color: #fff;
+        position: relative;
+        top: 30%;
+        left: 0;
+        text-decoration: none;
+      }
+    }
+  }
+}
