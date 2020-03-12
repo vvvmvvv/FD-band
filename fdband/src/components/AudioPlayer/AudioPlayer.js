@@ -313,32 +313,32 @@ export default class AudioPlayer extends React.Component {
             <div className="music-player__panel">
 
                 <Button className={(this.state.loop) 
-                    ? 'music-player__button icon-loop2 music-player__button--active' 
-                    : 'music-player__button icon-loop2'} 
+                    ? 'music-player__button icon-arrow-repeat music-player__button--active' 
+                    : 'music-player__button icon-arrow-repeat'} 
                     onClick={this.handleLoopToggle}
                 ></Button>
 
                 <Button 
-                    className="icon-previous music-player__button "  
+                    className="icon-media-rewind music-player__button "  
                     onClick={this.handleSongChange} 
                     value='prev'>
                 </Button>
             
                 <span   onClick={this.handleToggle} 
                         className={(this.state.playing)    
-                            ? 'music-player__button music-player__button--pause icon-pause' 
-                            : 'music-player__button music-player__button--play icon-play2'}>   
+                            ? 'music-player__button music-player__button--pause icon-media-pause' 
+                            : 'music-player__button music-player__button--play icon-media-play'}>   
                 </span>
                 
                 <Button 
-                    className="icon-next music-player__button "  
+                    className="icon-media-fast-forward music-player__button "  
                     onClick={this.handleSongChange} 
                     value='next'>
                 </Button>
 
                 <Button className={(this.state.mute) 
-                    ? 'music-player__button icon-volume-mute2' 
-                    : 'music-player__button icon-volume-medium'} 
+                    ? 'music-player__button icon-volume-mute1' 
+                    : 'music-player__button icon-volume-up'} 
                     onClick={this.handleMuteToggle}
                 ></Button>
 

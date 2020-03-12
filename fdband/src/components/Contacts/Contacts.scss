@@ -5,7 +5,6 @@
 .contacts {
   background-color: var(--main-color);
   height: calc(100vh - 5rem);
-  
 
   .block__wrapper {
     @include flex-center;
@@ -32,7 +31,6 @@
 
   .menu {
     @include basic(100%, 100%);
-    
 
     &:not(:hover) > .menu__button:first-of-type,
     &:hover > .menu__button:last-of-type {
@@ -46,7 +44,7 @@
     }
 
     &:hover > .menu__item:nth-child(3) {
-      transform: rotate(-60deg) translateY(-15rem) rotate(60deg);
+      transform: rotate(-60deg) translateY(-15.5rem) rotate(60deg);
       transition-delay: 0.3s;
     }
 
@@ -91,6 +89,9 @@
       &--Lena {
         background-image: url("../../assets/images/lena_contacts.jpg");
       }
+      &--Alex {
+        background-image: url("../../assets/images/alex_contact.jpg");
+      }
     }
 
     &__item {
@@ -103,19 +104,16 @@
       transform: translate(0px, 0px);
       transition: transform 500ms;
       transition: 0.5s;
-
+      @include flex-center;
       &:hover {
         opacity: 0.5;
         box-shadow: 0 5px 10px var(--secondary-color);
       }
+    }
 
-      a {
-        color: #fff;
-        position: relative;
-        top: 30%;
-        left: 0;
-        text-decoration: none;
-      }
+    &__link {
+      color: var(--main-color);
+      font-size: $f24;
     }
   }
 }
