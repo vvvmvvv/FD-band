@@ -28,10 +28,10 @@
 
 .about-me__photo3{
     width: 500px;
-  position: absolute;
-z-index: -1;
-right: 0%;
-top: -50%;
+    position: absolute;
+    z-index: -1;
+    right: 0%;
+    top: -60%;
 }
 
 

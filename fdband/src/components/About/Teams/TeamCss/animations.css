@@ -26,7 +26,7 @@
   }
   
 
- .gallery__title:hover, .about-me:hover h1,.lena_header:hover h1,.tracking-in-expand-fwd-top {
+ .gallery__title:hover, .about-me:hover h1,.team_header:hover h1,.tracking-in-expand-fwd-top {
 	-webkit-animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 	        animation: tracking-in-expand-fwd-top 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
@@ -67,7 +67,7 @@
   
 
 
- .lena_header-banner__photo, .scale-in-hor-center {
+ .team_header-banner__photo, .scale-in-hor-center {
 	-webkit-animation: scale-in-hor-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5ms both;
 	        animation: scale-in-hor-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5ms both;
 }

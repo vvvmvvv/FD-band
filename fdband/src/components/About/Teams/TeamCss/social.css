@@ -44,15 +44,6 @@ ul {
   background: #7c43bd;
 }
 
-/* .social:hover .social-media__list,
-.social:hover .social__background1 {
-  transform: translateX(0%);
-} 
-
-.social-transition {
-  transition: 1s;
-  transform: translateX(-100%);
-}*/
 
 
 .social__background1 {
@@ -106,11 +97,11 @@ ul {
 
 .gallery:hover .back {
   transform: rotateY(180deg);
-  /*   transition:1s; */
+  
 }
 .gallery:hover .front {
   transform: rotateY(360deg);
-  /*   transition:1s; */
+  
 }
 .gallery__item img{
     width: 300px;

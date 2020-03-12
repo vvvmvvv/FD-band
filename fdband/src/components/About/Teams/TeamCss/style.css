@@ -1,0 +1,122 @@
+@import "./animations.css";
+@import "./aboutme.css";
+@import "./social.css";
+@import "./backToTeam.css";
+
+.team-inner{
+ margin: 0;
+  padding: 0;
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+.team-inner h1{
+    font-size: 3rem;
+    position: relative;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+.team_wrapper {
+  width: 960px;
+  margin: 0 auto;
+  
+}
+.team_header{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+.team_header:hover .team_header__bg,
+.team_header:hover .backToTeam{
+    transform: translateX(0%);
+  }
+
+.backToTeam,.team_header__bg{
+    transition:1s;
+    transform: translateX(-130%);
+}
+.team_header__bg {
+    
+  background-color: black;
+  width: 20%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.team_header-nav{
+    padding: 50% 10%;
+}
+.team_header-nav__item{
+    margin: 1.2rem;
+}
+.team_header-nav__item a{
+    color: white;
+    position: relative;
+    
+    
+}
+
+.team_header-nav__item a::before{
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 45%;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid white;
+}
+
+a {
+    text-decoration: none;
+    
+}
+
+.team_header-banner__photo {
+    position: absolute;
+    bottom:0%;
+    width: 1000px;
+    bottom: -50%;
+    left: 30%;
+    
+}
+
+.team_container {
+  display: flex;
+}
+
+.team_header__container {
+    padding: 13% 8%;
+}
+.team_header__text {
+  padding: 10% 0 0 10%;
+}
+
+
+.team-inner h1::after{
+    content: '';
+    position: absolute;
+    left: 0%;
+    top: 30%;
+    width: 160px;
+    height: 20px;
+    
+    border-bottom: 3px solid orange;
+}
+
+.team_header,.gallery,.about-me,.social{
+    margin-bottom: 200px;
+}
+
+.description {
+    margin-bottom: 10px;
+}
