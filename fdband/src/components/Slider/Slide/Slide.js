@@ -9,51 +9,45 @@ export default class Slide extends React.Component {
         super(props)
 
         this.state = {
-            isCentered: this.props.isCentered,
+            isCentered: props.isCentered,
             isMoving: false,
             isNext: true,
             isFlipped: false,
-            songs: [
-                ...props.songs.map(() => {
-                    return {
-                        ref: React.createRef()
-                    }
-                })
-            ]
+            songsRefs: props.songsRefs
         }
-
-        this.changeCenteredStatus = this.changeCenteredStatus.bind(this)
-        this.handleMove = this.handleMove.bind(this)
-        this.flipSlide = this.flipSlide.bind(this)
-        this.changeSong = this.changeSong.bind(this)
     }
 
-    changeCenteredStatus () {
+    changeCenteredStatus = () => {
         this.setState({
             isCentered: !this.state.isCentered
+        }, () => {
+            this.props.audioPlayerRef.current.setSongsRefs(this.state.songs)
         })
     }
 
-    handleMove (isNext) {
+    handleMove = (isNext) => {
         this.setState({
             isMoving: !this.state.isMoving,
-            isNext: isNext
+            isNext: isNext,
+            isFlipped: false
         })
     }
 
-    flipSlide () {
+    flipSlide = () => {
         this.setState({
             isFlipped: !this.state.isFlipped
         })
     }
 
-    changeSong (e) {
-        const id = e.target.id;
-        console.log(id);
-        this.state.songs.forEach(song => {
+    changeSong = (e) => {
+        const id = e.target.getAttribute('data-id')
+        
+        this.state.songsRefs.forEach(song => {
             song.ref.current.playSong(false)
         });
-        this.state.songs[id].ref.current.playSong()
+        this.state.songsRefs[id].ref.current.playSong()
+        
+        this.props.audioPlayerRef.current.chooseExactSong(id)
     }
 
     render () {
@@ -64,13 +58,11 @@ export default class Slide extends React.Component {
             <li className={`slide ${center} ${moving} ${flipped}`}>
                 <div className="slide__front">
                     <img className='slide__image' src={this.props.src} alt={this.props.alt} />
-                    <div className="slide__play-btn">
-                        <span className="slide__play-btn--icon icon-media-pause"></span>
-                    </div>
                     <div className="slide__date">{this.props.date}</div>
                     <h2 className='slide__title'>{this.props.name}</h2>
                     <div className="slide__show-songs" onClick={this.flipSlide}>
                         <div className="slide__show-songs--title" >Show more</div>
+                        <span class="icon-play2"></span>
                     </div>
                 </div>
                 <div className="slide__back">
@@ -80,10 +72,12 @@ export default class Slide extends React.Component {
                                 return(
                                     <Song
                                         onClick={this.changeSong}
-                                        ref={this.state.songs[song.id].ref}
+                                        ref={this.state.songsRefs[song.id].ref}
+                                        songRef={this.state.songsRefs[song.id].ref}
                                         key={song.id}
                                         id={song.id}
                                         name={song.name}
+                                        audioPlayerRef={this.props.audioPlayerRef}
                                     />
                                 )
                             })}

@@ -11,6 +11,7 @@
   position: relative;
   backface-visibility: hidden;
 
+  pointer-events: none;
   &::before {
     content: "";
     position: absolute;
@@ -71,6 +72,7 @@
     @include flex-center;
     background-color: $white;
     border-radius: 50%;
+    cursor: pointer;
 
     &--icon {
       font-size: $f18;
@@ -99,6 +101,7 @@
     border-radius: 5rem;
     transition: all 0.3s ease-in-out;
     margin: 0 auto;
+    cursor: pointer;
 
     &--title {
       font-size: $f14;
@@ -139,6 +142,7 @@
   }
   &--centered {
     padding-bottom: 38rem;
+    pointer-events: all;
   }
 }
 

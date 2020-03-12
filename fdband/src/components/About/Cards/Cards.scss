@@ -1,0 +1,90 @@
+@import "../../../stylesSettings/_variables";
+@import "../../../stylesSettings/_keyframes";
+@import "../../../assets/fonts/_fonts";
+
+.team-cards {
+  width: 100%;
+  @include dis-flex(center, center);
+  flex-wrap: wrap;
+
+  .card {
+    min-width: 100%;
+    margin: 1rem 0;
+    @include flex-center;
+    // height: 20rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $light;
+
+    &:first-child {
+      margin: 0 0 1rem 0;
+    }
+
+    &__image-wrapper {
+      @include basic(20rem, 40%);
+    }
+
+    &__image {
+      @include basic(20rem, 100%);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      border-radius: 3rem;
+      opacity: 0.7;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &--Vova {
+        background-image: url("../../../assets/images/Vova.png");
+      }
+
+      &--Taras {
+        background-image: url("../../../assets/images/Taras.png");
+      }
+
+      &--Alex {
+        background-image: url("../../../assets/images/Alex.png");
+      }
+
+      &--Ann {
+        background-image: url("../../../assets/images/Ann.png");
+      }
+
+      &--Lena {
+        background-image: url("../../../assets/images/Lena.png");
+      }
+    }
+
+    &__info {
+      @include basic(20rem, 60%);
+      @include flex-center;
+      flex-direction: column;
+    }
+
+    &__title {
+      font-family: $ltb;
+      font-size: $f20;
+      color: var(--secondary-color);
+    }
+
+    &__position {
+      font-family: $lt;
+      font-size: $f14;
+      color: var(--secondary-color);
+      opacity: 0.6;
+      padding: 0.5rem 0;
+    }
+
+    &__button {
+      padding: 1rem 3rem;
+      background-color: var(--secondary-color);
+      border-radius: 3rem;
+      @include flex-center;
+      color: var(--main-color);
+      font-size: $f14;
+      margin: 1rem 0 0 0;
+    }
+  }
+}
