@@ -46,7 +46,8 @@
     }
 
     &--icon {
-      color: $orange;
+      // color: $orange;
+      color: var(--active-color);
       font-size: $f40;
       margin: 0 3rem;
       // transform: scale(3, 1);

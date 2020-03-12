@@ -38,19 +38,17 @@ export default class Slider extends React.Component {
                 })
             ]
         }
-
-        this.handleChangeAlbum = this.handleChangeAlbum.bind(this)  
     }
 
-    handleChangeAlbum (id) {
+    handleChangeAlbum = (id) => {
         this.setState({
             idCentered: id
         }, () => {
-            this.audioPlayerRef.current.handleAlbumChange(id, this.state.slides[id].songsRefs)
+            this.audioPlayerRef.current.handleAlbumChange(id, this.state.slides[id].ref, this.state.slides[id].songsRefs)
         })
     }
 
-    handleChangeCenteredSlide (sl) {
+    handleChangeCenteredSlide = (sl) => {
         const slides = this.state.slides;
         const id = this.state.idCentered;
         const idNext = sl.isNext ? 
@@ -63,7 +61,7 @@ export default class Slider extends React.Component {
         this.handleChangeAlbum(idNext)
     }
 
-    handleMoveSlides (isNext = true) {
+    handleMoveSlides = (isNext = true) => {
         this.state.slides.forEach(s => s.ref.current.handleMove(isNext));
     }
 
@@ -72,13 +70,15 @@ export default class Slider extends React.Component {
         isNext ? slider.appendChild(slide) : slider.insertBefore(slide, slider.firstChild);
     }
 
-    handleBtnDisable (status) {
-        const buttons = document.querySelector('.slider__panel').getElementsByClassName('slider__button');
+    handleBtnDisable = (status) => {
         const header = document.querySelector('.nav__list');
+        const buttons = document.querySelector('.slider__panel') ? document.querySelector('.slider__panel').getElementsByClassName('slider__button') : false;
 
-        [].forEach.call(buttons, (btn) => {
-            status ? btn.classList.add('slider__button--disabled') : btn.classList.remove('slider__button--disabled')
-        });
+        if (buttons) {
+            [].forEach.call(buttons, (btn) => {
+                status ? btn.classList.add('slider__button--disabled') : btn.classList.remove('slider__button--disabled')
+            });
+        }
         status ? header.classList.add('slider__button--disabled') : header.classList.remove('slider__button--disabled')
     }
 
@@ -133,6 +133,7 @@ export default class Slider extends React.Component {
                                 name={album.name}
                                 songs={album.songs}
                                 songsRefs={this.state.slides[album.id].songsRefs}
+                                slideRef={this.state.slides[album.id].ref}
                                 audioPlayerRef={this.audioPlayerRef}
                             />
                         )
@@ -149,6 +150,7 @@ export default class Slider extends React.Component {
                     <AudioPlayer 
                         ref={this.audioPlayerRef}
                         albumId={this.state.idCentered}
+                        slideRef={this.state.slides[this.state.idCentered].ref}
                         songsRefs={this.state.slides[this.state.idCentered].songsRefs}
                     />
 

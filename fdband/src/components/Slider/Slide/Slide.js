@@ -1,14 +1,19 @@
 import React from 'react';
 
+import classnames from 'classnames';
+
 import './Slide.scss';
 
 import Song from '../Song/Song'; 
+
+import vinil from '../../../assets/images/vinil.svg'
 
 export default class Slide extends React.Component {
     constructor (props) {
         super(props)
 
         this.state = {
+            isPlaying: false,
             isCentered: props.isCentered,
             isMoving: false,
             isNext: true,
@@ -17,11 +22,15 @@ export default class Slide extends React.Component {
         }
     }
 
+    setPlayStatus = (status) => {
+        this.setState({
+            isPlaying: status
+        })
+    }
+
     changeCenteredStatus = () => {
         this.setState({
             isCentered: !this.state.isCentered
-        }, () => {
-            this.props.audioPlayerRef.current.setSongsRefs(this.state.songs)
         })
     }
 
@@ -62,18 +71,27 @@ export default class Slide extends React.Component {
                     <h2 className='slide__title'>{this.props.name}</h2>
                     <div className="slide__show-songs" onClick={this.flipSlide}>
                         <div className="slide__show-songs--title" >Show more</div>
-                        <span class="icon-play2"></span>
+                        <span className="icon-play2"></span>
                     </div>
                 </div>
                 <div className="slide__back">
+                    <div className={classnames(
+                        'slide__vinil',
+                        'vinil',
+                        this.state.isPlaying ? '' : 'vinil--paused'
+                    )}>
+                        <img className="vinil__image" src={vinil} />>
+                        <span className="vinil__album">{this.props.name}</span>
+                    </div>
                     <div className="slide__details">
-                        <ul className="slide__songs">
+                        <ul className="slide__songs songs">
                             {this.props.songs.map(song => {
                                 return(
                                     <Song
                                         onClick={this.changeSong}
                                         ref={this.state.songsRefs[song.id].ref}
                                         songRef={this.state.songsRefs[song.id].ref}
+                                        slideRef={this.props.slideRef}
                                         key={song.id}
                                         id={song.id}
                                         name={song.name}

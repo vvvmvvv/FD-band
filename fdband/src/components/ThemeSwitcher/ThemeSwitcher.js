@@ -16,12 +16,14 @@ export default class ThemeSwitcher extends React.Component {
         mainColor: '#ededed',
         secondaryColor: 'black',
         logoBg: '#231e1f',
+        activeColor: 'orange',
     }
 
     lightTheme = {
         mainColor: 'black',
         secondaryColor: '#ededed',
         logoBg: 'transparent',
+        activeColor: 'orangered',
     }
 
     changeTheme () {
@@ -33,6 +35,7 @@ export default class ThemeSwitcher extends React.Component {
         root.style.setProperty('--main-color', theme.mainColor);
         root.style.setProperty('--secondary-color', theme.secondaryColor);
         root.style.setProperty('--logo-bg', theme.logoBg);
+        root.style.setProperty('--active-color', theme.activeColor);
     }
 
     
