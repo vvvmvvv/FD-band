@@ -5,6 +5,8 @@
 .nav {
   &__list {
     @include dis-flex(center, center);
+    // background-color: var(--main-color);
+    // padding: 3rem 10rem;
   }
 
   &__item:last-child {
