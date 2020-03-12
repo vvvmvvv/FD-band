@@ -41,17 +41,17 @@
     }
 
     &:hover > .menu__item:nth-child(2) {
-      transform: rotate(-20deg) translateY(-13rem) rotate(20deg);
+      transform: rotate(-20deg) translateY(-14rem) rotate(20deg);
       transition-delay: 0.2s;
     }
 
     &:hover > .menu__item:nth-child(3) {
-      transform: rotate(-60deg) translateY(-13rem) rotate(60deg);
+      transform: rotate(-60deg) translateY(-15rem) rotate(60deg);
       transition-delay: 0.3s;
     }
 
     &:hover > .menu__item:nth-child(4) {
-      transform: rotate(20deg) translateY(-12.5rem) rotate(-20deg);
+      transform: rotate(20deg) translateY(-11rem) rotate(-20deg);
       transition-delay: 0.1s;
     }
   }

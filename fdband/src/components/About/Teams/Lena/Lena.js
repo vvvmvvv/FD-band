@@ -63,7 +63,7 @@ const Lena = () => {
                             <h1 className="about-me-text__title title">About me</h1>
                             <p className="about-me-text__description description">I am from Vietnam. Apart from music I am also keen on art and taking beautiful photos</p>
                         </div>
-                        <img className="about-me__photo photo " src={aboutme_photo1} />
+                        <img className="about-me__photo aboutme_lena_photo" src={aboutme_photo1} />
                     </div>
                     <div className="about-me__container2 team_container">
                         <img className="about-me__photo photo" src={about2} />
