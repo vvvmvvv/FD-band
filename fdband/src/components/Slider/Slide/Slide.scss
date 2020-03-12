@@ -88,7 +88,7 @@
 
   &__title {
     font-family: $ostb;
-    font-size: $f50;
+    font-size: $f34;
     color: $white;
     text-align: center;
   }
@@ -127,6 +127,10 @@
   &__vinil {
     width: 100%;
     height: 100%;
+
+    & .vinil__album {
+      font-size: $f24;
+    }
   }
 
   &__details {
@@ -246,8 +250,38 @@
   }
 }
 
+@media only screen and (min-width: 1440px) {
+  .slide {
+    @include basic($slide-size-big, $slide-size-big);
+    &__title {
+      font-size: $f40;
+    }
+    &__vinil .vinil__album {
+      font-size: $f30;
+    }
+  }
+}
+
 @media only screen and (max-width: 1280px) {
   .slide {
     @include basic($slide-size-laptop, $slide-size-laptop);
+    &__title {
+      font-size: $f32;
+    }
+    &__vinil .vinil__album {
+      font-size: $f22;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .slide {
+    @include basic($slide-size-laptop-small, $slide-size-laptop-small);
+    &__title {
+      font-size: $f30;
+    }
+    &__vinil .vinil__album {
+      font-size: $f20;
+    }
   }
 }
