@@ -15,7 +15,8 @@ export default class Song extends React.Component {
         this.setState({
             isPlaying: status ? !this.state.isPlaying : false
         }, () => {
-            this.props.audioPlayerRef.current.handlePause()
+            this.props.audioPlayerRef.current.setPlayStatus(status)
+            this.props.slideRef.current.setPlayStatus(status)
         })
     }
 
