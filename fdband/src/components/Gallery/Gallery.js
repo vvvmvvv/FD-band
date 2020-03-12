@@ -16,7 +16,7 @@ const Gallery = () => {
   })
   useEffect(_ => {
     const handleScroll = _ => { 
-      if (window.pageYOffset > 700) {
+      if (window.pageYOffset > 450) {
         setScrolled(true)
       } else {
         setScrolled(false)

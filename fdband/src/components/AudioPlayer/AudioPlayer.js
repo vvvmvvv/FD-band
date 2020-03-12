@@ -193,7 +193,7 @@ export default class AudioPlayer extends React.Component {
         +percent+"%, var(--main-color) "
         +percent+"%, var(--main-color) 100%)"
 
-        if (range != undefined) {
+        if (range !== undefined) {
             range.style.background = rangeFill;
         }
     }

@@ -80,7 +80,7 @@ export default class Slide extends React.Component {
                         'vinil',
                         this.state.isPlaying ? '' : 'vinil--paused'
                     )}>
-                        <img className="vinil__image" src={vinil} />>
+                        <img className="vinil__image" src={vinil} alt="vinil" />>
                         <span className="vinil__album">{this.props.name}</span>
                     </div>
                     <div className="slide__details">

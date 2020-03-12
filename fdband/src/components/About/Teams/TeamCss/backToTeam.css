@@ -43,7 +43,7 @@
   }
   
 
- @-webkit-keyframes scale-up-right {
+ /* @-webkit-keyframes scale-up-right {
   0% {
     -webkit-transform: scale(0.5);
             transform: scale(0.5);
@@ -70,4 +70,4 @@
     -webkit-transform-origin: 100% 50%;
             transform-origin: 100% 50%;
   }
-}
+} */
