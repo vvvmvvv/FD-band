@@ -7,7 +7,7 @@
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  //height: calc(100vh - 5rem);
+  // height: calc(100vh - 5rem);
   overflow: hidden;
 
   &__body {
@@ -94,6 +94,14 @@
       background-size: contain;
       background-position: center;
       animation: marquee 60s linear infinite;
+    }
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .slider {
+    &__body {
+      width: calc(200% + #{$slide-size-laptop});
     }
   }
 }
