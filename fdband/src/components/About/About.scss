@@ -214,11 +214,11 @@
 
   &__description {
     width: 85%;
-    @include dis-flex(space-evenly, center);
+    @include dis-flex(space-between, center);
   }
 
   &__place {
-    @include dis-flex(center, flex-start);
+    @include dis-flex(center, flex-end);
     flex-direction: column;
   }
 

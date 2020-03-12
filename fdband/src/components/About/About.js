@@ -94,7 +94,7 @@ const About = () => {
                                         </div>
                                         <div className="dates__place">
                                             <div className="dates__location">Place:</div>
-                                            <div className="dates__info">Arena stadium</div>
+                                            <div className="dates__info">Brovary stadium</div>
                                         </div>
                                     </div>
 
@@ -110,7 +110,7 @@ const About = () => {
                                         </div>
                                         <div className="dates__place">
                                             <div className="dates__location">Place:</div>
-                                            <div className="dates__info">Arena stadium</div>
+                                            <div className="dates__info">Tetris hall</div>
                                         </div>
                                     </div>
 
@@ -126,7 +126,7 @@ const About = () => {
                                         </div>
                                         <div className="dates__place">
                                             <div className="dates__location">Place:</div>
-                                            <div className="dates__info">Arena stadium</div>
+                                            <div className="dates__info">Dream event</div>
                                         </div>
                                     </div>
 
@@ -142,7 +142,7 @@ const About = () => {
                                         </div>
                                         <div className="dates__place">
                                             <div className="dates__location">Place:</div>
-                                            <div className="dates__info">Arena stadium</div>
+                                            <div className="dates__info">Estonia stadium</div>
                                         </div>
                                     </div>
 
@@ -158,7 +158,7 @@ const About = () => {
                                         </div>
                                         <div className="dates__place">
                                             <div className="dates__location">Place:</div>
-                                            <div className="dates__info">Arena stadium</div>
+                                            <div className="dates__info">Riga stadium</div>
                                         </div>
                                     </div>
 
@@ -217,8 +217,8 @@ const About = () => {
                         <span className="glide__title">BAND</span>
                     </div>
                     <div className="glide__description">
-                        <p>Lorem ipsum dolor sit amet consectetur</p>
-                        <p>Lorem, ipsum dolor sit amet</p>
+                        <p>Five different is cool</p>
+                        <p>Front-end development group</p>
                     </div>
                 </aside>
             </section>
