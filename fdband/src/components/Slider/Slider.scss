@@ -13,7 +13,7 @@
     margin-top: 25rem;
     position: relative;
     @include dis-flex(space-between, center);
-    width: calc(200% + #{$slide-size});
+    width: calc(200% + #{$slide-size} + 3rem);
     padding: 0;
     transition: 1s;
   }

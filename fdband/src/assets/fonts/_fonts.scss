@@ -50,6 +50,22 @@
   content: "\ea19";
 }
 
+.icon-pause:before {
+  content: "\ea16";
+}
+
+.icon-volume-medium:before {
+  content: "\ea27";
+}
+
+.icon-volume-mute2:before {
+  content: "\ea2a";
+}
+
+.icon-loop2:before {
+  content: "\ea2e";
+}
+
 @font-face {
   font-family: "Lato";
   //   src: url("../../assets/fonts/Lato/Lato-Regular.ttf") format("truetype");
