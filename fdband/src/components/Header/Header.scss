@@ -5,6 +5,11 @@
 .nav {
   &__list {
     @include dis-flex(center, center);
+    pointer-events: all;
+
+    &--disabled {
+      pointer-events: none;
+    }
   }
 
   &__item:last-child {
