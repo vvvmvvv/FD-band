@@ -48,7 +48,7 @@ const Vladimir = () => {
                         <div className="about-me__text text">
                             <h1 className="about-me-text__title title">About me</h1>
                             <p className="about-me-text__description description">
-                                I am from second capital of Ukraine. Apart from music I am also keen on sport and won a lot of competitions</p>
+                                I am from second capital of Ukraine. Apart from music I am also do sport and win a lot of competitions</p>
                         </div>
                     </div>
                     <div className="about-me__container2 team_container">
