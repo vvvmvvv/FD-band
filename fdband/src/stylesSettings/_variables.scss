@@ -30,7 +30,11 @@ $f55: 5.5rem;
 $f50: 5rem;
 $f45: 4.5rem;
 $f40: 4rem;
+$f34: 3.4rem;
+$f32: 3.2rem;
+$f30: 3rem;
 $f24: 2.4rem;
+$f22: 2.2rem;
 $f20: 2rem;
 $f18: 1.8rem;
 $f16: 1.6rem;
@@ -47,8 +51,11 @@ $secondary-color: hsl($color-degre + 80, 100%, 50%);
 
 $tertiary-color: hsl($color-degre + 190, 100%, 50%);
 //component-size
+// $slide-size-large: 50rem;
+// $slide-size-big: 40rem;
 $slide-size: 62rem;
 $slide-size-laptop: 50rem;
+$slide-size-laptop-small: 40rem;
 
 :root {
     --main-color: #ededed;

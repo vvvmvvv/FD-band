@@ -88,7 +88,6 @@ export default class AudioPlayer extends React.Component {
     }
 
     handlePause = () => {
-        console.log('pause');
         this.setState({
             playing: false
         })
@@ -130,7 +129,7 @@ export default class AudioPlayer extends React.Component {
 
     handleSongChange = (e) => {
         const id = e.target.value === 'next' ? 
-            (this.state.songId + 1 === this.state.songsRefs.length ? 0 : this.state.songId + 1) : 
+            (this.state.songId + 1 >= this.state.songsRefs.length ? 0 : this.state.songId + 1) : 
             (this.state.songId - 1 < 0 ? this.state.songsRefs.length - 1 : this.state.songId - 1);
 
         this.setState({
@@ -193,7 +192,7 @@ export default class AudioPlayer extends React.Component {
         +percent+"%, var(--main-color) "
         +percent+"%, var(--main-color) 100%)"
 
-        if (range !== undefined) {
+        if (range !== undefined && range !== null) {
             range.style.background = rangeFill;
         }
     }
@@ -234,8 +233,72 @@ export default class AudioPlayer extends React.Component {
 
     render () {
         return (
-        <div>
-                    <div className='player'>
+        // <div>
+        //             <div className='player'>
+
+        //     <div className='player__loading'>{(this.state.loaded) ? 'Loaded' : 'Loading'}</div>
+
+        //     <div className='player__toggles'>
+        //         <label>
+        //             Loop:
+        //             <input
+        //             type='checkbox'
+        //             checked={this.state.loop}
+        //             onChange={this.handleLoopToggle}
+        //             />
+        //         </label>
+        //         <label>
+        //             Mute:
+        //             <input
+        //             type='checkbox'
+        //             checked={this.state.mute}
+        //             onChange={this.handleMuteToggle}
+        //             />
+        //         </label>
+        //     </div>
+
+        //     <div className='player__status'>
+        //         {
+        //             `Status:
+        //             ${(this.state.seek !== undefined) ? parseInt(this.state.seek) : '0'}
+        //             /
+        //             ${(this.state.duration) ? Number(this.state.duration).toFixed(2) : 'Loading'}`
+        //         }
+        //     </div>
+
+        //     <div className='player__volume'>
+        //         <label className='volume'>
+        //             Volume:
+        //             <span className='volume__slider'>
+        //                 <input
+        //                     type='range'
+        //                     min='0'
+        //                     max='1'
+        //                     step='.05'
+        //                     value={this.state.volume}
+        //                     onChange={e => this.setState({volume: parseFloat(e.target.value)})}
+        //                     style={{verticalAlign: 'bottom'}}
+        //                 />
+        //             </span>
+        //             {this.state.volume.toFixed(2)}
+        //         </label>
+        //     </div>
+
+        //     <Button onClick={this.handleSongChange} value='prev'>
+        //     Prev
+        //     </Button>
+        //     <Button onClick={this.handleToggle}>
+        //     {(this.state.playing) ? 'Pause' : 'Play'}
+        //     </Button>
+        //     <Button onClick={this.handleStop}>
+        //     Stop
+        //     </Button>
+        //     <Button onClick={this.handleSongChange} value='next'>
+        //     Next
+        //     </Button>
+        // </div>
+
+        <div className="music-player">
             <ReactHowler
                 src={require(`../../assets/songs/${this.state.song}.mp3`)}
                 playing={this.state.playing}
@@ -247,70 +310,6 @@ export default class AudioPlayer extends React.Component {
                 volume={this.state.volume}
                 ref={(ref) => (this.player = ref)}
             />
-
-            <div className='player__loading'>{(this.state.loaded) ? 'Loaded' : 'Loading'}</div>
-
-            <div className='player__toggles'>
-                <label>
-                    Loop:
-                    <input
-                    type='checkbox'
-                    checked={this.state.loop}
-                    onChange={this.handleLoopToggle}
-                    />
-                </label>
-                <label>
-                    Mute:
-                    <input
-                    type='checkbox'
-                    checked={this.state.mute}
-                    onChange={this.handleMuteToggle}
-                    />
-                </label>
-            </div>
-
-            <div className='player__status'>
-                {
-                    `Status:
-                    ${(this.state.seek !== undefined) ? parseInt(this.state.seek) : '0.00'}
-                    /
-                    ${(this.state.duration) ? Number(this.state.duration).toFixed(2) : 'NaN'}`
-                }
-            </div>
-
-            <div className='player__volume'>
-                <label className='volume'>
-                    Volume:
-                    <span className='volume__slider'>
-                        <input
-                            type='range'
-                            min='0'
-                            max='1'
-                            step='.05'
-                            value={this.state.volume}
-                            onChange={e => this.setState({volume: parseFloat(e.target.value)})}
-                            style={{verticalAlign: 'bottom'}}
-                        />
-                    </span>
-                    {this.state.volume.toFixed(2)}
-                </label>
-            </div>
-
-            <Button onClick={this.handleSongChange} value='prev'>
-            Prev
-            </Button>
-            <Button onClick={this.handleToggle}>
-            {(this.state.playing) ? 'Pause' : 'Play'}
-            </Button>
-            <Button onClick={this.handleStop}>
-            Stop
-            </Button>
-            <Button onClick={this.handleSongChange} value='next'>
-            Next
-            </Button>
-        </div>
-
-        <div className="music-player">
             <div className="music-player__panel">
 
                 <Button className={(this.state.loop) 
@@ -348,15 +347,15 @@ export default class AudioPlayer extends React.Component {
                 <input onInput={this.handlePlayerRange} name="range" type="range" min="1" max="100"  id="music-range" className="music-player__range"></input>
                 <p className="music-player__values">
                     <span className="music-player__current-value">
-                    {(this.state.seek !== undefined) ? parseInt(this.state.seek) : '0'}
+                    {(this.state.seek !== undefined && this.state.seek !== NaN) ? parseInt(this.state.seek) : '0'}
                     </span>
                     <span className="music-player__final-value">
-                        {(this.state.duration) ? Number(this.state.duration).toFixed(2) : 'NaN'}
+                        {(this.state.duration) ? parseInt(this.state.duration) : 'Loading'}
                     </span>
                 </p>
             </div>
         </div>
-        </div>
+        // </div>
         
         )
     }
