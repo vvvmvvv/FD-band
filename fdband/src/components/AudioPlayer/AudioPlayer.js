@@ -232,24 +232,24 @@ export default class AudioPlayer extends React.Component {
         range.value = 0
     }
 
-    // listenKeyDown = (e) => {
-    //     switch (e.keyCode) {
-    //         case 32:
-    //             this.handleToggle()
-    //             break;
+    listenKeyDown = (e) => {
+        switch (e.keyCode) {
+            case 32:
+                this.handleToggle()
+                break;
                 
-    //         case 37:
-    //             this.handleSongChange('prev')
-    //             break;
+            case 37:
+                this.handleSongChange('prev')
+                break;
                 
-    //         case 39:
-    //             this.handleSongChange('next')
-    //             break;
+            case 39:
+                this.handleSongChange('next')
+                break;
         
-    //         default:
-    //             break;
-    //     }
-    // }
+            default:
+                break;
+        }
+    }
 
     render () {
         return (
@@ -268,7 +268,7 @@ export default class AudioPlayer extends React.Component {
                 />
                 <div 
                     className="music-player__panel"
-                    // onKeyPress={this.listenKeyDown}
+                    onKeyPress={this.listenKeyDown}
                 >
 
                     <Button className={(this.state.loop) 
