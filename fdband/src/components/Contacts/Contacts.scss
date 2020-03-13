@@ -105,7 +105,7 @@
       transition: transform 500ms;
       transition: 0.5s;
       @include flex-center;
-      
+
       &:hover {
         box-shadow: 0 5px 10px var(--secondary-color);
 
@@ -127,21 +127,66 @@
     .menu {
       &:hover > .menu__item:nth-child(2) {
         transform: rotate(-20deg) translateY(-13rem) rotate(20deg);
-        transition-delay: 0.2s;
       }
 
       &:hover > .menu__item:nth-child(3) {
         transform: rotate(-60deg) translateY(-13rem) rotate(60deg);
-        transition-delay: 0.3s;
       }
 
       &:hover > .menu__item:nth-child(4) {
         transform: rotate(20deg) translateY(-12rem) rotate(-20deg);
-        transition-delay: 0.1s;
       }
 
       &__button {
         @include basic(20rem, 20rem);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .contacts {
+    .menu {
+      &:hover > .menu__item:nth-child(2) {
+        transform: rotate(-20deg) translateY(-10rem) rotate(20deg);
+      }
+
+      &:hover > .menu__item:nth-child(3) {
+        transform: rotate(-60deg) translateY(-9.5rem) rotate(60deg);
+      }
+
+      &:hover > .menu__item:nth-child(4) {
+        transform: rotate(20deg) translateY(-9.5rem) rotate(-20deg);
+      }
+
+      &__button {
+        @include basic(15rem, 15rem);
+      }
+
+      &__item {
+        @include basic(6rem, 6rem);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .contacts {
+    
+    height: 100%;
+    .cards {
+      // padding-top: 20rem;
+      flex-direction: column;
+      @include flex-center;
+    }
+
+    .menu{
+      &--top {
+        margin: 0 0 0 20rem;
+      }
+  
+      &--bottom {
+        margin: 0 20rem 0 0 ;
       }
     }
   }

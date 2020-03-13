@@ -20,7 +20,7 @@ const Anna = () => {
         <React.Fragment>
             <div className="team-inner">
                 <div className="team_header">
-                    <Link to="/aboutUs#ourBand"><div class="backToTeam"><p align="right">Back to team</p></div></Link>
+                    <Link to="/aboutUs#ourBand"><div className="backToTeam"><p align="right">Back to team</p></div></Link>
 
                     <div className="team_header__bg">
 
