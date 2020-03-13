@@ -35,7 +35,6 @@ export default class AudioPlayer extends React.Component {
             seek: 0,
             volume: 1.0,
             duration: 0,
-            currentPosition: 0,
         }
     }
 
@@ -122,7 +121,6 @@ export default class AudioPlayer extends React.Component {
         })
         if (this.state.playing) {
             this._raf = raf(this.renderSeekPos)
-            // this._raf = raf(this.getPositionRange)
         }
     }
 
@@ -134,7 +132,8 @@ export default class AudioPlayer extends React.Component {
     }
 
     handleSongChange = (e) => {
-        const id = e.target.value === 'next' ? 
+        const value = e.target.value ? e.target.value : e;
+        const id = value === 'next' ? 
             (this.state.songId + 1 >= this.state.songsRefs.length ? 0 : this.state.songId + 1) : 
             (this.state.songId - 1 < 0 ? this.state.songsRefs.length - 1 : this.state.songId - 1);
 
@@ -178,22 +177,20 @@ export default class AudioPlayer extends React.Component {
     // styling player ----------------------------------------
     // -------------------------------------------------------
 
-    setPosition (position = 0) {
+    setPosition = () => {
         let range = document.querySelector('.music-player__range')
         
         setInterval(() => {
 
             let time = (parseInt(this.state.seek) * 100) / this.state.duration
 
-            range.value = (this.state.seek !== undefined) ? time : 0
+            range.value = this.state.seek ? time : 0
 
             this.setPositionRange(range.value)
         }, 500)
-
-
     }
 
-    setPositionRange (percent) {
+    setPositionRange = (percent) => {
         let range = document.querySelector('.music-player__range')
 
         let rangeFill = "-webkit-linear-gradient(left, var(--secondary-color) 0%, var(--secondary-color) "
@@ -205,28 +202,18 @@ export default class AudioPlayer extends React.Component {
         }
     }
 
-    getPositionRange () {
-        let range = document.querySelector('.music-player__range')
-        let value = range.value
-        console.log(value)
-        return value
+    getPositionRange = () => document.querySelector('.music-player__range').value
+
+    handlePlayerRange = () => {
+        this.setState({
+            seek: (this.getPositionRange() / 100) * this.state.duration
+        }, () => {
+            this.player.seek(this.state.seek)
+            this.setPosition()
+        })
     }
 
-    handlePlayerRange () {
-        this.state.seek = this.getPositionRange()
-
-        let percent = this.getPositionRange()
-        this.setPosition(percent)
-
-        // this.state.currentPosition = this.getPositionRange()
-        // this.setState({
-        //     currentPosition: this.getPositionRange(),
-        //     seek: this.getPositionRange()
-        // })
-
-    }
-
-    setCurrentTime (time) {
+    setCurrentTime = (time) => {
         let currentTime = document.querySelector('.music-player__current-value')
         currentTime.textContent = time
     }
@@ -245,6 +232,25 @@ export default class AudioPlayer extends React.Component {
         range.value = 0
     }
 
+    // listenKeyDown = (e) => {
+    //     switch (e.keyCode) {
+    //         case 32:
+    //             this.handleToggle()
+    //             break;
+                
+    //         case 37:
+    //             this.handleSongChange('prev')
+    //             break;
+                
+    //         case 39:
+    //             this.handleSongChange('next')
+    //             break;
+        
+    //         default:
+    //             break;
+    //     }
+    // }
+
     render () {
         return (
             <div className="music-player">
@@ -260,7 +266,10 @@ export default class AudioPlayer extends React.Component {
                     volume={this.state.volume}
                     ref={(ref) => (this.player = ref)}
                 />
-                <div className="music-player__panel">
+                <div 
+                    className="music-player__panel"
+                    // onKeyPress={this.listenKeyDown}
+                >
 
                     <Button className={(this.state.loop) 
                         ? 'music-player__button icon-arrow-repeat music-player__button--active' 
@@ -274,11 +283,12 @@ export default class AudioPlayer extends React.Component {
                         value='prev'>
                     </Button>
                 
-                    <span   onClick={this.handleToggle} 
-                            className={(this.state.playing)    
-                                ? 'music-player__button music-player__button--pause icon-media-pause' 
-                                : 'music-player__button music-player__button--play icon-media-play'}>   
-                    </span>
+                    <Button   
+                        onClick={this.handleToggle}
+                        className={(this.state.playing)    
+                            ? 'music-player__button music-player__button--pause icon-media-pause' 
+                            : 'music-player__button music-player__button--play icon-media-play'}>   
+                    </Button>
                     
                     <Button 
                         className="icon-media-fast-forward music-player__button "  
@@ -306,7 +316,14 @@ export default class AudioPlayer extends React.Component {
 
                 </div>
                 <div className="music-player__range-container">
-                    <input onInput={this.handlePlayerRange} name="range" type="range" min="1" max="100" id="music-range" className="music-player__range"></input>
+                    <input
+                        className="music-player__range"
+                        onInput={this.handlePlayerRange}
+                        name="range" 
+                        type="range" 
+                        min="1"
+                        max="100" 
+                        id="music-range"></input>
                     <p className="music-player__values">
                         <span className="music-player__current-value">
                             {(this.state.loaded) ? this.convertTime(this.state.seek) : '00:00'}
