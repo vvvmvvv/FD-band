@@ -68,7 +68,7 @@ const Contacts = () => {
                             </ul>
 
                         </div>
-                        <div className="cards__card">
+                        <div className="cards__card  menu--top">
                             {/* <div className="cards__title">Alexander Lesiuk</div>
                             <Link to="/aboutUs/aleksandr" className="cards__button">show more</Link> */}
                             <ul className="menu" >
@@ -116,7 +116,7 @@ const Contacts = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="cards__card">
+                        <div className="cards__card  menu--top">
                             {/* <div className="cards__title">Lena Vu</div>
                             <Link to="/aboutUs/lena" className="cards__button">show more</Link> */}
                             <ul className="menu" >

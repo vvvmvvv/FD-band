@@ -3,19 +3,29 @@
 @import "../../stylesSettings/_keyframes";
 @import "../../assets/fonts/_fonts";
 
-.gallery{
-    width: 100%;
-    background-color: var(--main-color);
-    @include flex-center;
-    transition: background-color 1.7s;
-    padding-top: 5rem;
+.gallery {
+  width: 100%;
+  background-color: var(--main-color);
+  @include flex-center;
+  transition: background-color 1.7s;
+  padding-top: 5rem;
+  height: 70rem;
 }
 
-.image-gallery{
+.image-gallery {
+  width: 100%;
+  @include flex-center;
+
+  &-content {
     width: 100%;
+    flex-direction: column;
+  }
+
+  &-image {
+    height: 50rem;
+  }
 }
 
 // .gallery.colorchange {
 //     // background-color: black;
 //   }
-  
