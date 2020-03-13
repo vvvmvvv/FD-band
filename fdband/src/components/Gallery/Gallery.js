@@ -12,7 +12,7 @@ const Gallery = () => {
 
   const [ scrolled, setScrolled ] = useState()
   const galleryChanges = classNames('gallery', {
-    opacityAn: scrolled,
+    colorchange: scrolled,
   })
   useEffect(_ => {
     const handleScroll = _ => { 

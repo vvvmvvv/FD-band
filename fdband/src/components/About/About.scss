@@ -34,8 +34,8 @@
         content: "";
         @include basic(0.3rem, 0.1rem);
         // background-color: $black;
-        // background-color: var(--secondary-color);
-        background-color: var(--main-color);
+        background-color: var(--secondary-color);
+        // background-color: var(--main-color);
         position: absolute;
         right: 120%;
         top: 0.4rem;
@@ -72,6 +72,7 @@
       transition-duration: 0.5s;
       font-family: $osb;
       font-size: $f55;
+      color: var(--secondary-color);
     }
 
     .info {
@@ -81,12 +82,14 @@
         font-family: $ltb;
         font-size: $f20;
         padding: 2rem 0;
+        color: var(--secondary-color);
       }
 
       &__description {
         opacity: 0.6;
         font-family: $lt;
         font-size: $f18;
+        color: var(--secondary-color);
       }
 
       &--active {
@@ -104,7 +107,7 @@
     &__rectangle {
       background-color: $light;
       // background-color: var(--main-color);
-      background-color: var(--secondary-color);
+      // background-color: var(--secondary-color);
       @include basic(55rem, 20rem);
       vertical-align: text-bottom;
       position: relative;
@@ -118,12 +121,13 @@
       font-family: $osb;
       font-size: $f55;
       text-transform: uppercase;
+      // color: var(--main-color);
 
       &:after {
         content: "Band";
         text-transform: uppercase;
-        // color: $light;
-        color: var(--secondary-color);
+        color: $light;
+        // color: var(--secondary-color);
         position: absolute;
         width: 100%;
         top: 4.8rem;
@@ -234,6 +238,7 @@
   &__location {
     font-family: $ltb;
     font-size: $f14;
+    color: var(--secondary-color);
   }
 
   &__info {

@@ -103,6 +103,7 @@
   .slider {
     &__body {
       width: calc(200% + #{$slide-size-laptop});
+      margin-top: 27rem;
     }
   }
 }

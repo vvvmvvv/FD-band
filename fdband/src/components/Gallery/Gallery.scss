@@ -5,16 +5,17 @@
 
 .gallery{
     width: 100%;
-    background-color: $light;
+    background-color: var(--main-color);
     @include flex-center;
     transition: background-color 1.7s;
+    padding-top: 5rem;
 }
 
 .image-gallery{
     width: 100%;
 }
 
-.gallery.opacityAn {
-    background-color: black;
-  }
+// .gallery.colorchange {
+//     // background-color: black;
+//   }
   
