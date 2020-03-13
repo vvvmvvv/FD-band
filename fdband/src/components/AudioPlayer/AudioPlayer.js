@@ -250,6 +250,7 @@ export default class AudioPlayer extends React.Component {
             <div className="music-player">
                 <ReactHowler
                     src={require(`../../assets/songs/${this.state.song}.mp3`)}
+                    preload={true}
                     playing={this.state.playing}
                     onLoad={this.handleOnLoad}
                     onPlay={this.handleOnPlay}
@@ -299,14 +300,13 @@ export default class AudioPlayer extends React.Component {
                                 step='.05'
                                 value={this.state.volume}
                                 onChange={e => this.setState({volume: parseFloat(e.target.value)})}
-                                style={{verticalAlign: 'bottom'}}
                             />
                         </div>
                     </Button>
 
                 </div>
                 <div className="music-player__range-container">
-                    <input onInput={this.handlePlayerRange} name="range" type="range" min="1" max="100"  id="music-range" className="music-player__range"></input>
+                    <input onInput={this.handlePlayerRange} name="range" type="range" min="1" max="100" id="music-range" className="music-player__range"></input>
                     <p className="music-player__values">
                         <span className="music-player__current-value">
                             {(this.state.loaded) ? this.convertTime(this.state.seek) : '00:00'}
