@@ -306,7 +306,7 @@ export default class AudioPlayer extends React.Component {
 
                 </div>
                 <div className="music-player__range-container">
-                    <input onInput={this.handlePlayerRange} name="range" type="range" min="0" max="1"  id="music-range" className="music-player__range"></input>
+                    <input onInput={this.handlePlayerRange} name="range" type="range" min="1" max="100"  id="music-range" className="music-player__range"></input>
                     <p className="music-player__values">
                         <span className="music-player__current-value">
                             {(this.state.loaded) ? this.convertTime(this.state.seek) : '00:00'}
