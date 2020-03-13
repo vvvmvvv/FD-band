@@ -9,11 +9,11 @@ import './AudioPlayer.scss';
 import albums from '../../assets/data/albums.json'
 
 const Button = (props) => {
-    const { className, ...otherProps } = props
+    const { children, className, ...otherProps } = props
 
     return (
         <button className={classnames('button', className)} {...otherProps}>
-        
+            {children}
         </button>
     )
 }
@@ -108,10 +108,12 @@ export default class AudioPlayer extends React.Component {
         })
     }
 
-    handleMuteToggle = () => {
-        this.setState({
-            mute: !this.state.mute
-        })
+    handleMuteToggle = (e) => {
+        if (e.target.classList.contains('music-player__button')) {
+            this.setState({
+                mute: !this.state.mute
+            })
+        }
     }
 
     renderSeekPos = () => {
@@ -230,12 +232,12 @@ export default class AudioPlayer extends React.Component {
     }
 
     convertTime = (timeInSeconds) => {
-        const pad = function(num, size) { return ('000' + num).slice(size * -1); }
-        let time = parseFloat(timeInSeconds).toFixed(3)
-        let minutes = Math.floor(time / 60) % 60
-        let seconds = Math.floor(time - minutes * 60)
+        const format = (num, size) => ('00' + num).slice(size * -1)
+        const time = parseFloat(timeInSeconds).toFixed(2)
+        const minutes = Math.floor(time / 60) % 60
+        const seconds = Math.floor(time - minutes * 60)
     
-        return `${pad(minutes, 2)}:${pad(seconds, 2)}`;
+        return `${format(minutes, 2)}:${format(seconds, 2)}`;
     }
 
     componentDidMount() {
@@ -243,70 +245,78 @@ export default class AudioPlayer extends React.Component {
         range.value = 0
     }
 
-
-
-
     render () {
         return (
-        <div className="music-player">
-            <ReactHowler
-                src={require(`../../assets/songs/${this.state.song}.mp3`)}
-                playing={this.state.playing}
-                onLoad={this.handleOnLoad}
-                onPlay={this.handleOnPlay}
-                onEnd={this.handleOnEnd}
-                loop={this.state.loop}
-                mute={this.state.mute}
-                volume={this.state.volume}
-                ref={(ref) => (this.player = ref)}
-            />
-            <div className="music-player__panel">
+            <div className="music-player">
+                <ReactHowler
+                    src={require(`../../assets/songs/${this.state.song}.mp3`)}
+                    playing={this.state.playing}
+                    onLoad={this.handleOnLoad}
+                    onPlay={this.handleOnPlay}
+                    onEnd={this.handleOnEnd}
+                    loop={this.state.loop}
+                    mute={this.state.mute}
+                    volume={this.state.volume}
+                    ref={(ref) => (this.player = ref)}
+                />
+                <div className="music-player__panel">
 
-                <Button className={(this.state.loop) 
-                    ? 'music-player__button icon-arrow-repeat music-player__button--active' 
-                    : 'music-player__button icon-arrow-repeat'} 
-                    onClick={this.handleLoopToggle}
-                ></Button>
+                    <Button className={(this.state.loop) 
+                        ? 'music-player__button icon-arrow-repeat music-player__button--active' 
+                        : 'music-player__button icon-arrow-repeat'} 
+                        onClick={this.handleLoopToggle}
+                    ></Button>
 
-                <Button 
-                    className="icon-media-rewind music-player__button "  
-                    onClick={this.handleSongChange} 
-                    value='prev'>
-                </Button>
-            
-                <span   onClick={this.handleToggle} 
-                        className={(this.state.playing)    
-                            ? 'music-player__button music-player__button--pause icon-media-pause' 
-                            : 'music-player__button music-player__button--play icon-media-play'}>   
-                </span>
+                    <Button 
+                        className="icon-media-rewind music-player__button "  
+                        onClick={this.handleSongChange} 
+                        value='prev'>
+                    </Button>
                 
-                <Button 
-                    className="icon-media-fast-forward music-player__button "  
-                    onClick={this.handleSongChange} 
-                    value='next'>
-                </Button>
-
-                <Button className={(this.state.mute) 
-                    ? 'music-player__button icon-volume-mute1' 
-                    : 'music-player__button icon-volume-up'} 
-                    onClick={this.handleMuteToggle}
-                ></Button>
-
-            </div>
-            <div className="music-player__range-container">
-                <input onInput={this.handlePlayerRange} name="range" type="range" min="1" max="100"  id="music-range" className="music-player__range"></input>
-                <p className="music-player__values">
-                    <span className="music-player__current-value">
-                        {(this.state.loaded) ? this.convertTime(this.state.seek) : '00:00'}
+                    <span   onClick={this.handleToggle} 
+                            className={(this.state.playing)    
+                                ? 'music-player__button music-player__button--pause icon-media-pause' 
+                                : 'music-player__button music-player__button--play icon-media-play'}>   
                     </span>
-                    <span className="music-player__final-value">
-                        {(this.state.loaded) ? this.convertTime(this.state.duration) : 'Loading'}
-                    </span>
-                </p>
+                    
+                    <Button 
+                        className="icon-media-fast-forward music-player__button "  
+                        onClick={this.handleSongChange} 
+                        value='next'>
+                    </Button>
+
+                    <Button onClick={this.handleMuteToggle} className={classnames(
+                        'music-player__button',
+                        'music-player__button--volume',
+                        (this.state.mute) ? 'icon-volume-mute1' : 'icon-volume-up',
+                    )}>
+                        <div className='music-player__volume volume'>
+                            <input 
+                                className='volume__range'
+                                type='range'
+                                min='0'
+                                max='1'
+                                step='.05'
+                                value={this.state.volume}
+                                onChange={e => this.setState({volume: parseFloat(e.target.value)})}
+                                style={{verticalAlign: 'bottom'}}
+                            />
+                        </div>
+                    </Button>
+
+                </div>
+                <div className="music-player__range-container">
+                    <input onInput={this.handlePlayerRange} name="range" type="range" min="0" max="1"  id="music-range" className="music-player__range"></input>
+                    <p className="music-player__values">
+                        <span className="music-player__current-value">
+                            {(this.state.loaded) ? this.convertTime(this.state.seek) : '00:00'}
+                        </span>
+                        <span className="music-player__final-value">
+                            {(this.state.loaded) ? this.convertTime(this.state.duration) : 'Loading'}
+                        </span>
+                    </p>
+                </div>
             </div>
-        </div>
-        // </div>
-        
         )
     }
 }

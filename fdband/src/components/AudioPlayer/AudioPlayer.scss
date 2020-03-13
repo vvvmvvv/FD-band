@@ -55,11 +55,36 @@
         font-size: 5rem;
     }
 
+    &__button--volume {
+        position: relative;
+
+        &:hover {
+            .music-player__volume {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__volume {
+        position: absolute;
+
+        bottom: 5rem;
+        left: 50%;
+
+        width: 7.5rem;
+
+        transition: 0.3s;
+        opacity: 0;
+
+        transform: translate(-50%, -50%) rotate(-90deg);
+    }
+
     &__range-container {
         
 
         position: relative;
-        &::after {
+        &::after,
+        .volume::after {
             content: '';
             display: inline-block;
             position: absolute;
@@ -71,7 +96,8 @@
         }
     }
 
-    &__range {
+    &__range,
+    .volume__range {
         display: block;
         margin: 10px auto;
 
