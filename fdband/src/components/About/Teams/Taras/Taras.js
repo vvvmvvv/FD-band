@@ -42,7 +42,8 @@ const Taras = () => {
                     <div className="about-me__container1 team_container">
                         <div className="about-me__text text">
                             <h1 className="about-me-text__title title">About me</h1>
-                            <p className="about-me-text__description description">I am from Sumy. I like listen to music and write own songs.</p>
+                            <p className="about-me-text__description description">As a child I had a dog which lowed to howl at the moon. These sounds were so peaceful for me, 'cause you know, I always liked live music. Unfortunately, time passes, and the pets aren't eternal.. thats how I decided to salute her and create my own group. And as you can see, everything turns out.
+Kylie, know.. this for you, baby.</p>
                         </div>
                     </div>
                     <div className="about-me__container2 team_container">
