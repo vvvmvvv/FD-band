@@ -22,7 +22,7 @@ const VinilTitle = (props) => {
                 />
                 <text className="vinil__title">
                     <textPath xlinkHref="#curve" className="vinil__text">
-                        {props.name}
+                        {props.children}
                     </textPath>
                 </text>
             </svg>
@@ -102,8 +102,7 @@ export default class Slide extends React.Component {
                         this.state.isPlaying ? '' : 'vinil--paused'
                     )}>
                         <img className="vinil__image" src={vinil} alt="vinil" />
-                        {/* <span className="vinil__album">{this.props.name}</span> */}
-                        <VinilTitle name={this.props.name} />
+                        <VinilTitle>{this.props.name}</VinilTitle>
                     </div>
                     <div className="slide__details">
                         <ul className="slide__songs songs">

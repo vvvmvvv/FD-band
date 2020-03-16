@@ -229,11 +229,14 @@ export default class AudioPlayer extends React.Component {
 
     convertTime = (timeInSeconds) => {
         const format = (num, size) => ('00' + num).slice(size * -1)
-        const time = parseFloat(timeInSeconds).toFixed(2)
+
+        let parsed = parseFloat(timeInSeconds).toFixed(2)
+        const time = parsed ? parsed : 0
+        
         const minutes = Math.floor(time / 60) % 60
         const seconds = Math.floor(time - minutes * 60)
     
-        return `${format(minutes, 2)}:${format(seconds, 2)}`;
+        return `${format(minutes, 2)}:${format(seconds, 2)}`
     }
 
     componentDidMount() {
