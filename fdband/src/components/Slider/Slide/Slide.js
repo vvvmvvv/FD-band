@@ -8,6 +8,28 @@ import Song from '../Song/Song';
 
 import vinil from '../../../assets/images/vinil.svg'
 
+const VinilTitle = (props) => {
+    return (
+        <div className="vinil__album">
+            <svg 
+                viewBox="0 0 1000 1000" 
+                className="vinil__svg"
+            >  
+                <path 
+                    className="vinil__path" 
+                    id="curve" 
+                    d="m150,500c0,-193.37017 156.62983,-350 350,-350c193.37017,0 350,156.62983 350,350c0,193.37017 -156.62983,350 -350,350c-193.37017,0 -350,-156.62983 -350,-350z"
+                />
+                <text className="vinil__title">
+                    <textPath xlinkHref="#curve" className="vinil__text">
+                        {props.name}
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+    )
+}
+
 export default class Slide extends React.Component {
     constructor (props) {
         super(props)
@@ -79,8 +101,9 @@ export default class Slide extends React.Component {
                         'vinil',
                         this.state.isPlaying ? '' : 'vinil--paused'
                     )}>
-                        <img className="vinil__image" src={vinil} alt="vinil" />>
-                        <span className="vinil__album">{this.props.name}</span>
+                        <img className="vinil__image" src={vinil} alt="vinil" />
+                        {/* <span className="vinil__album">{this.props.name}</span> */}
+                        <VinilTitle name={this.props.name} />
                     </div>
                     <div className="slide__details">
                         <ul className="slide__songs songs">
