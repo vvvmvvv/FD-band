@@ -109,9 +109,18 @@ export default class AudioPlayer extends React.Component {
 
     handleMuteToggle = (e) => {
         if (e.target.classList.contains('music-player__button')) {
-            this.setState({
-                mute: !this.state.mute
-            })
+            if (this.state.mute) {
+                this.setState({
+                    mute: false,
+                    volume: this.state.prevVolume
+                })    
+            } else {
+                this.setState({
+                    mute: true,
+                    prevVolume: this.state.volume,
+                    volume: 0
+                })
+            }
         }
     }
 
@@ -309,7 +318,10 @@ export default class AudioPlayer extends React.Component {
                                 max='1'
                                 step='.05'
                                 value={this.state.volume}
-                                onChange={e => this.setState({volume: parseFloat(e.target.value)})}
+                                onChange={e => this.setState({
+                                    volume: parseFloat(e.target.value),
+                                    mute: false
+                                })}
                             />
                         </div>
                     </Button>

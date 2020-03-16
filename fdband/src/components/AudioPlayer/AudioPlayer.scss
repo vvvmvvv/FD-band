@@ -48,7 +48,7 @@
     }
 
     &__button--active {
-        color: green;
+        color: var(--active-color);
     }
 
     &__button--pause {
@@ -59,6 +59,8 @@
         position: relative;
 
         &:hover {
+            color: var(--active-color);
+            
             .music-player__volume {
                 opacity: 1;
             }
